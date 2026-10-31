@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2f6f62">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Agenda Inteligente</title>
+<style>
+:root{--bg:#f4f1ec;--sf:#fff;--sf2:#ebe7e0;--tx:#1f2a28;--mu:#6b7774;--ac:#2f6f62;--ac2:#e0f0ec;--rd:#d6483b;--ln:#ddd8cf;--sh:0 6px 24px rgba(30,40,38,.08)}
+:root[data-t=dark]{--bg:#121816;--sf:#1b2321;--sf2:#26302d;--tx:#eaf0ee;--mu:#93a39f;--ac:#5fc4ae;--ac2:#1d3a34;--rd:#ff7a6b;--ln:#2d3a36;--sh:0 6px 24px rgba(0,0,0,.4)}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:"Segoe UI",Roboto,system-ui,sans-serif;background:var(--bg);color:var(--tx);padding-top:env(safe-area-inset-top)}
+#app{max-width:720px;margin:0 auto;padding:18px 16px 130px}
+h1{font-size:1.6rem;letter-spacing:-.02em}h2{font-size:1.1rem;margin:22px 0 10px}
+.mu{color:var(--mu);font-size:.85rem}
+.card{background:var(--sf);border-radius:18px;padding:14px;box-shadow:var(--sh);margin-bottom:10px;border:1px solid var(--ln)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:12px}
+.stat b{display:block;font-size:1.7rem}
+.clock{font-size:2.6rem;font-weight:700;letter-spacing:-.03em}
+.it{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.bar{width:5px;align-self:stretch;border-radius:4px;flex:none}
+.it .m{flex:1;min-width:0}.it .t{font-weight:600}
+.tag{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:99px;background:var(--sf2);margin-right:4px}
+.tag.late{background:var(--rd);color:#fff}.tag.done{background:var(--ac);color:var(--bg)}.tag.urg{border:1.5px solid var(--rd);color:var(--rd)}
+.urgent{box-shadow:0 0 0 2px var(--rd)}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{border:0;border-radius:12px;padding:10px 14px;background:var(--ac);color:var(--bg);font-weight:600;cursor:pointer}
+.btn.g{background:var(--sf2);color:var(--tx)}.btn.d{background:var(--rd);color:#fff}.btn.s{padding:6px 10px;font-size:.85rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+input,select,textarea{width:100%;background:var(--sf2);border:1px solid var(--ln);border-radius:12px;padding:10px;margin:4px 0 10px}
+label{font-size:.82rem;color:var(--mu)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--sf);border-top:1px solid var(--ln);display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:5}
+nav button{background:none;border:0;color:var(--mu);display:flex;flex-direction:column;align-items:center;font-size:.7rem;gap:2px;padding:4px 8px;border-radius:12px;cursor:pointer}
+nav button .i{font-size:1.3rem}nav button.on{color:var(--ac);background:var(--ac2)}
+#fab{position:fixed;right:18px;bottom:calc(84px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:50%;border:0;background:var(--ac);color:var(--bg);font-size:2rem;box-shadow:var(--sh);z-index:6;cursor:pointer}
+#md{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center;z-index:20}
+#md.on{display:flex}
+#md>div{background:var(--bg);width:100%;max-width:720px;max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:18px;animation:up .25s ease}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+#ts{position:fixed;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;gap:6px;width:90%;max-width:420px}
+#ts div{background:var(--tx);color:var(--bg);padding:10px 14px;border-radius:12px;animation:up .2s}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal .d{aspect-ratio:1;border-radius:12px;background:var(--sf);border:1px solid var(--ln);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer}
+.cal .d.o{opacity:.35}.cal .d.h{border-color:var(--ac);font-weight:700}.cal .d.s{background:var(--ac2)}
+.dots{display:flex;gap:2px;height:6px}.dots i{width:5px;height:5px;border-radius:50%}
+.prog{height:8px;background:var(--sf2);border-radius:9px;overflow:hidden;margin:6px 0}.prog i{display:block;height:100%;background:var(--ac)}
+.bars{display:flex;gap:8px;align-items:flex-end;height:110px}.bars div{flex:1;background:var(--ac);border-radius:8px 8px 0 0;min-height:3px;position:relative}
+.bars span{position:absolute;top:-18px;width:100%;text-align:center;font-size:.75rem}
+.empty{text-align:center;padding:36px 10px;color:var(--mu)}
+.step{display:flex;gap:8px;align-items:center;padding:6px 0}.step input{width:auto;margin:0}
+.step.d span{text-decoration:line-through;opacity:.6}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div id="ts"></div>
+<main id="app"></main>
+<button id="fab" aria-label="Novo lembrete">+</button>
+<nav id="nav"></nav>
+<div id="md"><div id="mc"></div></div>
+<script>
+"use strict";
+/* ============ Dados e persistência (LocalStorage) ============ */
+const K="agenda_inteligente_v1";
+const CATS=[["Cuidados pessoais","#c26b8a"],["Saúde e bem-estar","#3a9d7a"],["Beleza","#b76ad1"],["Estudos","#4a7bd1"],["Trabalho","#d19a3a"],["Casa","#7a8a3a"],["Compras","#d1683a"],["Compromissos","#3a8fb7"],["Exercícios","#d14a4a"],["Financeiro","#5a6b7a"],["Outros","#888"]];
+const PRIO=["Baixa","Normal","Alta","Urgente"];
+const REC={none:"Não repetir",daily:"Todos os dias",weekly:"Semanalmente",biweekly:"A cada 15 dias",monthly:"Mensalmente",bimonthly:"A cada dois meses",yearly:"Anualmente"};
+const ADV=[[0,"No horário"],[5,"5 min antes"],[15,"15 min antes"],[30,"30 min antes"],[60,"1 hora antes"],[1440,"1 dia antes"]];
+const SND={padrao:"Padrão",suave:"Suave",despertador:"Despertador",digital:"Digital",sino:"Sino",nenhum:"Sem som"};
+const def=()=>({rem:[],log:[],last:null,set:{name:"",theme:"dark",h12:false,vol:.7,sound:"padrao",adv:0,notif:true}});
+let S=load();
+function load(){try{const d=JSON.parse(localStorage.getItem(K));if(d&&Array.isArray(d.rem)){const b=def();return{...b,...d,set:{...b.set,...d.set}}}}catch(e){}return def()}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){toast("Não foi possível salvar: armazenamento cheio ou bloqueado.")}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const catC=n=>(CATS.find(c=>c[0]===n)||CATS[10])[1];
+const pad=n=>String(n).padStart(2,"0");
+const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const when=r=>new Date(r.date+"T"+r.time).getTime();
+const fmtT=t=>{if(!S.set.h12)return t;const[h,m]=t.split(":").map(Number);return(h%12||12)+":"+pad(m)+(h<12?" AM":" PM")};
+const fmtD=d=>d.split("-").reverse().join("/");
+function left(r){let ms=when(r)-Date.now();const neg=ms<0;ms=Math.abs(ms);const m=Math.floor(ms/6e4),h=Math.floor(m/60),d=Math.floor(h/24);const s=d?d+"d "+h%24+"h":h?h+"h "+m%60+"min":m+" min";return neg?"há "+s:"em "+s}
+const isLate=r=>r.status==="pending"&&when(r)<Date.now();
 
+/* ============ Toast e modal ============ */
+function toast(m){const e=document.createElement("div");e.textContent=m;$("#ts").appendChild(e);setTimeout(()=>e.remove(),3200)}
+function modal(h){$("#mc").innerHTML=h;$("#md").classList.add("on")}
+function closeM(){$("#md").classList.remove("on");$("#mc").innerHTML="";stopAlarm()}
+$("#md").addEventListener("click",e=>{if(e.target.id==="md")closeM()});
+function confirmBox(msg,fn){modal(`<h2>Confirmar</h2><p>${esc(msg)}</p><div class="row"><button class="btn d" id="cy">Confirmar</button><button class="btn g" onclick="closeM()">Cancelar</button></div>`);$("#cy").onclick=()=>{closeM();fn()}}
+
+/* ============ Sons (Web Audio API) ============ */
+let ac=null,alarmT=null;
+function ctx(){if(!ac){const A=window.AudioContext||window.webkitAudioContext;if(A)ac=new A()}if(ac&&ac.state==="suspended")ac.resume();return ac}
+function beep(f,t0,d,type,v){const c=ctx();if(!c)return;const o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.value=f;const T=c.currentTime+t0;g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(v*S.set.vol,T+.02);g.gain.exponentialRampToValueAtTime(.0001,T+d);o.connect(g).connect(c.destination);o.start(T);o.stop(T+d+.05)}
+function play(n){({padrao:()=>{beep(880,0,.25,"sine",.5);beep(1175,.3,.4,"sine",.5)},suave:()=>{beep(523,0,.8,"sine",.3);beep(659,.25,.9,"sine",.3)},despertador:()=>{for(let i=0;i<6;i++)beep(1000,i*.18,.12,"square",.35)},digital:()=>{[1400,1400,1800].forEach((f,i)=>beep(f,i*.15,.1,"square",.3))},sino:()=>{beep(1318,0,1.4,"triangle",.5);beep(2637,0,.9,"sine",.2)},nenhum:()=>{}}[n]||(()=>{}))()}
+function startAlarm(n){stopAlarm();if(n==="nenhum")return;play(n);alarmT=setInterval(()=>play(n),4000)}
+function stopAlarm(){clearInterval(alarmT);alarmT=null}
+
+/* ============ Notificações e agendador ============ */
+function notifPerm(){if(!("Notification"in window))return toast("Este navegador não suporta notificações.");Notification.requestPermission().then(p=>{toast(p==="granted"?"Notificações permitidas.":"Permissão negada. Ative nas configurações do navegador.");render()})}
+function sysNotify(title,body){if("Notification"in window&&Notification.permission==="granted"){try{new Notification(title,{body,tag:title+body})}catch(e){/* Android Chrome exige Service Worker */}}}
+function fire(r,test){const adv=r.adv||0;const txt=(adv?"Daqui a "+adv+" min · ":"Agora · ")+(r.desc||"").slice(0,90);
+ if(!test)S.log.push({id:uid(),rid:r.id,title:r.title,at:Date.now(),kind:"notif"});
+ if(r.notify!==false&&S.set.notif)sysNotify("⏰ "+r.title,txt);
+ if(r.sound!=="nenhum")startAlarm(r.sound||S.set.sound);
+ modal(`<h2>⏰ ${esc(r.title)}</h2><p class="mu">${fmtD(r.date)} às ${fmtT(r.time)}</p><p>${esc((r.desc||"").slice(0,200))}</p><div class="row">${test?"":`<button class="btn" onclick="act('done','${r.id}')">Concluir</button><button class="btn g" onclick="snooze('${r.id}',10)">Adiar 10 min</button>`}<button class="btn g" onclick="closeM()">Dispensar / silenciar</button></div>`)}
+function tick(){const now=Date.now();let ch=false;
+ S.rem.forEach(r=>{if(r.status!=="pending")return;const key=r.date+r.time+(r.adv||0);if(r.fired===key)return;const due=when(r)-(r.adv||0)*6e4;
+  if(now>=due){r.fired=key;ch=true;if(now-due<6*36e5)fire(r)}});
+ if(ch)save();
+ const c=$("#clk");if(c){const d=new Date();c.textContent=S.set.h12?fmtT(pad(d.getHours())+":"+pad(d.getMinutes())):pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds())}}
+setInterval(tick,1000);
+
+/* ============ Ações ============ */
+function nextDate(r){const d=new Date(r.date+"T12:00");({daily:()=>d.setDate(d.getDate()+1),weekly:()=>d.setDate(d.getDate()+7),biweekly:()=>d.setDate(d.getDate()+15),monthly:()=>d.setMonth(d.getMonth()+1),bimonthly:()=>d.setMonth(d.getMonth()+2),yearly:()=>d.setFullYear(d.getFullYear()+1)}[r.rec]||(()=>{}))();return iso(d)}
+function act(a,id){const r=S.rem.find(x=>x.id===id);if(!r)return;stopAlarm();
+ if(a==="done"){r.status="done";r.doneAt=Date.now();r.steps.forEach(s=>s.d=true);
+  if(r.rec&&r.rec!=="none"){const n=nextDate(r),ended=(r.recEnd&&n>r.recEnd)||(r.recN&&(r.count||1)>=r.recN);if(!ended){S.rem.push({...r,id:uid(),date:n,status:"pending",doneAt:null,fired:null,count:(r.count||1)+1,steps:r.steps.map(s=>({...s,d:false}))});toast("Concluído. Próxima ocorrência: "+fmtD(n))}else toast("Concluído. Série encerrada.")}else toast("Lembrete concluído.")}
+ else if(a==="undo"){r.status="pending";r.doneAt=null;r.fired=null;toast("Lembrete reativado.")}
+ else if(a==="cancel"){r.status="cancelled";toast("Lembrete cancelado.")}
+ else if(a==="fav"){r.fav=!r.fav}
+ else if(a==="arch"){r.arch=!r.arch;toast(r.arch?"Arquivado.":"Desarquivado.")}
+ else if(a==="dup"){S.rem.push({...r,id:uid(),title:r.title+" (cópia)",status:"pending",fired:null,doneAt:null,steps:r.steps.map(s=>({...s,d:false}))});toast("Lembrete duplicado.")}
+ else if(a==="del"){return confirmBox("Excluir “"+r.title+"” definitivamente?",()=>{S.rem=S.rem.filter(x=>x.id!==id);save();render();toast("Excluído.")})}
+ save();closeM();render()}
+function snooze(id,min){const r=S.rem.find(x=>x.id===id);if(!r)return;const d=new Date(Math.max(Date.now(),when(r))+min*6e4);r.date=iso(d);r.time=pad(d.getHours())+":"+pad(d.getMinutes());r.fired=null;r.snoozed=(r.snoozed||0)+1;S.log.push({id:uid(),rid:id,title:r.title,at:Date.now(),kind:"snooze"});save();closeM();render();toast("Adiado em "+min+" min.")}
+function toggleStep(id,i){const r=S.rem.find(x=>x.id===id);r.steps[i].d=!r.steps[i].d;save();detail(id);render()}
+function share(id){const r=S.rem.find(x=>x.id===id);const t=`${r.title}\n${fmtD(r.date)} às ${fmtT(r.time)}\n${r.desc||""}`;if(navigator.share)navigator.share({title:r.title,text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast("Copiado para a área de transferência."));else toast("Compartilhamento indisponível.")}
+
+/* ============ Formulário ============ */
+function form(id,date){const r=S.rem.find(x=>x.id===id)||{};const n=new Date(Date.now()+36e5);
+ const v={title:r.title||"",desc:r.desc||"",date:r.date||date||iso(n),time:r.time||pad(n.getHours())+":00",cat:r.cat||"Outros",prio:r.prio??1,adv:r.adv??S.set.adv,sound:r.sound||S.set.sound,notify:r.notify!==false,rec:r.rec||"none",recEnd:r.recEnd||"",recN:r.recN||"",steps:(r.steps||[]).map(s=>s.t).join("\n"),notes:r.notes||"",tags:(r.tags||[]).join(", ")};
+ const opt=(a,sel)=>a.map(([k,l])=>`<option value="${k}"${String(k)===String(sel)?" selected":""}>${esc(l)}</option>`).join("");
+ modal(`<h2>${id?"Editar lembrete":"Novo lembrete"}</h2>
+ <label>Nome</label><input id="f_t" maxlength="80" value="${esc(v.title)}" placeholder="Ex.: Hidratação capilar">
+ <label>Descrição</label><textarea id="f_d" rows="4">${esc(v.desc)}</textarea>
+ <div class="two"><div><label>Data</label><input type="date" id="f_dt" value="${v.date}"></div><div><label>Horário</label><input type="time" id="f_tm" value="${v.time}"></div></div>
+ <div class="two"><div><label>Categoria</label><select id="f_c">${opt(CATS.map(c=>[c[0],c[0]]),v.cat)}</select></div><div><label>Prioridade</label><select id="f_p">${opt(PRIO.map((p,i)=>[i,p]),v.prio)}</select></div></div>
+ <div class="two"><div><label>Avisar</label><select id="f_a">${opt(ADV,v.adv)}</select></div><div><label>Som</label><select id="f_s">${opt(Object.entries(SND),v.sound)}</select></div></div>
+ <label>Repetição</label><select id="f_r">${opt(Object.entries(REC),v.rec)}</select>
+ <div class="two"><div><label>Repetir até (opcional)</label><input type="date" id="f_re" value="${v.recEnd}"></div><div><label>Ou nº de repetições</label><input type="number" min="1" id="f_rn" value="${v.recN}"></div></div>
+ <label>Etapas (uma por linha)</label><textarea id="f_st" rows="4">${esc(v.steps)}</textarea>
+ <label>Tags (separadas por vírgula)</label><input id="f_tg" value="${esc(v.tags)}">
+ <label>Anotações</label><textarea id="f_n" rows="2">${esc(v.notes)}</textarea>
+ <label><input type="checkbox" id="f_nt" style="width:auto;margin:0 6px 0 0"${v.notify?" checked":""}>Notificar este lembrete</label>
+ <div class="row"><button class="btn" id="f_ok">Salvar</button><button class="btn g" onclick="closeM()">Cancelar</button></div>`);
+ $("#f_ok").onclick=()=>{const t=$("#f_t").value.trim(),dt=$("#f_dt").value,tm=$("#f_tm").value;
+  if(!t)return toast("Informe o nome do lembrete.");if(!dt||!tm)return toast("Informe data e horário.");
+  const old=r.steps||[];const steps=$("#f_st").value.split("\n").map(s=>s.trim()).filter(Boolean).map(s=>({t:s,d:!!(old.find(o=>o.t===s)||{}).d}));
+  const o={...r,id:r.id||uid(),title:t,desc:$("#f_d").value.trim(),date:dt,time:tm,cat:$("#f_c").value,prio:+$("#f_p").value,adv:+$("#f_a").value,sound:$("#f_s").value,rec:$("#f_r").value,recEnd:$("#f_re").value,recN:+$("#f_rn").value||0,steps,notes:$("#f_n").value.trim(),tags:$("#f_tg").value.split(",").map(s=>s.trim()).filter(Boolean),notify:$("#f_nt").checked,status:r.status||"pending",fired:r.fired&&(r.date===dt&&r.time===tm&&r.adv===+$("#f_a").value)?r.fired:null,created:r.created||Date.now()};
+  const clash=S.rem.find(x=>x.id!==o.id&&x.status==="pending"&&x.date===dt&&x.time===tm);
+  if(id)S.rem[S.rem.findIndex(x=>x.id===id)]=o;else S.rem.push(o);save();closeM();render();toast(id?"Lembrete atualizado.":"Lembrete criado.");if(clash)toast("Atenção: conflito de horário com “"+clash.title+"”.")}}
+function detail(id){const r=S.rem.find(x=>x.id===id);if(!r)return;const dn=r.steps.filter(s=>s.d).length;
+ modal(`<h2>${esc(r.title)}</h2><p><span class="tag" style="background:${catC(r.cat)};color:#fff">${esc(r.cat)}</span><span class="tag">${PRIO[r.prio]}</span>${r.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("")}</p>
+ <p class="mu">${fmtD(r.date)} às ${fmtT(r.time)} · ${r.status==="pending"?left(r):r.status==="done"?"concluído":"cancelado"}${r.rec!=="none"?" · "+REC[r.rec]:""}</p>
+ ${r.desc?`<p style="white-space:pre-wrap;margin:10px 0">${esc(r.desc)}</p>`:""}
+ ${r.steps.length?`<div class="prog"><i style="width:${dn/r.steps.length*100}%"></i></div><p class="mu">${dn} de ${r.steps.length} etapas</p>`+r.steps.map((s,i)=>`<div class="step${s.d?" d":""}"><input type="checkbox" ${s.d?"checked":""} onchange="toggleStep('${id}',${i})"><span>${esc(s.t)}</span></div>`).join(""):""}
+ ${r.notes?`<p class="mu" style="margin-top:10px">Anotações: ${esc(r.notes)}</p>`:""}
+ <div class="row">${r.status==="pending"?`<button class="btn" onclick="act('done','${id}')">Concluir</button>`:`<button class="btn" onclick="act('undo','${id}')">Reativar</button>`}
+ <button class="btn g" onclick="form('${id}')">Editar</button><button class="btn g" onclick="act('dup','${id}')">Duplicar</button><button class="btn g" onclick="act('fav','${id}');detail('${id}')">${r.fav?"★ Favorito":"☆ Favoritar"}</button><button class="btn g" onclick="share('${id}')">Compartilhar</button><button class="btn g" onclick="act('arch','${id}')">${r.arch?"Desarquivar":"Arquivar"}</button>
+ ${r.status==="pending"?`<button class="btn g" onclick="act('cancel','${id}')">Cancelar lembrete</button>`:""}<button class="btn d" onclick="act('del','${id}')">Excluir</button></div>
+ ${r.status==="pending"?`<p class="mu" style="margin-top:14px">Adiar:</p><div class="row" style="margin-top:4px">${[5,10,15,30].map(m=>`<button class="btn g s" onclick="snooze('${id}',${m})">${m} min</button>`).join("")}</div>`:""}`)}
+
+/* ============ Páginas ============ */
+let page="home",f={q:"",cat:"",prio:"",st:"",ord:"due",fav:false},calM=new Date(),calSel=iso(new Date());
+const live=()=>S.rem.filter(r=>!r.arch);
+function item(r){return`<div class="card it${r.prio===3&&r.status==="pending"?" urgent":""}" onclick="detail('${r.id}')"><div class="bar" style="background:${catC(r.cat)}"></div><div class="m"><div class="t">${r.fav?"★ ":""}${esc(r.title)}</div><div class="mu">${fmtD(r.date)} · ${fmtT(r.time)} · ${esc(r.cat)}</div>${r.desc?`<div class="mu" style="margin:2px 0">${esc(r.desc.replace(/\n/g," ").slice(0,70))}</div>`:""}<div>${isLate(r)?'<span class="tag late">Atrasado</span>':""}${r.status==="done"?'<span class="tag done">Concluído</span>':r.status==="cancelled"?'<span class="tag">Cancelado</span>':`<span class="tag">${left(r)}</span>`}${r.prio===3?'<span class="tag urg">Urgente</span>':""}${r.steps.length?`<span class="tag">${r.steps.filter(s=>s.d).length}/${r.steps.length}</span>`:""}</div></div>${r.status==="pending"?`<button class="btn s" onclick="event.stopPropagation();act('done','${r.id}')" aria-label="Concluir">✓</button>`:""}</div>`}
+const empty=(m)=>`<div class="empty"><div style="font-size:2.4rem">🗓️</div><p>${m}</p></div>`;
+function pHome(){const d=new Date(),h=d.getHours(),g=h<12?"Bom dia":h<18?"Boa tarde":"Boa noite",L=live(),td=iso(d),pend=L.filter(r=>r.status==="pending");
+ const hoje=pend.filter(r=>r.date===td),late=pend.filter(isLate),done=L.filter(r=>r.status==="done"),next=pend.filter(r=>!isLate(r)).sort((a,b)=>when(a)-when(b));
+ const wk=new Date(d);wk.setDate(d.getDate()+7);const sem=pend.filter(r=>when(r)>=Date.now()&&when(r)<=wk.getTime()).length;
+ return`<p class="mu">${d.toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}</p><h1>${g}${S.set.name?", "+esc(S.set.name):""}</h1><div class="clock" id="clk">--:--</div>
+ <div class="grid" style="margin-top:12px"><div class="stat"><b>${hoje.length}</b><span class="mu">Compromissos hoje</span></div><div class="stat"><b style="color:${late.length?"var(--rd)":"inherit"}">${late.length}</b><span class="mu">Atrasados</span></div><div class="stat"><b>${done.length}</b><span class="mu">Concluídos</span></div><div class="stat"><b>${sem}</b><span class="mu">Nos próximos 7 dias</span></div></div>
+ ${next[0]?`<h2>Próximo lembrete</h2>${item(next[0])}`:""}
+ ${late.length?`<h2>Atrasados</h2>${late.map(item).join("")}`:""}
+ <h2>Próximos lembretes</h2>${next.length?next.slice(0,8).map(item).join(""):empty("Nenhum lembrete futuro.<br>Toque em + para criar o primeiro.")}
+ ${suggest(pend)}`}
+function suggest(p){const t=[];const byDay={};p.forEach(r=>byDay[r.date]=(byDay[r.date]||0)+1);const busy=Object.entries(byDay).filter(e=>e[1]>=4);if(busy.length)t.push("Você tem "+busy[0][1]+" compromissos em "+fmtD(busy[0][0])+". Considere redistribuir.");if(p.filter(isLate).length>2)t.push("Há vários itens atrasados. Reagende ou cancele os que perderam o sentido.");return t.length?`<h2>Sugestões</h2>`+t.map(x=>`<div class="card mu">💡 ${esc(x)}</div>`).join(""):""}
+function pList(){return`<h1>Lembretes</h1><input id="q" placeholder="Pesquisar por nome, descrição, tag ou data…" value="${esc(f.q)}" style="margin-top:12px">
+ <div class="two"><select id="fc"><option value="">Todas as categorias</option>${CATS.map(c=>`<option${f.cat===c[0]?" selected":""}>${c[0]}</option>`).join("")}</select><select id="fp"><option value="">Qualquer prioridade</option>${PRIO.map((p,i)=>`<option value="${i}"${f.prio===String(i)?" selected":""}>${p}</option>`).join("")}</select>
+ <select id="fs">${[["","Qualquer status"],["pending","Pendentes"],["late","Atrasados"],["done","Concluídos"],["cancelled","Cancelados"],["arch","Arquivados"]].map(([k,l])=>`<option value="${k}"${f.st===k?" selected":""}>${l}</option>`).join("")}</select><select id="fo"><option value="due"${f.ord==="due"?" selected":""}>Por vencimento</option><option value="new"${f.ord==="new"?" selected":""}>Por criação</option></select></div>
+ <button class="btn ${f.fav?"":"g"} s" id="ff">★ Só favoritos</button><div id="lst" style="margin-top:12px"></div>`}
+function fillList(){const q=f.q.toLowerCase();let L=S.rem.filter(r=>f.st==="arch"?r.arch:!r.arch).filter(r=>(!q||[r.title,r.desc,r.cat,r.date,fmtD(r.date),r.tags.join(" "),r.notes].join(" ").toLowerCase().includes(q))&&(!f.cat||r.cat===f.cat)&&(f.prio===""||String(r.prio)===f.prio)&&(!f.fav||r.fav)&&(!f.st||f.st==="arch"||(f.st==="late"?isLate(r):r.status===f.st)));
+ L.sort((a,b)=>f.ord==="new"?(b.created||0)-(a.created||0):when(a)-when(b));$("#lst").innerHTML=L.length?L.map(item).join(""):empty("Nada encontrado com esses filtros.")}
+function pCal(){const y=calM.getFullYear(),m=calM.getMonth(),first=new Date(y,m,1);const days=[];for(let i=-first.getDay();i<42-first.getDay();i++)days.push(new Date(y,m,1+i));
+ const names=["D","S","T","Q","Q","S","S"],td=iso(new Date()),L=live().filter(r=>r.status!=="cancelled");
+ const dayR=calSel?L.filter(r=>r.date===calSel).sort((a,b)=>a.time.localeCompare(b.time)):[];
+ return`<h1>Calendário</h1><div class="row" style="justify-content:space-between;align-items:center"><button class="btn g s" onclick="calM=new Date(calM.getFullYear(),calM.getMonth()-1,1);render()">‹</button><b>${first.toLocaleDateString("pt-BR",{month:"long",year:"numeric"})}</b><button class="btn g s" onclick="calM=new Date(calM.getFullYear(),calM.getMonth()+1,1);render()">›</button></div>
+ <div class="cal" style="margin-top:10px">${names.map(n=>`<div class="mu">${n}</div>`).join("")}${days.map(d=>{const k=iso(d),rs=L.filter(r=>r.date===k);return`<div class="d${d.getMonth()!==m?" o":""}${k===td?" h":""}${k===calSel?" s":""}" onclick="calSel='${k}';render()">${d.getDate()}<div class="dots">${rs.slice(0,3).map(r=>`<i style="background:${r.status==="done"?"var(--mu)":catC(r.cat)}"></i>`).join("")}</div></div>`}).join("")}</div>
+ <h2>${calSel?fmtD(calSel):""}</h2>${dayR.length?dayR.map(item).join(""):empty("Dia livre.")}<button class="btn" onclick="form(null,'${calSel}')">+ Criar neste dia</button>`}
+function pHist(){const L=S.rem,done=L.filter(r=>r.status==="done"),can=L.filter(r=>r.status==="cancelled"),miss=L.filter(isLate),sn=S.log.filter(l=>l.kind==="snooze").length,tot=done.length+can.length+miss.length;
+ const wk=[];for(let i=5;i>=0;i--){const e=Date.now()-i*6048e5,s=e-6048e5;wk.push(done.filter(r=>r.doneAt>s&&r.doneAt<=e).length)}const mx=Math.max(1,...wk);
+ const cc={};L.forEach(r=>cc[r.cat]=(cc[r.cat]||0)+1);const top=Object.entries(cc).sort((a,b)=>b[1]-a[1]).slice(0,5);
+ return`<h1>Histórico</h1><div class="grid" style="margin-top:12px"><div class="stat"><b>${done.length}</b><span class="mu">Concluídos</span></div><div class="stat"><b>${can.length}</b><span class="mu">Cancelados</span></div><div class="stat"><b>${miss.length}</b><span class="mu">Perdidos</span></div><div class="stat"><b>${sn}</b><span class="mu">Adiamentos</span></div></div>
+ <h2>Taxa de conclusão: ${tot?Math.round(done.length/tot*100):0}%</h2><div class="prog"><i style="width:${tot?done.length/tot*100:0}%"></i></div>
+ <h2>Concluídos por semana (6 semanas)</h2><div class="card"><div class="bars" style="margin-top:20px">${wk.map(n=>`<div style="height:${n/mx*100}%"><span>${n}</span></div>`).join("")}</div></div>
+ <h2>Categorias mais usadas</h2>${top.length?top.map(([c,n])=>`<div class="card"><span class="tag" style="background:${catC(c)};color:#fff">${esc(c)}</span> ${n} lembrete(s)</div>`).join(""):empty("Sem dados ainda.")}
+ <h2>Concluídos recentemente</h2>${done.sort((a,b)=>b.doneAt-a.doneAt).slice(0,15).map(r=>`<div class="card it" onclick="detail('${r.id}')"><div class="m"><div class="t">${esc(r.title)}</div><div class="mu">Concluído em ${new Date(r.doneAt).toLocaleString("pt-BR")}</div></div></div>`).join("")||empty("Nenhum lembrete concluído.")}
+ <h2>Notificações enviadas</h2>${S.log.filter(l=>l.kind==="notif").slice(-10).reverse().map(l=>`<div class="card mu">${new Date(l.at).toLocaleString("pt-BR")} — ${esc(l.title)}</div>`).join("")||empty("Nenhuma notificação enviada ainda.")}`}
+function pSet(){const s=S.set,np="Notification"in window?Notification.permission:"indisponível";
+ return`<h1>Configurações</h1><h2>Perfil</h2><label>Seu nome</label><input id="s_n" value="${esc(s.name)}">
+ <h2>Aparência</h2><div class="two"><div><label>Tema</label><select id="s_t"><option value="dark"${s.theme==="dark"?" selected":""}>Escuro</option><option value="light"${s.theme==="light"?" selected":""}>Claro</option></select></div><div><label>Horário</label><select id="s_h"><option value="0"${!s.h12?" selected":""}>24 horas</option><option value="1"${s.h12?" selected":""}>12 horas</option></select></div></div>
+ <h2>Alertas</h2><label>Som padrão</label><select id="s_s">${Object.entries(SND).map(([k,l])=>`<option value="${k}"${s.sound===k?" selected":""}>${l}</option>`).join("")}</select>
+ <label>Volume: <span id="vl">${Math.round(s.vol*100)}</span>%</label><input type="range" id="s_v" min="0" max="1" step=".05" value="${s.vol}">
+ <label>Antecedência padrão</label><select id="s_a">${ADV.map(([k,l])=>`<option value="${k}"${s.adv===k?" selected":""}>${l}</option>`).join("")}</select>
+ <label><input type="checkbox" id="s_nt" style="width:auto;margin:0 6px 0 0"${s.notif?" checked":""}>Notificações globais</label>
+ <div class="row"><button class="btn g" onclick="play(S.set.sound)">Ouvir som</button><button class="btn g" onclick="stopAlarm()">Silenciar</button></div>
+ <p class="mu" style="margin-top:12px">Permissão do navegador: <b>${np==="granted"?"concedida":np==="denied"?"negada":np==="default"?"não solicitada":np}</b></p><div class="row" style="margin-top:4px"><button class="btn" onclick="notifPerm()">Permitir notificações</button><button class="btn g" onclick="fire({id:'t',title:'Teste de notificação',desc:'Se você viu isto, funcionou.',date:iso(new Date()),time:'00:00',sound:S.set.sound,notify:true},true)">Testar</button></div>
+ <p class="mu" style="margin-top:8px">Os avisos só disparam com o app aberto (ou em segundo plano no navegador). Com o app totalmente fechado, não há garantia: isso exigiria Service Worker e servidor Push.</p>
+ <h2>Backup</h2><p class="mu">Último backup: ${S.last?new Date(S.last).toLocaleString("pt-BR"):"nunca"}</p><div class="row"><button class="btn" onclick="exportJ()">Exportar JSON</button><button class="btn g" onclick="$('#imp').click()">Importar JSON</button></div><input type="file" id="imp" accept=".json,application/json" style="display:none">
+ <h2>Instalar no Android</h2><p class="mu">No Chrome: menu ⋮ → “Adicionar à tela inicial”. Isso cria um atalho. A instalação PWA completa precisa de manifest.json e sw.js (veja as instruções).</p>`}
+function exportJ(){const b=new Blob([JSON.stringify({v:1,rem:S.rem,log:S.log,set:S.set},null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="agenda-backup-"+iso(new Date())+".json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);S.last=Date.now();save();toast("Backup exportado.");render()}
+function importJ(file){const fr=new FileReader();fr.onload=()=>{try{const d=JSON.parse(fr.result);if(!Array.isArray(d.rem))throw 0;confirmBox("Substituir TODOS os dados atuais pelo backup?",()=>{const b=def();S={...b,rem:d.rem.map(r=>({steps:[],tags:[],status:"pending",...r})),log:d.log||[],set:{...b.set,...d.set},last:S.last};save();applyTheme();render();toast("Backup restaurado.")})}catch(e){toast("Arquivo de backup inválido.")}};fr.readAsText(file)}
+
+/* ============ Render e navegação ============ */
+const NAV=[["home","🏠","Início"],["cal","📅","Calendário"],["list","✅","Lembretes"],["hist","📊","Histórico"],["set","⚙️","Ajustes"]];
+function applyTheme(){document.documentElement.dataset.t=S.set.theme}
+function render(){$("#nav").innerHTML=NAV.map(([k,i,l])=>`<button class="${page===k?"on":""}" onclick="page='${k}';render();scrollTo(0,0)"><span class="i">${i}</span>${l}</button>`).join("");
+ $("#app").innerHTML=({home:pHome,cal:pCal,list:pList,hist:pHist,set:pSet}[page])();bind();tick()}
+function bind(){const g=i=>document.getElementById(i);
+ if(page==="list"){fillList();g("q").oninput=e=>{f.q=e.target.value;fillList()};g("fc").onchange=e=>{f.cat=e.target.value;fillList()};g("fp").onchange=e=>{f.prio=e.target.value;fillList()};g("fs").onchange=e=>{f.st=e.target.value;fillList()};g("fo").onchange=e=>{f.ord=e.target.value;fillList()};g("ff").onclick=()=>{f.fav=!f.fav;render()}}
+ if(page==="set"){const u=()=>{S.set.name=g("s_n").value.trim();S.set.theme=g("s_t").value;S.set.h12=g("s_h").value==="1";S.set.sound=g("s_s").value;S.set.vol=+g("s_v").value;S.set.adv=+g("s_a").value;S.set.notif=g("s_nt").checked;g("vl").textContent=Math.round(S.set.vol*100);save();applyTheme()};
+  ["s_n","s_t","s_h","s_s","s_v","s_a","s_nt"].forEach(i=>g(i).onchange=g(i).oninput=u);g("imp").onchange=e=>{if(e.target.files[0])importJ(e.target.files[0])}}}
+$("#fab").onclick=()=>form(null,page==="cal"?calSel:null);
+applyTheme();render();
+if("Notification"in window&&Notification.permission==="default")setTimeout(()=>toast("Ative as notificações em Ajustes para receber avisos."),1500);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)render()});
+setInterval(()=>{if(page==="home"||page==="list")render()},60000);
+</script>
+</body>
+</html>
