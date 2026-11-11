@@ -407,7 +407,7 @@ addEventListener("hashchange", route);
    ===================================================================== */
 const V = "10.12.2", CDN = `https://www.gstatic.com/firebasejs/${V}/`;
 async function boot() {
-  if (FIREBASE_CONFIG.apiKey.startsWith("AIzaSyC3dnsABQXla8PUdcadpfLZPyyXvx4KExo")) { renderAuth(); return; }
+  if (FIREBASE_CONFIG.apiKey.startsWith("COLE")) { renderAuth(); return; }
   try {
     const [A, Au, F] = await Promise.all([import(CDN + "firebase-app.js"), import(CDN + "firebase-auth.js"), import(CDN + "firebase-firestore.js")]);
     const app = A.initializeApp(FIREBASE_CONFIG);
