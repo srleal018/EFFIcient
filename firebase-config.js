@@ -4,7 +4,7 @@ export const ADMIN_EMAIL = "pelegrinelileal@gmail.com";
 // Firebase Console > Configurações do projeto > Seus apps > Config
 export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyC3dnsABQXla8PUdcadpfLZPyyXvx4KExo",
-  authDomain: "effi-9b584.firebaseapp.com"
+  authDomain: "effi-9b584.firebaseapp.com",
   projectId: "effi-9b584",
   storageBucket: "effi-9b584.firebasestorage.app",
   messagingSenderId: "781200083580",
