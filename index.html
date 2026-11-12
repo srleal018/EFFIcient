@@ -200,6 +200,84 @@ table.users td{padding:10px 6px;border-bottom:1px solid var(--line)}
   .plan-btn{display:none}.who span{display:none}.who{padding:0 6px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- tema escuro ---------- */
+[hidden]{display:none!important}
+:root{--bg:#09100c;--card:#101a14;--ink:#e8f1ea;--muted:#94a99b;--line:#1f3026;--mint:color-mix(in srgb,var(--secondary) 18%,#09100c);color-scheme:dark}
+header{background:rgba(9,16,12,.82)}
+nav ul.open{background:#0d1712}
+.btn-line{border-color:#2d4637}
+.btn-line:hover{border-color:var(--secondary);background:#13211a}
+#menuBtn,.who{border-color:#2d4637;color:var(--ink)}
+.pill{color:#c6f2cf}
+.pprice,.legal a{color:var(--secondary)}
+.result{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.prose{color:#c3d2c8}
+footer{background:rgba(9,16,12,.82)}
+#adm{background:var(--card)}
+.tabs button,.ih button{background:#16241c;color:var(--ink)}
+.adm-h button{color:var(--ink)}
+.fld input,.fld textarea,.fld select{background:#0b130f;color:var(--ink)}
+.fld select{font:400 .98rem var(--body);padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;width:100%}
+.adm-f{background:var(--card)}
+#toast{border:1px solid #2a5a43}
+
+/* ---------- montador de pedido ---------- */
+.bld{display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:start}
+.bg{margin:28px 0 12px;font:600 .82rem var(--head);color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.bld>div>.bg:first-child{margin-top:0}
+.bl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.opt{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:18px;color:var(--ink);font:inherit;cursor:pointer;display:grid;gap:6px;align-content:start;transition:border-color .15s,background .15s,transform .15s}
+.opt:hover{border-color:#2f6b4c}
+.opt:active{transform:scale(.98)}
+.opt[aria-pressed=true]{border-color:var(--secondary);background:color-mix(in srgb,var(--secondary) 14%,var(--card))}
+.opt b{font:600 1rem var(--head)}
+.opt small{color:var(--muted);font-size:.9rem;line-height:1.4}
+.opt em{font-style:normal;font-weight:700;color:var(--secondary)}
+.bl-sum{position:sticky;top:92px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px;display:grid;gap:14px}
+.bl-sum ul{list-style:none;padding:0;display:grid;gap:8px;font-size:.95rem}
+.bl-sum li{display:flex;justify-content:space-between;gap:10px}
+.bl-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px}
+.bl-total b{font:700 1.6rem var(--head)}
+@media (max-width:920px){.bld{grid-template-columns:1fr}.bl-sum{position:static}}
+
+/* ---------- página de status ---------- */
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none;background:#3ddc5a;box-shadow:0 0 0 4px rgba(61,220,90,.18)}
+.dot.warn{background:#f5b942;box-shadow:0 0 0 4px rgba(245,185,66,.18)}
+.dot.down{background:#ef5b5b;box-shadow:0 0 0 4px rgba(239,91,91,.18)}
+.dot.maint{background:#6aa8ff;box-shadow:0 0 0 4px rgba(106,168,255,.18)}
+footer .dot{width:8px;height:8px;box-shadow:none;margin-right:7px}
+.st-ban{display:flex;align-items:center;gap:16px;padding:22px 26px;border-radius:20px;border:1px solid var(--line);background:var(--card);margin:0 0 28px}
+.st-ban b{font:700 1.3rem var(--head)}
+.st-list{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.st-row{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line)}
+.st-row:last-child{border-bottom:0}
+.st-row .nm{font-weight:600}
+.st-row small{display:block;color:var(--muted);font-weight:400}
+.st-row .sl{margin-left:auto;font-weight:600;font-size:.9rem;white-space:nowrap}
+
+/* ---------- chat privado ---------- */
+#chat{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--card);z-index:70;display:flex;flex-direction:column;border-left:1px solid var(--line);box-shadow:-30px 0 60px -30px rgba(0,0,0,.7)}
+.ch-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.ch-h strong{font:600 1rem var(--head);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ch-h button{border:0;background:#16241c;color:var(--ink);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1.05rem}
+.ch-bar{padding:10px 16px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+.ch-bar select{font:600 .85rem var(--body);background:#0b130f;color:var(--ink);border:1.5px solid var(--line);border-radius:9px;padding:6px 10px}
+.ch-body{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.oi{display:grid;gap:4px;text-align:left;width:100%;background:#0b130f;border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);font:inherit;cursor:pointer}
+.oi:hover{border-color:var(--secondary)}
+.stt{font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:99px;background:#16241c;justify-self:start}
+.stt.aberto{color:#6aa8ff}.stt.andamento{color:#f5b942}.stt.entregue{color:#3ddc5a}.stt.fechado{color:#94a99b}
+.msg{max-width:84%;padding:10px 14px;border-radius:16px;border-bottom-left-radius:4px;font-size:.96rem;line-height:1.5;white-space:pre-wrap;word-break:break-word;background:#16241c;align-self:flex-start}
+.msg.me{align-self:flex-end;background:var(--secondary);color:#fff;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
+.msg time{display:block;font-size:.72rem;opacity:.65;margin-top:4px}
+.msg.card{white-space:normal;max-width:100%;align-self:stretch;background:#0b130f;border:1px solid #2a5a43;border-radius:16px}
+.ol{list-style:none;padding:0;display:grid;gap:6px;margin:10px 0}
+.ol li{display:flex;justify-content:space-between;gap:10px}
+.ol small{color:var(--muted)}
+.lock{align-self:center;font-size:.78rem;color:var(--muted);text-align:center;max-width:38ch}
+.chform{display:flex;gap:8px;align-items:flex-end;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.chform textarea{flex:1;resize:none;font:400 .98rem var(--body);color:var(--ink);background:#0b130f;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;max-height:120px}
 </style>
 </head>
 <body>
@@ -235,11 +313,13 @@ table.users td{padding:10px 6px;border-bottom:1px solid var(--line)}
   </div></section>
   <section id="planos"><div class="wrap" id="planosBox"></div></section>
   <section id="produtos" style="padding-top:0"><div class="wrap" id="produtosBox"></div></section>
+  <section id="pedido"><div class="wrap" id="pedidoBox"></div></section>
   <section id="sobre"><div class="wrap" id="sobreBox"></div></section>
   <section id="duvidas" style="padding-top:0"><div class="wrap faq" id="faqBox"></div></section>
   <section id="ctaSec" style="padding-top:0"><div class="wrap"><div class="final" id="ctaBox"></div></div></section>
 </div>
 <div id="legal" class="legal" hidden><section><div class="wrap" id="legalBox"></div></section></div>
+<div id="statusPg" class="legal" hidden><section><div class="wrap" id="statusBox"></div></section></div>
 </main>
 
 <footer><div class="wrap">
@@ -258,6 +338,12 @@ table.users td{padding:10px 6px;border-bottom:1px solid var(--line)}
     <button class="btn btn-line btn-sm" data-a="reset">Restaurar padrão</button>
     <button class="btn btn-main btn-sm" data-a="save" disabled>Salvar e publicar</button>
   </div>
+</aside>
+<aside id="chat" hidden role="dialog" aria-label="Chat privado do pedido">
+  <div class="ch-h"><button id="chBack" data-c="back" aria-label="Voltar" hidden>←</button><strong id="chTitle">Meus pedidos</strong><button data-c="close" aria-label="Fechar">✕</button></div>
+  <div class="ch-bar" id="chBar" hidden></div>
+  <div class="ch-body" id="chBody"></div>
+  <form class="chform" id="chForm" hidden><textarea id="chInput" rows="1" maxlength="3000" placeholder="Escreva uma mensagem…" aria-label="Mensagem"></textarea><button class="btn btn-main btn-sm">Enviar</button></form>
 </aside>
 <div id="toast" role="status"></div>
 
@@ -292,7 +378,18 @@ const DEFAULTS = {
     { q: "Preciso saber programar ou contratar hospedagem?", a: "Nenhum dos dois. A hospedagem já vem com o plano." },
     { q: "Posso convidar sócios?", a: "Sim. Convide pelo site e escolha o que cada sócio pode ver e fazer." }] },
   cta: { title: "Seu servidor trabalhando enquanto você descansa", text: "Escolha um plano e coloque a IA para operar hoje.", label: "Ver planos", url: "#planos" },
-  links: [{ label: "Comunidade", url: "https://discord.gg/zend" }, { label: "Status", url: "https://status.zendapps.com.br" }],
+  status: { title: "Status dos serviços", overall: "ok", message: "", updated: "", items: [
+    { name: "Bot e automações", state: "ok", note: "" },
+    { name: "Verificação de membros", state: "ok", note: "" },
+    { name: "Pedidos e chat privado", state: "ok", note: "" }], history: [] },
+  builder: { enabled: true, title: "Monte seu pedido", lead: "Escolha o que você precisa, veja o total na hora e abra um chat privado com a equipe para finalizar e receber a entrega.", button: "Abrir chat privado do pedido", note: "O total é uma estimativa. O valor final é confirmado no chat. (Opções de exemplo: edite no painel.)", items: [
+    { group: "Plano", name: "Starter", desc: "Para começar a automatizar.", price: "R$ 29/mês", value: "29", single: true },
+    { group: "Plano", name: "Pro", desc: "Para servidores em crescimento.", price: "R$ 59/mês", value: "59", single: true },
+    { group: "Plano", name: "Business", desc: "Para operações grandes.", price: "R$ 119/mês", value: "119", single: true },
+    { group: "Extensões", name: "DM em massa", desc: "Mensagens no privado para os membros.", price: "Sob consulta", value: "0", single: false },
+    { group: "Extensões", name: "Booster", desc: "Impulsione o servidor com contas Nitro.", price: "Sob consulta", value: "0", single: false },
+    { group: "Serviços", name: "Configuração assistida", desc: "A equipe deixa tudo pronto para você.", price: "R$ 49", value: "49", single: false }] },
+  links: [{ label: "Comunidade", url: "https://discord.gg/zend" }],
   terms: { title: "Termos de uso", text: "Última atualização: edite esta data no painel.\n\n## 1. Aceitação\nAo usar o serviço você concorda com estes termos.\n\n## 2. Uso do serviço\n- Use o serviço de acordo com a lei e com as regras do Discord.\n- Não use para fraudes ou abusos.\n\n## 3. Pagamentos e cancelamento\nDescreva aqui planos, cobrança, reembolso e cancelamento.\n\n## 4. Contato\nDúvidas? Fale com a equipe pelo Discord." },
   privacy: { title: "Política de privacidade", text: "## Dados que coletamos\nNome, e-mail e foto da conta Google, usados apenas para identificar você no site.\n\n## Como usamos\nOs dados servem para autenticação e suporte. Não vendemos suas informações.\n\n## Seus direitos\nVocê pode pedir a exclusão dos seus dados a qualquer momento." },
   footer: { copy: "© 2026 Todos os direitos reservados." }
@@ -385,11 +482,14 @@ function render() {
   $("#faqBox").innerHTML = heading(c.faq.title) + Q.map(q => `<details><summary>${esc(q.q)}</summary><p>${esc(q.a)}</p></details>`).join("");
   $("#ctaBox").innerHTML = `<h2>${esc(c.cta.title)}</h2><p>${esc(c.cta.text)}</p>${btn(c.cta.label, c.cta.url, "btn-main")}`;
   $("#ctaSec").hidden = !c.cta.title;
-  const nav = [["recursos", "Recursos", F.length], ["planos", "Planos", P.length], ["produtos", "Produtos", R.length], ["sobre", "Sobre", c.about.text.trim()], ["duvidas", "Dúvidas", Q.length]];
+  const nav = [["recursos", "Recursos", F.length], ["planos", "Planos", P.length], ["produtos", "Produtos", R.length], ["pedido", "Pedido", c.builder.enabled && c.builder.items.length], ["sobre", "Sobre", c.about.text.trim()], ["duvidas", "Dúvidas", Q.length]];
   $("#navList").innerHTML = nav.filter(n => n[2]).map(n => `<li><a href="#${n[0]}">${n[1]}</a></li>`).join("");
-  $("#footLinks").innerHTML = [["Termos", "#termos"], ["Privacidade", "#privacidade"]].concat(c.links.map(l => [l.label, l.url])).map(l => `<li><a href="${link(l[1])}">${esc(l[0])}</a></li>`).join("");
+  const sd = `<span class="dot ${esc(c.status.overall)}"></span>`;
+  $("#footLinks").innerHTML = [["Termos", "#termos"], ["Privacidade", "#privacidade"], ["Status", "#status", sd]].concat(c.links.map(l => [l.label, l.url])).map(l => `<li><a href="${link(l[1])}">${l[2] || ""}${esc(l[0])}</a></li>`).join("");
   $("#copy").textContent = c.footer.copy;
   if (!$("#legal").hidden) paintLegal();
+  if (!$("#statusPg").hidden) paintStatus();
+  renderBuilder();
 }
 const LEGAL = { termos: "terms", privacidade: "privacy" };
 function paintLegal() {
@@ -397,9 +497,12 @@ function paintLegal() {
   $("#legalBox").innerHTML = `<h1>${esc(cfg[k].title)}</h1><div class="prose">${fmt(cfg[k].text)}</div><p style="margin-top:32px"><a href="#topo">← Voltar ao início</a></p>`;
 }
 function route() {
-  const h = location.hash.slice(1), isLegal = !!LEGAL[h];
-  $("#home").hidden = isLegal; $("#legal").hidden = !isLegal;
-  if (isLegal) { paintLegal(); scrollTo(0, 0); } else if (h) document.getElementById(h)?.scrollIntoView();
+  const h = location.hash.slice(1), isLegal = !!LEGAL[h], isStatus = h === "status";
+  $("#home").hidden = isLegal || isStatus; $("#legal").hidden = !isLegal; $("#statusPg").hidden = !isStatus;
+  if (isLegal) { paintLegal(); scrollTo(0, 0); }
+  else if (isStatus) { paintStatus(); scrollTo(0, 0); }
+  else if (h.startsWith("chat=")) openFromLink(h.slice(5));
+  else if (h) document.getElementById(h)?.scrollIntoView();
 }
 addEventListener("hashchange", route);
 
@@ -420,10 +523,12 @@ async function boot() {
     fb = { Au, F, auth: Au.getAuth(app), db: F.getFirestore(app) };
     try { const s = await F.getDoc(F.doc(fb.db, "site", "config")); if (s.exists()) { cfg = merge(DEFAULTS, s.data()); saved = clone(cfg); render(); } }
     catch (e) { console.warn("Não foi possível ler o conteúdo:", e); }
+    try { const k = await F.getDoc(F.doc(fb.db, "site", "keys")); if (k.exists()) adminPub = k.data().pub || null; } catch (e) { }
     Au.onAuthStateChanged(fb.auth, async u => {
       user = u; renderAuth();
+      if (u && pendingLink) { const p = pendingLink; pendingLink = null; openOrder(p); }
       if (u) try { await F.setDoc(F.doc(fb.db, "users", u.uid), { name: u.displayName || "", email: u.email || "", photo: u.photoURL || "", lastLogin: new Date().toISOString() }, { merge: true }); } catch (e) { }
-      else closeAdmin(true);
+      else { closeAdmin(true); closeChat(); if (pendingLink) toast("Entre com a mesma conta Google do pedido para abrir o chat."); }
     });
   } catch (e) { console.error(e); renderAuth(); }
 }
@@ -431,7 +536,7 @@ function renderAuth() {
   const box = $("#authBox");
   if (!user) { box.innerHTML = `<button class="btn btn-line btn-sm" data-a="login">${GOOGLE}Entrar com Google</button>`; return; }
   const img = /^https?:/i.test(user.photoURL || "") ? `<img src="${esc(user.photoURL)}" alt="" referrerpolicy="no-referrer">` : "";
-  box.innerHTML = (isAdmin() ? `<button class="btn btn-main btn-sm" data-a="admin">Painel admin</button>` : "") + `<button class="who" data-a="logout" title="Sair">${img}<span>Sair</span></button>`;
+  box.innerHTML = (isAdmin() ? `<button class="btn btn-main btn-sm" data-a="admin">Painel admin</button>` : "") + `<button class="btn btn-line btn-sm" data-a="chats">${isAdmin() ? "Chats" : "Meus pedidos"}</button>` + `<button class="who" data-a="logout" title="Sair">${img}<span>Sair</span></button>`;
 }
 async function login() {
   if (!fb) { toast("Configure o firebase-config.js (veja o LEIA-ME)."); return; }
@@ -444,16 +549,22 @@ $("#authBox").addEventListener("click", e => {
   if (a === "login") login();
   if (a === "logout") fb.Au.signOut(fb.auth).then(() => toast("Você saiu."));
   if (a === "admin") openAdmin();
+  if (a === "chats") openChat();
 });
 
 /* ---------- painel admin ---------- */
-const AR = "area", LN = "lines", CK = "check", CL = "color";
+const AR = "area", LN = "lines", CK = "check", CL = "color", SEL = "select";
+const ST = [["ok", "Operacional"], ["warn", "Instável"], ["down", "Fora do ar"], ["maint", "Em manutenção"]];
 const TABS = [
   { id: "geral", label: "Geral", fields: [["brand", "Nome da marca"], ["secondary", "Cor secundária", CL], ["primary", "Cor principal", CL], ["hero.pill", "Selo do topo"], ["hero.title", "Título"], ["hero.highlight", "Título em destaque (verde)"], ["hero.lead", "Texto de apoio", AR], ["hero.cta1Label", "Botão 1: texto"], ["hero.cta1Url", "Botão 1: link"], ["hero.cta2Label", "Botão 2: texto"], ["hero.cta2Url", "Botão 2: link"], ["hero.note", "Observação abaixo dos botões"], ["cta.title", "Chamada final: título"], ["cta.text", "Chamada final: texto"], ["cta.label", "Chamada final: botão"], ["cta.url", "Chamada final: link"], ["footer.copy", "Texto do rodapé"]] },
   { id: "stats", label: "Números", list: "stats", noun: "número", item: [["value", "Valor"], ["label", "Descrição"]] },
   { id: "rec", label: "Recursos", fields: [["features.title", "Título da seção"], ["features.lead", "Subtítulo", AR]], list: "features.items", noun: "recurso", item: [["title", "Título"], ["desc", "Descrição", AR]] },
   { id: "planos", label: "Planos", fields: [["plans.title", "Título da seção"], ["plans.lead", "Subtítulo", AR]], list: "plans.items", noun: "plano", item: [["name", "Nome"], ["price", "Preço (ex.: R$ 59)"], ["period", "Período (ex.: /mês)"], ["desc", "Descrição curta"], ["features", "Benefícios (um por linha)", LN], ["label", "Texto do botão"], ["url", "Link do botão"], ["featured", "Destacar como mais popular", CK]] },
   { id: "prod", label: "Produtos", fields: [["products.title", "Título da seção"], ["products.lead", "Subtítulo", AR]], list: "products.items", noun: "produto", item: [["name", "Nome"], ["desc", "Descrição", AR], ["price", "Preço (opcional)"], ["image", "URL da imagem (opcional)"], ["label", "Texto do botão"], ["url", "Link do botão"]] },
+  { id: "pedido", label: "Pedido", fields: [["builder.enabled", "Mostrar o montador de pedidos", CK], ["builder.title", "Título da seção"], ["builder.lead", "Subtítulo", AR], ["builder.button", "Texto do botão"], ["builder.note", "Aviso abaixo do botão", AR]], list: "builder.items", noun: "opção", hint: "Opções com o mesmo grupo aparecem juntas. Marque “só uma opção” em qualquer item do grupo para o cliente escolher apenas uma (ex.: Plano).", item: [["group", "Grupo (ex.: Plano, Extras)"], ["name", "Nome"], ["desc", "Descrição", AR], ["price", "Preço exibido (ex.: R$ 29/mês)"], ["value", "Valor para o total (só número, ex.: 29)"], ["single", "Só uma opção neste grupo", CK]] },
+  { id: "status", label: "Status", fields: [["status.title", "Título da página"], ["status.overall", "Situação geral", SEL, ST], ["status.message", "Mensagem para os usuários (opcional)", AR]], list: "status.items", noun: "serviço", hint: "A data de atualização é registrada automaticamente ao salvar.", item: [["name", "Serviço"], ["state", "Situação", SEL, ST], ["note", "Observação (opcional)"]] },
+  { id: "inc", label: "Incidentes", list: "status.history", noun: "incidente", hint: "Histórico exibido na página de status, na ordem em que você deixar (use ↑ ↓).", item: [["date", "Data (ex.: 11/11/2026)"], ["title", "Título"], ["text", "Detalhes", AR]] },
+  { id: "seg", label: "Segurança", sec: true },
   { id: "sobre", label: "Sobre nós", fields: [["about.title", "Título"], ["about.text", "Texto (linha em branco separa parágrafos; use ## subtítulo e - lista)", "tall"]] },
   { id: "faq", label: "Dúvidas", fields: [["faq.title", "Título da seção"]], list: "faq.items", noun: "pergunta", item: [["q", "Pergunta"], ["a", "Resposta", AR]] },
   { id: "termos", label: "Termos", fields: [["terms.title", "Título"], ["terms.text", "Texto (use ## subtítulo e - lista)", "tall"]] },
@@ -471,7 +582,8 @@ function mark(d) {
   s.textContent = d ? "● Alterações não salvas" : "Tudo salvo";
   s.classList.toggle("dirty", d);
 }
-function field(p, l, t, v) {
+function field(p, l, t, v, o) {
+  if (t === SEL) return `<label class="fld">${esc(l)}<select data-p="${p}">${o.map(([k, n]) => `<option value="${k}" ${k === v ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>`;
   if (t === CK) return `<label class="fld ck"><input type="checkbox" data-p="${p}" ${v ? "checked" : ""}> ${esc(l)}</label>`;
   if (t === AR || t === "tall" || t === LN) return `<label class="fld">${esc(l)}<textarea data-p="${p}" ${t === LN ? 'data-t="lines"' : ""} rows="${t === "tall" ? 14 : 4}">${esc(t === LN ? (v || []).join("\n") : v)}</textarea></label>`;
   return `<label class="fld">${esc(l)}<input data-p="${p}" type="${t === CL ? "color" : "text"}" value="${esc(v)}"></label>`;
@@ -480,17 +592,18 @@ function drawAdmin() {
   $("#tabs").innerHTML = TABS.map(t => `<button role="tab" data-tab="${t.id}" aria-selected="${t.id === tab}">${t.label}</button>`).join("");
   const T = TABS.find(x => x.id === tab); let h = "";
   if (T.hint) h += `<p class="hint">${T.hint}</p>`;
-  (T.fields || []).forEach(([p, l, t]) => (h += field(p, l, t, get(cfg, p))));
+  (T.fields || []).forEach(([p, l, t, o]) => (h += field(p, l, t, get(cfg, p), o)));
   if (T.list) {
     const L = get(cfg, T.list);
     h += `<div class="lh">Itens (${L.length})</div>`;
     L.forEach((it, i) => {
       h += `<div class="item"><div class="ih"><b>${esc(it[T.item[0][0]] || T.noun + " " + (i + 1))}</b><span><button data-a="up" data-i="${i}" aria-label="Subir">↑</button><button data-a="down" data-i="${i}" aria-label="Descer">↓</button><button data-a="del" data-i="${i}">Remover</button></span></div>`
-        + T.item.map(([k, l, t]) => field(`${T.list}.${i}.${k}`, l, t, it[k])).join("") + "</div>";
+        + T.item.map(([k, l, t, o]) => field(`${T.list}.${i}.${k}`, l, t, it[k], o)).join("") + "</div>";
     });
     h += `<button class="btn btn-line btn-sm" data-a="add">+ Adicionar ${T.noun}</button>`;
   }
   if (T.users) { h = '<p class="hint">Carregando…</p>'; loadUsers(); }
+  if (T.sec) h = secHtml();
   $("#admBody").innerHTML = h;
 }
 async function loadUsers() {
@@ -511,6 +624,7 @@ async function save() {
   if (saving || !dirty) return;
   if (!fb || !isAdmin()) return toast("Sem permissão para salvar.");
   if (!hexOk(cfg.secondary) || !hexOk(cfg.primary)) return toast("Cor inválida. Use o seletor de cores.");
+  if (JSON.stringify(cfg.status) !== JSON.stringify(saved.status)) cfg.status.updated = new Date().toISOString();
   const b = saveEl(); saving = true; b.disabled = true; b.textContent = "Salvando…";
   try {
     await fb.F.setDoc(fb.F.doc(fb.db, "site", "config"), clone(cfg));
@@ -534,8 +648,10 @@ adm.addEventListener("click", async e => {
   if (a === "save") return save();
   if (a === "discard") { if (!dirty) return; cfg = clone(saved); mark(false); render(); drawAdmin(); return toast("Alterações descartadas."); }
   if (a === "reset") { if (confirm("Voltar todo o conteúdo ao padrão? (só vale depois de salvar)")) { cfg = clone(DEFAULTS); mark(true); render(); drawAdmin(); } return; }
+  if (a === "genkeys") return genKeys();
+  if (a === "dlkey") return dlKey();
   const L = T.list && get(cfg, T.list); if (!L) return;
-  if (a === "add") L.push(Object.fromEntries(T.item.map(([k, , t]) => [k, t === CK ? false : t === LN ? [] : ""])));
+  if (a === "add") L.push(Object.fromEntries(T.item.map(([k, , t, o]) => [k, t === CK ? false : t === LN ? [] : t === SEL ? o[0][0] : ""])));
   else if (a === "del") { if (!confirm("Remover este item?")) return; L.splice(i, 1); }
   else if (a === "up" && i > 0) [L[i - 1], L[i]] = [L[i], L[i - 1]];
   else if (a === "down" && i < L.length - 1) [L[i + 1], L[i]] = [L[i], L[i + 1]];
@@ -548,6 +664,255 @@ addEventListener("keydown", e => {
   if (e.key === "Escape") closeAdmin();
 });
 addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+/* ---------- criptografia (AES-256-GCM por pedido + RSA-OAEP da equipe) ---------- */
+let adminPub = null, pendingLink = null, privCache = null;
+/*CRYPTO-START*/
+const u8b64 = u => { let s = ""; u.forEach(b => (s += String.fromCharCode(b))); return btoa(s); };
+const b64u8 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const u8b64u = u => u8b64(u).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const b64uu8 = s => b64u8(s.replace(/-/g, "+").replace(/_/g, "/"));
+const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } };
+const RSA = { name: "RSA-OAEP", hash: "SHA-256" };
+const importAes = b64 => crypto.subtle.importKey("raw", b64uu8(b64), "AES-GCM", false, ["encrypt", "decrypt"]);
+async function encObj(key, obj) {
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(JSON.stringify(obj))));
+  return { iv: u8b64(iv), ct: u8b64(ct) };
+}
+async function decObj(key, m) {
+  try { return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64u8(m.iv) }, key, b64u8(m.ct)))); }
+  catch (e) { return null; }
+}
+async function wrapRaw(pubJwk, raw) {
+  const pk = await crypto.subtle.importKey("jwk", pubJwk, RSA, false, ["encrypt"]);
+  return u8b64(new Uint8Array(await crypto.subtle.encrypt({ name: "RSA-OAEP" }, pk, raw)));
+}
+async function adminPriv() {
+  if (privCache) return privCache;
+  const j = lsGet("effi.priv"); if (!j) return null;
+  try { privCache = await crypto.subtle.importKey("jwk", JSON.parse(j), RSA, false, ["decrypt"]); } catch (e) { return null; }
+  return privCache;
+}
+async function unwrapRaw(wk) {
+  const p = await adminPriv(); if (!p) return null;
+  try { return u8b64u(new Uint8Array(await crypto.subtle.decrypt({ name: "RSA-OAEP" }, p, b64u8(wk)))); } catch (e) { return null; }
+}
+/*CRYPTO-END*/
+async function keyFor(oid, order) {
+  let raw = lsGet("effi.k." + oid);
+  if (!raw && isAdmin() && order?.wk) { raw = await unwrapRaw(order.wk); if (raw) lsSet("effi.k." + oid, raw); }
+  if (!raw) return null;
+  try { return await importAes(raw); } catch (e) { return null; }
+}
+
+/* chaves da equipe (aba Segurança do painel) */
+function secHtml() {
+  const pub = !!adminPub, prv = !!lsGet("effi.priv");
+  return `<p class="hint">Cada pedido usa uma chave própria (AES-256) criada no navegador do cliente e protegida com a chave pública da equipe. Só quem tem a chave privada lê as conversas.</p>
+<div class="item"><div class="lh">Chave da equipe</div><p class="hint">Chave pública publicada: <b>${pub ? "sim" : "não"}</b><br>Chave privada neste navegador: <b>${prv ? "sim" : "não"}</b></p>
+<button class="btn btn-main btn-sm" data-a="genkeys">${pub ? "Gerar novas chaves" : "Gerar e publicar chaves"}</button>
+${prv ? '<button class="btn btn-line btn-sm" data-a="dlkey">Baixar backup da chave privada</button>' : ""}
+<label class="fld">Importar chave privada (backup .json)<input type="file" accept="application/json,.json" id="impKey"></label>
+<p class="hint">Guarde o backup em local seguro. Sem a chave privada ninguém consegue ler as conversas, nem a equipe. Os pedidos só ficam ativos para clientes depois que as chaves forem geradas.</p></div>`;
+}
+async function genKeys() {
+  if (!fb || !isAdmin()) return;
+  if (adminPub && !confirm("Já existe uma chave publicada. Gerar uma nova deixa ILEGÍVEIS os pedidos que você ainda não abriu neste navegador. Continuar?")) return;
+  try {
+    const kp = await crypto.subtle.generateKey({ name: "RSA-OAEP", modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: "SHA-256" }, true, ["encrypt", "decrypt"]);
+    const pub = await crypto.subtle.exportKey("jwk", kp.publicKey), prv = await crypto.subtle.exportKey("jwk", kp.privateKey);
+    await fb.F.setDoc(fb.F.doc(fb.db, "site", "keys"), { pub });
+    lsSet("effi.priv", JSON.stringify(prv)); privCache = null; adminPub = pub;
+    toast("Chaves geradas e publicadas. Guarde o backup que acabou de baixar."); drawAdmin(); dlKey();
+  } catch (e) { toast(e.code === "permission-denied" ? "O Firestore recusou: confira o firestore.rules." : "Erro ao gerar as chaves: " + (e.code || e.message)); }
+}
+function dlKey() {
+  const v = lsGet("effi.priv"); if (!v) return toast("Nenhuma chave privada neste navegador.");
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([v], { type: "application/json" })); a.download = "effi-chave-privada.json"; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+async function impKey(f) {
+  if (!f) return;
+  try {
+    const j = JSON.parse(await f.text());
+    if (j.kty !== "RSA" || !j.d) throw new Error("arquivo inválido");
+    if (adminPub && j.n !== adminPub.n) throw new Error("essa chave não corresponde à chave publicada");
+    await crypto.subtle.importKey("jwk", j, RSA, false, ["decrypt"]);
+    lsSet("effi.priv", JSON.stringify(j)); privCache = null; toast("Chave importada."); drawAdmin();
+  } catch (e) { toast("Não foi possível importar: " + e.message); }
+}
+adm.addEventListener("change", e => { if (e.target.id === "impKey") impKey(e.target.files[0]); });
+
+/* ---------- página de status ---------- */
+const SLAB = { ok: "Operacional", warn: "Instável", down: "Fora do ar", maint: "Em manutenção" };
+const OLAB = { ok: "Todos os sistemas operando", warn: "Instabilidade em parte dos serviços", down: "Serviços fora do ar", maint: "Manutenção em andamento" };
+function paintStatus() {
+  const s = cfg.status, st = k => (SLAB[k] ? k : "ok"), d = s.updated ? new Date(s.updated) : null, I = Array.isArray(s.items) ? s.items : [], H = Array.isArray(s.history) ? s.history : [];
+  $("#statusBox").innerHTML = `<h1>${esc(s.title)}</h1><div class="st-ban"><span class="dot ${st(s.overall)}"></span><div><b>${esc(OLAB[st(s.overall)])}</b>${s.message ? `<p class="hint" style="margin-top:4px">${esc(s.message)}</p>` : ""}${d && !isNaN(d) ? `<p class="hint">Atualizado em ${esc(d.toLocaleString("pt-BR"))}</p>` : ""}</div></div>`
+    + `<div class="st-list">${I.map(i => `<div class="st-row"><span class="dot ${st(i.state)}"></span><span class="nm">${esc(i.name)}${i.note ? `<small>${esc(i.note)}</small>` : ""}</span><span class="sl">${esc(SLAB[st(i.state)])}</span></div>`).join("")}</div>`
+    + (H.length ? `<h2 style="font-size:1.5rem;margin:44px 0 16px">Incidentes</h2><div class="st-list">${H.map(h => `<div class="st-row" style="display:block"><b>${esc(h.title)}</b> <span class="hint">${esc(h.date)}</span><p class="hint" style="margin-top:4px">${esc(h.text)}</p></div>`).join("")}</div>` : "")
+    + `<p style="margin-top:32px"><a href="#topo">← Voltar ao início</a></p>`;
+}
+
+/* ---------- montador de pedido ---------- */
+const sel = new Set();
+const num = v => { let s = String(v ?? "").replace(/[^\d,.-]/g, ""); if (s.includes(",")) s = s.replace(/\./g, "").replace(",", "."); return parseFloat(s) || 0; };
+const brl = n => Number(n || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const gname = i => String(i.group || "Opções");
+const ikey = i => gname(i) + "\u0001" + i.name;
+const bItems = () => cfg.builder.items.filter(i => String(i.name || "").trim());
+function renderBuilder() {
+  const b = cfg.builder, I = bItems(), note = $("#bNote")?.value || "";
+  $("#pedido").hidden = !b.enabled || !I.length;
+  const valid = new Set(I.map(ikey)); [...sel].forEach(k => valid.has(k) || sel.delete(k));
+  const groups = []; I.forEach(i => { let g = groups.find(x => x.n === gname(i)); if (!g) groups.push((g = { n: gname(i), a: [] })); g.a.push(i); });
+  $("#pedidoBox").innerHTML = heading(b.title, b.lead) + `<div class="bld"><div>${groups.map(g => `<h3 class="bg">${esc(g.n)}</h3><div class="bl-grid">${g.a.map(i => `<button type="button" class="opt" data-i="${I.indexOf(i)}" aria-pressed="false"><b>${esc(i.name)}</b>${i.desc ? `<small>${esc(i.desc)}</small>` : ""}${i.price ? `<em>${esc(i.price)}</em>` : ""}</button>`).join("")}</div>`).join("")}</div>`
+    + `<aside class="bl-sum"><h3>Seu pedido</h3><ul id="bSum"></ul><div class="bl-total"><span>Total estimado</span><b id="bTot"></b></div><label class="fld">Observações para a equipe<textarea id="bNote" maxlength="1000" rows="3" placeholder="Detalhes, prazos, dúvidas…"></textarea></label><button type="button" class="btn btn-main" id="bGo">${esc(b.button)}</button><p class="hint">${esc(b.note)}</p></aside></div>`;
+  $("#bNote").value = note; sumBuilder();
+}
+function sumBuilder() {
+  const I = bItems(), P = I.filter(i => sel.has(ikey(i)));
+  $("#bSum").innerHTML = P.length ? P.map(i => `<li><span>${esc(i.name)}</span><span>${esc(i.price || "")}</span></li>`).join("") : '<li class="hint">Nenhuma opção escolhida.</li>';
+  $("#bTot").textContent = brl(P.reduce((s, i) => s + num(i.value), 0));
+  document.querySelectorAll("#pedidoBox .opt").forEach(o => o.setAttribute("aria-pressed", sel.has(ikey(I[+o.dataset.i]))));
+}
+$("#pedidoBox").addEventListener("click", e => {
+  const o = e.target.closest(".opt");
+  if (o) {
+    const I = bItems(), it = I[+o.dataset.i]; if (!it) return;
+    const k = ikey(it);
+    if (sel.has(k)) sel.delete(k);
+    else { if (I.some(x => gname(x) === gname(it) && x.single)) I.filter(x => gname(x) === gname(it)).forEach(x => sel.delete(ikey(x))); sel.add(k); }
+    return sumBuilder();
+  }
+  if (e.target.closest("#bGo")) placeOrder();
+});
+let ordering = false;
+async function placeOrder() {
+  if (ordering) return;
+  const I = bItems(), P = I.filter(i => sel.has(ikey(i)));
+  if (!P.length) return toast("Escolha pelo menos uma opção.");
+  if (!fb) return toast("Configure o firebase-config.js (veja o LEIA-ME).");
+  if (!user) { toast("Entre com Google para abrir o chat do pedido."); return login(); }
+  ordering = true; const go = $("#bGo"); go.disabled = true;
+  try {
+    const F = fb.F, kd = await F.getDoc(F.doc(fb.db, "site", "keys"));
+    adminPub = kd.exists() ? kd.data().pub || null : null;
+    if (!adminPub) throw new Error("A equipe ainda não ativou os pedidos. Tente mais tarde.");
+    const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, ["encrypt", "decrypt"]);
+    const raw = new Uint8Array(await crypto.subtle.exportKey("raw", key)), wk = await wrapRaw(adminPub, raw);
+    const oref = F.doc(F.collection(fb.db, "orders"));
+    await F.setDoc(oref, { uid: user.uid, name: user.displayName || "", status: "aberto", n: P.length, wk, createdAt: F.serverTimestamp(), lastMsgAt: F.serverTimestamp() });
+    lsSet("effi.k." + oref.id, u8b64u(raw));
+    await sendEnc(oref.id, key, { t: "order", items: P.map(i => ({ g: gname(i), n: i.name, p: i.price || "" })), total: P.reduce((s, i) => s + num(i.value), 0), note: ($("#bNote").value || "").trim() });
+    sel.clear(); $("#bNote").value = ""; sumBuilder();
+    toast("Pedido criado. Chat privado aberto."); openOrder(oref.id);
+  } catch (e) {
+    console.error(e);
+    toast(e.code === "permission-denied" ? "O Firestore recusou: confira o firestore.rules." : e.message || "Erro ao criar o pedido.");
+  } finally { ordering = false; const g = $("#bGo"); if (g) g.disabled = false; }
+}
+async function sendEnc(oid, key, body) {
+  const F = fb.F, enc = await encObj(key, body), b = F.writeBatch(fb.db);
+  b.set(F.doc(F.collection(fb.db, "orders", oid, "messages")), { uid: user.uid, at: F.serverTimestamp(), iv: enc.iv, ct: enc.ct });
+  b.update(F.doc(fb.db, "orders", oid), { lastMsgAt: F.serverTimestamp() });
+  await b.commit();
+}
+
+/* ---------- chat privado ---------- */
+const chatEl = $("#chat"), chat = { off: [], orders: new Map(), oid: null, key: null, gen: 0, mseq: 0, painted: false };
+const ST_O = { aberto: "Aberto", andamento: "Em andamento", entregue: "Entregue", fechado: "Fechado" };
+const ms = t => (t && t.toMillis ? t.toMillis() : Date.now());
+const fmtT = t => new Date(ms(t)).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+const stopAll = () => { chat.off.forEach(f => f()); chat.off = []; };
+function openChat() { if (!user || !fb) return; chatEl.hidden = false; showList(); }
+function closeChat() { stopAll(); chat.gen++; chat.oid = null; chat.key = null; chatEl.hidden = true; }
+function showList() {
+  stopAll(); chat.gen++; chat.oid = null; chat.key = null;
+  $("#chTitle").textContent = isAdmin() ? "Pedidos recebidos" : "Meus pedidos";
+  $("#chBack").hidden = true; $("#chBar").hidden = true; $("#chForm").hidden = true;
+  $("#chBody").innerHTML = '<p class="hint">Carregando…</p>';
+  const F = fb.F, col = F.collection(fb.db, "orders");
+  const q = isAdmin() ? F.query(col, F.orderBy("lastMsgAt", "desc"), F.limit(100)) : F.query(col, F.where("uid", "==", user.uid));
+  chat.off.push(F.onSnapshot(q, s => {
+    const rows = []; s.forEach(d => { chat.orders.set(d.id, d.data()); rows.push([d.id, d.data()]); });
+    rows.sort((a, b) => ms(b[1].lastMsgAt) - ms(a[1].lastMsgAt));
+    $("#chBody").innerHTML = rows.length ? rows.map(([id, o]) => `<button class="oi" data-oid="${esc(id)}"><b>Pedido #${esc(id.slice(0, 6).toUpperCase())}</b><span class="hint">${isAdmin() ? esc(o.name || "Cliente") + " · " : ""}${Number(o.n) || 0} item(ns) · ${esc(fmtT(o.lastMsgAt))}</span><span class="stt ${esc(o.status)}">${esc(ST_O[o.status] || o.status)}</span></button>`).join("") : '<p class="hint">Nenhum pedido ainda. Monte o seu na seção “Pedido”.</p>';
+  }, e => { $("#chBody").innerHTML = `<p class="hint">Não foi possível carregar: ${esc(e.code || e.message)}</p>`; }));
+}
+function paintBar(o) {
+  const bar = $("#chBar"); bar.hidden = false;
+  bar.innerHTML = isAdmin()
+    ? `<span>${esc(o.name || "Cliente")}</span><select data-c="status" aria-label="Situação do pedido">${Object.entries(ST_O).map(([k, n]) => `<option value="${k}" ${k === o.status ? "selected" : ""}>${n}</option>`).join("")}</select>`
+    : `<span class="stt ${esc(o.status)}">${esc(ST_O[o.status] || o.status)}</span><button class="btn btn-line btn-sm" data-c="link">Copiar link de acesso</button>`;
+  $("#chForm").hidden = o.status === "fechado" || !chat.key;
+}
+async function openOrder(oid) {
+  if (!fb || !user) return;
+  const F = fb.F, g = ++chat.gen; stopAll(); chatEl.hidden = false; chat.oid = oid; chat.key = null; chat.painted = false;
+  $("#chBack").hidden = false; $("#chBar").hidden = true; $("#chForm").hidden = true;
+  $("#chTitle").textContent = "Pedido #" + oid.slice(0, 6).toUpperCase();
+  $("#chBody").innerHTML = '<p class="hint">Abrindo…</p>';
+  let order;
+  try { const d = await F.getDoc(F.doc(fb.db, "orders", oid)); if (!d.exists()) throw new Error("Pedido não encontrado."); order = d.data(); chat.orders.set(oid, order); }
+  catch (e) { if (g === chat.gen) $("#chBody").innerHTML = `<p class="hint">Não foi possível abrir este pedido (${esc(e.code || e.message)}).</p>`; return; }
+  const key = await keyFor(oid, order); if (g !== chat.gen) return;
+  chat.key = key; paintBar(order);
+  if (!key) { $("#chBody").innerHTML = `<p class="hint">${isAdmin() ? "A chave deste pedido não está neste navegador. Importe sua chave privada em Painel admin › Segurança." : "A chave deste pedido não está neste navegador. Abra o chat pelo link de acesso copiado ao criar o pedido."}</p>`; return; }
+  chat.off.push(F.onSnapshot(F.doc(fb.db, "orders", oid), d => { if (g === chat.gen && d.exists()) { chat.orders.set(oid, d.data()); paintBar(d.data()); } }));
+  chat.off.push(F.onSnapshot(F.query(F.collection(fb.db, "orders", oid, "messages"), F.orderBy("at")), async s => {
+    const seq = ++chat.mseq, items = await Promise.all(s.docs.map(async d => ({ m: d.data(), b: await decObj(key, d.data()) })));
+    if (g === chat.gen && seq === chat.mseq) paintMsgs(items);
+  }, e => { if (g === chat.gen) $("#chBody").innerHTML = `<p class="hint">Não foi possível carregar as mensagens: ${esc(e.code || e.message)}</p>`; }));
+}
+function paintMsgs(items) {
+  const box = $("#chBody"), near = box.scrollHeight - box.scrollTop - box.clientHeight < 80;
+  box.innerHTML = '<p class="lock">🔒 Mensagens criptografadas no navegador (AES-256). Só você e a equipe conseguem ler.</p>' + items.map(({ m, b }) => {
+    const t = `<time>${esc(fmtT(m.at))}</time>`, me = m.uid === user.uid ? " me" : "";
+    if (!b) return `<div class="msg${me}">🔒 Mensagem indisponível${t}</div>`;
+    if (b.t === "order") return `<div class="msg card"><b>Resumo do pedido</b><ul class="ol">${(Array.isArray(b.items) ? b.items : []).map(i => `<li><span>${esc(i.n)} <small>${esc(i.g)}</small></span><span>${esc(i.p)}</span></li>`).join("")}</ul><div class="bl-total"><span>Total estimado</span><b>${esc(brl(b.total))}</b></div>${b.note ? `<p class="hint">Obs.: ${esc(b.note)}</p>` : ""}${t}</div>`;
+    return `<div class="msg${me}">${esc(String(b.text ?? ""))}${t}</div>`;
+  }).join("");
+  if (near || !chat.painted) box.scrollTop = box.scrollHeight;
+  chat.painted = true;
+}
+function openFromLink(p) {
+  history.replaceState(null, "", location.pathname + location.search);
+  const [id, k] = String(p).split(".");
+  if (!/^[A-Za-z0-9]{10,40}$/.test(id || "") || !/^[A-Za-z0-9_-]{43}$/.test(k || "")) return toast("Link de pedido inválido.");
+  lsSet("effi.k." + id, k);
+  if (user && fb) openOrder(id); else pendingLink = id;
+}
+chatEl.addEventListener("click", e => {
+  const c = e.target.closest("[data-c]")?.dataset.c;
+  if (c === "close") return closeChat();
+  if (c === "back") return showList();
+  if (c === "link" && chat.oid) {
+    const raw = lsGet("effi.k." + chat.oid); if (!raw) return;
+    const url = location.origin + location.pathname + "#chat=" + chat.oid + "." + raw;
+    return navigator.clipboard?.writeText(url).then(() => toast("Link copiado. Guarde-o: é a forma de reabrir o chat em outro aparelho."), () => prompt("Copie e guarde este link:", url));
+  }
+  const o = e.target.closest("[data-oid]"); if (o) openOrder(o.dataset.oid);
+});
+chatEl.addEventListener("change", async e => {
+  if (e.target.dataset.c !== "status" || !chat.oid) return;
+  try { await fb.F.updateDoc(fb.F.doc(fb.db, "orders", chat.oid), { status: e.target.value }); toast("Situação atualizada."); }
+  catch (er) { toast("Não foi possível atualizar: " + (er.code || er.message)); }
+});
+let sending = false;
+$("#chForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const ta = $("#chInput"), text = ta.value.trim(), oid = chat.oid, key = chat.key;
+  if (!text || !key || !oid || sending) return;
+  sending = true;
+  try { await sendEnc(oid, key, { t: "text", text }); ta.value = ""; }
+  catch (er) { toast(er.code === "permission-denied" ? "Envio recusado (permissão ou pedido fechado)." : "Erro ao enviar a mensagem."); }
+  finally { sending = false; ta.focus(); }
+});
+$("#chInput").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#chForm").requestSubmit(); } });
+addEventListener("keydown", e => { if (e.key === "Escape" && !chatEl.hidden) closeChat(); });
 
 /* ---------- iniciar ---------- */
 render(); route(); boot();
