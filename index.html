@@ -3,950 +3,256 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- EFFI • Discord Embed / Open Graph -->
-<title>EFFicient | EFFI</title>
-<meta name="description" content="Acesse o site oficial da EFFI. Confira nosso catálogo completo, preços, informações, automações e muito mais.">
-
-<meta name="theme-color" content="#20A832">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="EFFI">
-<meta property="og:title" content="ACESSE O SITE DO EFFI">
-<meta property="og:description" content="Catálogo completo do EFFI, com preços, informações, entre diversas coisas.">
-<meta property="og:url" content="https://srleal018.github.io/EFFIcient/">
-<meta property="og:image" content="https://srleal018.github.io/EFFIcient/effi-preview.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ACESSE O SITE DO EFFI">
-<meta name="twitter:description" content="Conheça a plataforma EFFI.">
-<meta name="twitter:image" content="https://srleal018.github.io/EFFIcient/effi-preview.png">
-
-<link rel="icon" href="logo.png">
+<title>Portfólio</title>
+<meta name="theme-color" content="#775FB8">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --secondary:#20a72d;
-  --secondary-d:color-mix(in srgb,var(--secondary) 80%,#000);
-  --primary:#0c2f22;
-  --primary-2:color-mix(in srgb,var(--primary) 85%,#4fa37d);
-  --ink:#0e1a14; --muted:#56655d; --line:#dfe6e0;
-  --bg:#f4f7f3; --card:#fff; --mint:color-mix(in srgb,var(--secondary) 12%,#fff);
-  --head:"Sora","Segoe UI",system-ui,sans-serif;
-  --body:"Figtree","Segoe UI",system-ui,sans-serif;
-  color-scheme:light;
-}
+:root{--primary:#775FB8;--secondary:#2C2F33;--p-d:color-mix(in srgb,var(--primary) 80%,#000);
+--bg:color-mix(in srgb,var(--secondary) 55%,#000);--card:var(--secondary);--ink:#eceaf3;--muted:#a3a3b2;--line:color-mix(in srgb,var(--secondary) 70%,#fff 12%);
+--head:"Sora",system-ui,sans-serif;--body:"Figtree",system-ui,sans-serif;color-scheme:dark}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font:400 17px/1.65 var(--body);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--secondary);outline-offset:3px;border-radius:8px}
+a{color:inherit}[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px;border-radius:8px}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
 h1,h2,h3{font-family:var(--head);letter-spacing:-.03em;line-height:1.1}
-h1{font-size:clamp(2.5rem,5.6vw,4.3rem);font-weight:700}
-h2{font-size:clamp(1.9rem,3.8vw,2.9rem);font-weight:700;max-width:20ch}
-h3{font-size:1.15rem;font-weight:600;letter-spacing:-.015em}
-.lead{font-size:1.18rem;color:var(--muted);max-width:54ch}
-section{padding:104px 0}
-.logo{display:inline-block;aspect-ratio:360/250;background:url(logo.png) center/contain no-repeat}
+h1{font-size:clamp(2.5rem,5.6vw,4.3rem)}h2{font-size:clamp(1.9rem,3.8vw,2.6rem)}h3{font-size:1.2rem;font-weight:600}
+.lead{font-size:1.15rem;color:var(--muted);max-width:54ch}
+section{padding:80px 0}
 #stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 main,footer{position:relative;z-index:1}
-
-header{position:sticky;top:0;z-index:30;background:rgba(244,247,243,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.3rem var(--head);letter-spacing:-.03em}
-.brand .logo{height:30px}
-nav ul{display:flex;gap:32px;list-style:none;padding:0}
-nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.96rem}
-nav a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:14px;font:600 1rem var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .15s,border-color .15s,opacity .15s}
-.btn:active{transform:scale(.97)}
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
-.btn-main{background:var(--secondary);color:#fff;box-shadow:0 8px 20px -8px color-mix(in srgb,var(--secondary) 70%,transparent)}
-.btn-main:hover:not(:disabled){background:var(--secondary-d)}
-.btn-line{border-color:#bccabf;color:var(--ink);background:transparent}
-.btn-line:hover{border-color:var(--primary);background:#fff}
-.btn-sm{min-height:42px;padding:0 20px;font-size:.93rem;border-radius:11px}
-#menuBtn{display:none;width:42px;height:42px;border-radius:11px;border:1.5px solid #bccabf;background:transparent;cursor:pointer;font-size:1.2rem}
-
-.hero{padding:80px 0 112px;background:radial-gradient(900px 420px at 85% 0,color-mix(in srgb,var(--secondary) 16%,transparent),transparent 70%)}
-.hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:99px;background:var(--mint);color:var(--primary);font-weight:600;font-size:.9rem;margin-bottom:24px}
-.pill i{width:8px;height:8px;border-radius:50%;background:var(--secondary)}
-.hero h1 span{color:var(--secondary)}
-.hero .lead{margin:24px 0 36px}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.note{margin-top:22px;font-size:.92rem;color:var(--muted)}
-.console{background:var(--primary);color:#e7f2ea;border-radius:24px;box-shadow:0 40px 80px -30px rgba(12,47,34,.55);overflow:hidden;border:1px solid #1d5a42}
-.c-top{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid #1d5a42;background:var(--primary-2)}
-.c-top .logo{height:22px}
-.c-top strong{font:600 .98rem var(--head)}
-.live{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:.84rem;color:#8be496;font-weight:600}
-.live i{width:8px;height:8px;border-radius:50%;background:#4fe063;animation:pulse 1.6s infinite}
-@keyframes pulse{50%{opacity:.25}}
-.feed{list-style:none;padding:6px 20px 22px;min-height:360px}
-.feed li{display:grid;grid-template-columns:46px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid #1d4d3a;font-size:.95rem;animation:in .45s ease both}
-@keyframes in{from{opacity:0;transform:translateY(10px)}}
-.feed time{color:#8fb09e;font-size:.82rem;padding-top:2px}
-.tag{font-weight:600;color:#6fe67f}
-.ask{display:block;margin-top:12px;background:#0a251a;border:1px solid #2f7a58;border-radius:14px;padding:14px}
-.ask p{margin-bottom:12px;color:#cfe3d6}
-.ask .row{display:flex;gap:8px}
-.ask .btn-line{border-color:#3a6d56;color:#e7f2ea}
-.ask .btn-line:hover{background:#12402f;border-color:#6fe67f}
-
-.stats{padding:0 0 40px}
-.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;border-top:1px solid var(--line);padding-top:40px}
-.stats b{display:block;font:700 2.2rem var(--head);letter-spacing:-.03em}
-.stats span{color:var(--muted)}
-.head{margin-bottom:56px}
-.head .lead{margin-top:18px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:10px;overflow:hidden;transition:transform .2s,box-shadow .2s}
-.tile:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(12,47,34,.35)}
-.tile p{color:var(--muted);font-size:.98rem}
-.tile .btn{margin-top:auto;align-self:flex-start}
-.ico{width:44px;height:44px;border-radius:14px;background:var(--mint);display:grid;place-items:center;margin-bottom:8px}
-.ico svg{width:22px;height:22px;stroke:var(--secondary);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.pimg{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;margin-bottom:8px;background:var(--mint)}
-.pprice{font:700 1.3rem var(--head);color:var(--secondary-d)}
-
-.dark-sec{background:var(--primary);color:#e7f2ea;border-radius:40px;margin:0 16px}
-.dark-sec .lead{color:#a9c4b5}
-.control{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.seg{display:grid;gap:12px;margin-top:32px}
-.seg button{text-align:left;padding:18px 20px;border-radius:16px;border:1.5px solid #2a6850;background:transparent;color:#e7f2ea;font:600 1.02rem var(--body);cursor:pointer;transition:border-color .15s,background .15s}
-.seg button:hover{border-color:#4fa37d}
-.seg button[aria-pressed=true]{border-color:var(--secondary);background:#12402f}
-.seg small{display:block;font-weight:400;color:#9bbcab;margin-top:2px;font-size:.93rem}
-.result{background:#fff;color:var(--ink);border-radius:24px;padding:36px;min-height:270px}
-.result h3{font-size:1.6rem;margin-bottom:18px}
-.result ul{list-style:none;padding:0;display:grid;gap:14px}
-.result li{display:flex;gap:12px}
-.result li::before{content:"";flex:none;width:22px;height:22px;margin-top:3px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2320a72d' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat}
-
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
-.plan{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:14px}
-.plan.feat{background:var(--primary);color:#e7f2ea;border-color:var(--primary);box-shadow:0 30px 60px -30px rgba(12,47,34,.6)}
-.plan .pdesc{color:var(--muted)}.plan.feat .pdesc,.plan.feat .price span{color:#a9c4b5}
-.price b{font:700 2.7rem var(--head);letter-spacing:-.04em}.price span{color:var(--muted);margin-left:4px}
-.plan ul{list-style:none;padding:0;display:grid;gap:10px;margin:8px 0 20px;flex:1}
-.plan li{display:flex;gap:10px;font-size:.97rem}
-.plan li::before{content:"✓";color:var(--secondary);font-weight:700}
-.plan .btn{width:100%}
-.badge{position:absolute;top:22px;right:22px;font-size:.8rem;font-weight:600;color:#fff;background:var(--secondary);padding:3px 12px;border-radius:99px}
-.prose{max-width:72ch;color:#2f3d35}
-.prose p,.prose ul{margin:0 0 1.1em}.prose ul{padding-left:1.3em}
-.prose h2{max-width:none;font-size:1.55rem;margin:1.6em 0 .6em}.prose h3{margin:1.4em 0 .5em;font-size:1.2rem}
-.legal h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:28px}
-.legal a{color:var(--secondary-d);font-weight:600}
-.faq{max-width:800px}
-details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 26px;margin-bottom:12px}
-summary{cursor:pointer;font:600 1.05rem var(--head);letter-spacing:-.01em;list-style:none;display:flex;justify-content:space-between;gap:16px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--secondary);font-size:1.6rem;line-height:1}
-details[open] summary::after{content:"–"}
-details p{color:var(--muted);margin-top:12px;max-width:68ch}
-.final{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;border-radius:32px;padding:80px 40px;text-align:center}
-.final h2{margin:0 auto 18px}
-.final p{color:#b5d0c1;margin:0 auto 32px;max-width:46ch}
-footer{padding:48px 0 56px;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem;background:rgba(244,247,243,.8)}
-footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-footer ul{gap:24px;flex-wrap:wrap}
-
-.nav-r,#authBox{display:flex;align-items:center;gap:10px}
-.who{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px 0 6px;border-radius:11px;border:1.5px solid #bccabf;background:transparent;font:600 .93rem var(--body);cursor:pointer;color:var(--ink)}
-.who img{width:30px;height:30px;border-radius:50%}
+header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px}
+.brand{text-decoration:none;font:700 1.3rem var(--head);letter-spacing:-.03em}
+.nr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:14px;font:600 1rem var(--body);text-decoration:none;border:1.5px solid transparent;cursor:pointer;color:var(--ink);background:none;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.97)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-main{background:var(--primary);color:#fff;box-shadow:0 8px 20px -8px var(--primary)}.btn-main:hover:not(:disabled){background:var(--p-d)}
+.btn-line{border-color:var(--line)}.btn-line:hover{border-color:var(--primary)}
+.btn-sm{min-height:40px;padding:0 16px;font-size:.92rem;border-radius:11px}
 .btn svg{width:18px;height:18px;margin-right:8px}
-#adm{position:fixed;top:0;right:0;bottom:0;width:min(580px,100%);background:#fff;z-index:60;display:flex;flex-direction:column;border-left:1px solid var(--line);box-shadow:-30px 0 60px -30px rgba(12,47,34,.35)}
-#adm[hidden]{display:none}
-.adm-h{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
-.adm-h button{margin-left:auto;border:0;background:var(--bg);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1.1rem}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--line)}
-.tabs button{flex:none;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:#fff;font:600 .88rem var(--body);cursor:pointer}
-.tabs button[aria-selected=true]{background:var(--secondary);border-color:var(--secondary);color:#fff}
-.adm-b{flex:1;overflow:auto;padding:20px;display:grid;gap:14px;align-content:start}
-.fld{display:grid;gap:6px;font-size:.88rem;font-weight:600;color:var(--muted)}
-.fld input,.fld textarea{font:400 .98rem var(--body);color:var(--ink);padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;background:#fff;width:100%}
-.fld input[type=color]{padding:3px;height:44px}
-.fld.ck{display:flex;align-items:center;gap:10px}.fld.ck input{width:auto}
-.item{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;background:var(--bg)}
-.ih{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.ih span{display:flex;gap:6px}
-.ih button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;cursor:pointer;font:600 .8rem var(--body)}
-.lh{font:700 1rem var(--head)}
-.hint{font-size:.88rem;color:var(--muted)}
-.adm-f{display:flex;align-items:center;gap:8px;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);flex-wrap:wrap;background:#fff}
-#state{font-size:.84rem;font-weight:600;color:var(--muted);flex:1 0 100%}
-#state.dirty{color:#b45309}
-.adm-f .btn-main{margin-left:auto}
-table.users{width:100%;border-collapse:collapse;font-size:.9rem}
-table.users td{padding:10px 6px;border-bottom:1px solid var(--line)}
-#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--primary);color:#fff;padding:12px 20px;border-radius:12px;z-index:80;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center}
-#toast.on{opacity:1}
-
-@media (max-width:920px){
-  section{padding:72px 0}
-  #menuBtn{display:inline-flex;align-items:center;justify-content:center}
-  nav ul{display:none}
-  nav ul.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:18px;padding:20px 24px;background:#fff;border-bottom:1px solid var(--line)}
-  .hero{padding:48px 0 72px}
-  .hero .wrap,.control{grid-template-columns:1fr;gap:40px}
-  .dark-sec{margin:0 8px;border-radius:28px}
-  .final{padding:56px 24px}
-  .plan-btn{display:none}.who span{display:none}.who{padding:0 6px}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-
-/* ---------- tema escuro ---------- */
-[hidden]{display:none!important}
-:root{--bg:#09100c;--card:#101a14;--ink:#e8f1ea;--muted:#94a99b;--line:#1f3026;--mint:color-mix(in srgb,var(--secondary) 18%,#09100c);color-scheme:dark}
-header{background:rgba(9,16,12,.82)}
-nav ul.open{background:#0d1712}
-.btn-line{border-color:#2d4637}
-.btn-line:hover{border-color:var(--secondary);background:#13211a}
-#menuBtn,.who{border-color:#2d4637;color:var(--ink)}
-.pill{color:#c6f2cf}
-.pprice,.legal a{color:var(--secondary)}
-.result{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-.prose{color:#c3d2c8}
-footer{background:rgba(9,16,12,.82)}
-#adm{background:var(--card)}
-.tabs button,.ih button{background:#16241c;color:var(--ink)}
-.adm-h button{color:var(--ink)}
-.fld input,.fld textarea,.fld select{background:#0b130f;color:var(--ink)}
-.fld select{font:400 .98rem var(--body);padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;width:100%}
-.adm-f{background:var(--card)}
-#toast{border:1px solid #2a5a43}
-
-/* ---------- montador de pedido ---------- */
-.bld{display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:start}
-.bg{margin:28px 0 12px;font:600 .82rem var(--head);color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
-.bld>div>.bg:first-child{margin-top:0}
-.bl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.opt{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:18px;color:var(--ink);font:inherit;cursor:pointer;display:grid;gap:6px;align-content:start;transition:border-color .15s,background .15s,transform .15s}
-.opt:hover{border-color:#2f6b4c}
-.opt:active{transform:scale(.98)}
-.opt[aria-pressed=true]{border-color:var(--secondary);background:color-mix(in srgb,var(--secondary) 14%,var(--card))}
-.opt b{font:600 1rem var(--head)}
-.opt small{color:var(--muted);font-size:.9rem;line-height:1.4}
-.opt em{font-style:normal;font-weight:700;color:var(--secondary)}
-.bl-sum{position:sticky;top:92px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px;display:grid;gap:14px}
-.bl-sum ul{list-style:none;padding:0;display:grid;gap:8px;font-size:.95rem}
-.bl-sum li{display:flex;justify-content:space-between;gap:10px}
-.bl-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px}
-.bl-total b{font:700 1.6rem var(--head)}
-@media (max-width:920px){.bld{grid-template-columns:1fr}.bl-sum{position:static}}
-
-/* ---------- página de status ---------- */
-.dot{display:inline-block;width:12px;height:12px;border-radius:50%;flex:none;background:#3ddc5a;box-shadow:0 0 0 4px rgba(61,220,90,.18)}
-.dot.warn{background:#f5b942;box-shadow:0 0 0 4px rgba(245,185,66,.18)}
-.dot.down{background:#ef5b5b;box-shadow:0 0 0 4px rgba(239,91,91,.18)}
-.dot.maint{background:#6aa8ff;box-shadow:0 0 0 4px rgba(106,168,255,.18)}
-footer .dot{width:8px;height:8px;box-shadow:none;margin-right:7px}
-.st-ban{display:flex;align-items:center;gap:16px;padding:22px 26px;border-radius:20px;border:1px solid var(--line);background:var(--card);margin:0 0 28px}
-.st-ban b{font:700 1.3rem var(--head)}
-.st-list{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.st-row{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line)}
-.st-row:last-child{border-bottom:0}
-.st-row .nm{font-weight:600}
-.st-row small{display:block;color:var(--muted);font-weight:400}
-.st-row .sl{margin-left:auto;font-weight:600;font-size:.9rem;white-space:nowrap}
-
-/* ---------- chat privado ---------- */
-#chat{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--card);z-index:70;display:flex;flex-direction:column;border-left:1px solid var(--line);box-shadow:-30px 0 60px -30px rgba(0,0,0,.7)}
-.ch-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
-.ch-h strong{font:600 1rem var(--head);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ch-h button{border:0;background:#16241c;color:var(--ink);width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1.05rem}
-.ch-bar{padding:10px 16px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
-.ch-bar select{font:600 .85rem var(--body);background:#0b130f;color:var(--ink);border:1.5px solid var(--line);border-radius:9px;padding:6px 10px}
-.ch-body{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
-.oi{display:grid;gap:4px;text-align:left;width:100%;background:#0b130f;border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);font:inherit;cursor:pointer}
-.oi:hover{border-color:var(--secondary)}
-.stt{font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:99px;background:#16241c;justify-self:start}
-.stt.aberto{color:#6aa8ff}.stt.andamento{color:#f5b942}.stt.entregue{color:#3ddc5a}.stt.fechado{color:#94a99b}
-.msg{max-width:84%;padding:10px 14px;border-radius:16px;border-bottom-left-radius:4px;font-size:.96rem;line-height:1.5;white-space:pre-wrap;word-break:break-word;background:#16241c;align-self:flex-start}
-.msg.me{align-self:flex-end;background:var(--secondary);color:#fff;border-bottom-left-radius:16px;border-bottom-right-radius:4px}
-.msg time{display:block;font-size:.72rem;opacity:.65;margin-top:4px}
-.msg.card{white-space:normal;max-width:100%;align-self:stretch;background:#0b130f;border:1px solid #2a5a43;border-radius:16px}
-.ol{list-style:none;padding:0;display:grid;gap:6px;margin:10px 0}
-.ol li{display:flex;justify-content:space-between;gap:10px}
-.ol small{color:var(--muted)}
-.lock{align-self:center;font-size:.78rem;color:var(--muted);text-align:center;max-width:38ch}
-.chform{display:flex;gap:8px;align-items:flex-end;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
-.chform textarea{flex:1;resize:none;font:400 .98rem var(--body);color:var(--ink);background:#0b130f;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;max-height:120px}
+.who{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 12px 0 5px;border-radius:11px;border:1.5px solid var(--line);background:none;color:var(--ink);font:600 .92rem var(--body);cursor:pointer}
+.who img{width:28px;height:28px;border-radius:50%}
+.hero{padding:88px 0 56px;background:radial-gradient(800px 380px at 85% 0,color-mix(in srgb,var(--primary) 22%,transparent),transparent 70%)}
+.pill{display:inline-block;padding:6px 14px;border-radius:99px;background:color-mix(in srgb,var(--primary) 20%,transparent);color:#d9d0f5;font-weight:600;font-size:.9rem;margin-bottom:22px}
+.hero h1 span{color:var(--primary)}.hero .lead{margin:22px 0 32px}.cta{display:flex;gap:12px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.blk{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;min-width:0}
+.blk:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px #000}
+.blk.plain{background:none;border-color:transparent}.blk.plain:hover{transform:none;box-shadow:none}
+.blk img{width:100%;display:block;cursor:zoom-in;object-fit:cover}
+.bd{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.bd p{color:var(--muted);font-size:.98rem}.bd.c{text-align:center;align-items:center}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:.85rem;font-weight:600;padding:3px 12px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.chip.pr{background:var(--primary);border-color:var(--primary);color:#fff;font:700 1rem var(--head);padding:3px 14px}
+.prose{max-width:72ch;color:#cfcddb}.prose p{margin-bottom:1.1em}.prose h3{margin:1.4em 0 .5em}
+footer{padding:44px 0 52px;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer ul{display:flex;gap:22px;list-style:none;padding:0;flex-wrap:wrap}
+#gate{background:var(--primary);color:#fff;text-align:center;padding:10px 16px;font-weight:600;font-size:.93rem}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:90;display:grid;place-items:center;cursor:zoom-out;padding:16px}
+#lb img{max-width:100%;max-height:100%;border-radius:12px}
+#adm{position:fixed;top:0;right:0;bottom:0;width:min(580px,100%);background:#1d1f22;z-index:60;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.ah{display:flex;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)}.ah button{margin-left:auto;border:0;background:var(--secondary);color:var(--ink);width:36px;height:36px;border-radius:10px;cursor:pointer}
+.tabs{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{flex:none;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--ink);font:600 .88rem var(--body);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--primary);border-color:var(--primary);color:#fff}
+.ab{flex:1;overflow:auto;padding:18px;display:grid;gap:14px;align-content:start}
+.fld{display:grid;gap:6px;font-size:.86rem;font-weight:600;color:var(--muted)}
+.fld input,.fld textarea,.fld select{font:400 .96rem var(--body);color:var(--ink);padding:10px 12px;border:1.5px solid var(--line);border-radius:11px;background:var(--bg);width:100%}
+.fld input[type=color]{padding:3px;height:44px}.fld.ck{display:flex;align-items:center;gap:10px}.fld.ck input{width:auto}
+.item{border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:12px;background:var(--bg)}
+.ih{display:flex;justify-content:space-between;align-items:center;gap:8px}.ih span{display:flex;gap:6px}
+.ih button{border:1px solid var(--line);background:var(--secondary);color:var(--ink);border-radius:8px;padding:4px 10px;cursor:pointer;font:600 .8rem var(--body)}
+.thumb{width:100%;max-height:150px;object-fit:cover;border-radius:10px}
+.hint{font-size:.86rem;color:var(--muted)}
+.af{display:flex;gap:8px;padding:14px 20px;border-top:1px solid var(--line);flex-wrap:wrap}
+#st{flex:1 0 100%;font-size:.84rem;font-weight:600;color:var(--muted)}#st.d{color:#f0b429}.af .btn-main{margin-left:auto}
+table{width:100%;border-collapse:collapse;font-size:.88rem}td{padding:9px 5px;border-bottom:1px solid var(--line)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--primary);color:#fff;padding:12px 20px;border-radius:12px;z-index:90;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center}#toast.on{opacity:1}
+@media(max-width:760px){section{padding:56px 0}.hero{padding:48px 0 32px}.blk{grid-column:span 12!important}.who span{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <canvas id="stars" aria-hidden="true"></canvas>
-<header><div class="wrap nav">
-  <a class="brand" href="#topo"><span class="logo" role="img" aria-label="Logo"></span><span class="brandname">Effi</span></a>
-  <nav aria-label="Principal"><ul id="navList"></ul></nav>
-  <div class="nav-r"><div id="authBox"></div><a class="btn btn-main btn-sm plan-btn" href="#planos">Ver planos</a><button id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button></div>
-</div></header>
-
+<div id="gate" hidden></div>
+<header><div class="wrap nav"><a class="brand" href="#topo" id="brand"></a><div class="nr"><a class="btn btn-line btn-sm" href="#obras">Obras</a><a class="btn btn-line btn-sm" href="#sobre">Sobre</a><span id="auth" class="nr"></span></div></div></header>
 <main id="topo">
-<div id="home">
-  <section class="hero"><div class="wrap">
-    <div id="heroText"></div>
-    <div class="console" aria-label="Exemplo do painel">
-      <div class="c-top"><span class="logo" aria-hidden="true"></span><strong>IA</strong><span class="live"><i></i>operando</span></div>
-      <ul class="feed" id="feed" aria-live="polite"></ul>
-    </div>
-  </div></section>
-  <div class="stats" id="statsSec"><div class="wrap" id="statsBox"></div></div>
-  <section id="recursos"><div class="wrap" id="recursosBox"></div></section>
-  <section class="dark-sec" id="controle"><div class="wrap control">
-    <div>
-      <h2>Você escolhe quanta autonomia ela tem</h2>
-      <p class="lead" style="margin-top:18px">Comece só com sugestões e libere mais conforme ganhar confiança.</p>
-      <div class="seg" id="seg" role="group" aria-label="Nível de autonomia">
-        <button data-k="0" aria-pressed="true">Só sugere<small>Você executa tudo.</small></button>
-        <button data-k="1" aria-pressed="false">Pede aprovação<small>Ela prepara, você confirma com um toque.</small></button>
-        <button data-k="2" aria-pressed="false">Age sozinha<small>Ela executa dentro das regras e te avisa.</small></button>
-      </div>
-    </div>
-    <div class="result" id="result" aria-live="polite"></div>
-  </div></section>
-  <section id="planos"><div class="wrap" id="planosBox"></div></section>
-  <section id="produtos" style="padding-top:0"><div class="wrap" id="produtosBox"></div></section>
-  <section id="pedido"><div class="wrap" id="pedidoBox"></div></section>
-  <section id="sobre"><div class="wrap" id="sobreBox"></div></section>
-  <section id="duvidas" style="padding-top:0"><div class="wrap faq" id="faqBox"></div></section>
-  <section id="ctaSec" style="padding-top:0"><div class="wrap"><div class="final" id="ctaBox"></div></div></section>
-</div>
-<div id="legal" class="legal" hidden><section><div class="wrap" id="legalBox"></div></section></div>
-<div id="statusPg" class="legal" hidden><section><div class="wrap" id="statusBox"></div></section></div>
+<section class="hero"><div class="wrap" id="hero"></div></section>
+<section id="obras" style="padding-top:24px"><div class="wrap"><div class="grid" id="grid"></div></div></section>
+<section id="sobre"><div class="wrap" id="about"></div></section>
 </main>
-
-<footer><div class="wrap">
-  <a class="brand" href="#topo"><span class="logo" role="img" aria-label="Logo"></span><span class="brandname">Effi</span></a>
-  <nav aria-label="Rodapé"><ul id="footLinks"></ul></nav>
-  <span id="copy"></span>
-</div></footer>
-
+<footer><div class="wrap"><a class="brand" href="#topo" id="brand2"></a><ul id="links"></ul><span id="copy"></span></div></footer>
+<div id="lb" hidden><img alt=""></div>
 <aside id="adm" hidden role="dialog" aria-label="Painel administrativo">
-  <div class="adm-h"><strong>Painel administrativo</strong><button data-a="close" aria-label="Fechar">✕</button></div>
-  <div class="tabs" id="tabs" role="tablist"></div>
-  <div class="adm-b" id="admBody"></div>
-  <div class="adm-f">
-    <span id="state">Tudo salvo</span>
-    <button class="btn btn-line btn-sm" data-a="discard">Descartar</button>
-    <button class="btn btn-line btn-sm" data-a="reset">Restaurar padrão</button>
-    <button class="btn btn-main btn-sm" data-a="save" disabled>Salvar e publicar</button>
-  </div>
-</aside>
-<aside id="chat" hidden role="dialog" aria-label="Chat privado do pedido">
-  <div class="ch-h"><button id="chBack" data-c="back" aria-label="Voltar" hidden>←</button><strong id="chTitle">Meus pedidos</strong><button data-c="close" aria-label="Fechar">✕</button></div>
-  <div class="ch-bar" id="chBar" hidden></div>
-  <div class="ch-body" id="chBody"></div>
-  <form class="chform" id="chForm" hidden><textarea id="chInput" rows="1" maxlength="3000" placeholder="Escreva uma mensagem…" aria-label="Mensagem"></textarea><button class="btn btn-main btn-sm">Enviar</button></form>
+<div class="ah"><strong>Painel administrativo</strong><button data-a="close" aria-label="Fechar">✕</button></div>
+<div class="tabs" id="tabs"></div><div class="ab" id="ab"></div>
+<div class="af"><span id="st">Tudo salvo</span><button class="btn btn-line btn-sm" data-a="discard">Descartar</button><button class="btn btn-main btn-sm" data-a="save" disabled>Salvar e publicar</button></div>
 </aside>
 <div id="toast" role="status"></div>
 
 <script type="module">
-/* A configuração do Firebase e o e-mail do admin ficam em firebase-config.js (veja o LEIA-ME.md) */
-let ADMIN_EMAIL = "", FIREBASE_CONFIG = null;
+let ADMIN_EMAIL="",FIREBASE_CONFIG=null;
+const DEF={brand:"Meu Portfólio",primary:"#775FB8",secondary:"#2C2F33",tag:"Artista digital",title:"Arte feita com",hi:"alma e cor.",lead:"Ilustrações, personagens e encomendas. Veja os trabalhos, os valores e peça a sua arte.",b1:"Ver obras",u1:"#obras",b2:"Pedir uma arte",u2:"",aboutTitle:"Sobre mim",about:"Escreva aqui sobre você e seu trabalho.\n\n## Como encomendar\nEdite este texto no painel administrativo.",links:[{label:"Instagram",url:""}],footer:"© 2026 Todos os direitos reservados.",gate:"Sua conta está aguardando ativação pelo administrador."};
+const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const link=u=>/^(https?:|mailto:|#|\/)/i.test(String(u||"").trim())?esc(String(u).trim()):"#";
+const clone=o=>JSON.parse(JSON.stringify(o)),hexOk=v=>/^#[0-9a-f]{6}$/i.test(v);
+const get=(o,p)=>p.split(".").reduce((a,k)=>a==null?a:a[k],o),set=(o,p,v)=>{const k=p.split("."),l=k.pop();k.forEach(x=>o=o[x]);o[l]=v};
+const fmt=t=>String(t||"").split(/\n{2,}/).map(b=>{b=b.trim();if(!b)return"";if(b.startsWith("## "))return`<h3>${esc(b.slice(3))}</h3>`;return`<p>${esc(b).replace(/\n/g,"<br>")}</p>`}).join("");
+let tm;const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tm);tm=setTimeout(()=>t.classList.remove("on"),3600)};
+const GOOGLE='<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.7 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.4 28.7A14.500 14.500 0 019.500 24c0-1.600.3-3.200.8-4.700l-7.800-6.100A24 24 0 000 24c0 3.900.9 7.500 2.600 10.800l7.800-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.500-5.800c-2.100 1.400-4.800 2.300-8.400 2.300-6.300 0-11.700-4.100-13.600-9.800l-7.800 6.100C6.500 42.600 14.600 48 24 48z"/></svg>';
 
-const DEFAULTS = {
-  brand: "Effi", secondary: "#20a72d", primary: "#0c2f22",
-  hero: { pill: "Automação gerenciada por IA", title: "Seu servidor opera sozinho.", highlight: "Você só decide.",
-    lead: "Estoque, verificação de membros, moderação e rotinas do seu servidor no Discord, tudo gerenciado por IA e sempre dentro das regras que você define.",
-    cta1Label: "Ver planos", cta1Url: "#planos", cta2Label: "Ver o que ela faz", cta2Url: "#recursos", note: "Hospedagem inclusa. Sem programar." },
-  stats: [{ value: "2,3 mil", label: "bots criados" }, { value: "2 anos", label: "no ar sem parar" }, { value: "24 h", label: "de operação por dia" }],
-  features: { title: "Tudo que se repete, a IA faz por você", lead: "Ela acompanha o servidor o tempo todo e age dentro das regras que você escolheu.", items: [
-    { title: "Estoque e reposição", desc: "Acompanha cada produto e avisa a comunidade quando chega estoque novo." },
-    { title: "Verificação de membros", desc: "Filtra quem entra e registra cada decisão para você revisar depois." },
-    { title: "Moderação", desc: "Avisa, silencia e limpa spam. Casos duvidosos chegam para você decidir." },
-    { title: "Rotinas agendadas", desc: "Backup, anúncios e relatórios saem no horário certo, sem você abrir o Discord." },
-    { title: "Relatórios e sugestões", desc: "Lê seus rendimentos e aponta o próximo passo." },
-    { title: "Avisos no seu aparelho", desc: "Receba o que a IA fez e o que está esperando por você." }] },
-  plans: { title: "Planos", lead: "Escolha o plano ideal para o tamanho do seu servidor. (Valores de exemplo: edite no painel.)", items: [
-    { name: "Starter", price: "R$ 29", period: "/mês", desc: "Para começar a automatizar.", features: ["Estoque e reposição", "Verificação de membros", "Suporte no Discord"], label: "Assinar", url: "https://discord.gg/zend", featured: false },
-    { name: "Pro", price: "R$ 59", period: "/mês", desc: "Para servidores em crescimento.", features: ["Tudo do Starter", "Moderação com IA", "Rotinas e relatórios", "Sócios com permissões"], label: "Assinar", url: "https://discord.gg/zend", featured: true },
-    { name: "Business", price: "R$ 119", period: "/mês", desc: "Para operações grandes.", features: ["Tudo do Pro", "Extensões inclusas", "Atendimento prioritário"], label: "Falar com a equipe", url: "https://discord.gg/zend", featured: false }] },
-  products: { title: "Produtos e extensões", lead: "Plugue no que você já usa. Novidades chegam o tempo todo.", items: [
-    { name: "DM em massa", desc: "Envia mensagens no privado para os membros, escolhendo quem recebe e acompanhando quantas chegaram.", price: "", image: "", label: "Saiba mais", url: "https://discord.gg/zend" },
-    { name: "Booster", desc: "Cadastre contas com Nitro e impulsione o servidor de uma vez, com entrega direta.", price: "", image: "", label: "Saiba mais", url: "https://discord.gg/zend" }] },
-  about: { title: "Sobre nós", text: "Nascemos para tirar o trabalho repetitivo das costas de quem administra comunidades no Discord. Unimos automação e inteligência artificial para que o seu servidor funcione o dia todo, com você no controle.\n\nNossa missão é simples: dar tempo de volta para você, com tecnologia confiável e suporte de verdade." },
-  faq: { title: "Antes de começar", items: [
-    { q: "A IA vende para os meus clientes?", a: "Não. Ela não é um bot de vendas: gerencia e automatiza as operações do servidor, como estoque, verificação, moderação e rotinas, dentro das regras que você definiu." },
-    { q: "Ela pode fazer algo que eu não quero?", a: "Você escolhe o nível de autonomia e o que fica fora do alcance dela. No modo de aprovação, nada importante é executado sem o seu toque." },
-    { q: "Preciso saber programar ou contratar hospedagem?", a: "Nenhum dos dois. A hospedagem já vem com o plano." },
-    { q: "Posso convidar sócios?", a: "Sim. Convide pelo site e escolha o que cada sócio pode ver e fazer." }] },
-  cta: { title: "Seu servidor trabalhando enquanto você descansa", text: "Escolha um plano e coloque a IA para operar hoje.", label: "Ver planos", url: "#planos" },
-  status: { title: "Status dos serviços", overall: "ok", message: "", updated: "", items: [
-    { name: "Bot e automações", state: "ok", note: "" },
-    { name: "Verificação de membros", state: "ok", note: "" },
-    { name: "Pedidos e chat privado", state: "ok", note: "" }], history: [] },
-  builder: { enabled: true, title: "Monte seu pedido", lead: "Escolha o que você precisa, veja o total na hora e abra um chat privado com a equipe para finalizar e receber a entrega.", button: "Abrir chat privado do pedido", note: "O total é uma estimativa. O valor final é confirmado no chat. (Opções de exemplo: edite no painel.)", items: [
-    { group: "Plano", name: "Starter", desc: "Para começar a automatizar.", price: "R$ 29/mês", value: "29", single: true },
-    { group: "Plano", name: "Pro", desc: "Para servidores em crescimento.", price: "R$ 59/mês", value: "59", single: true },
-    { group: "Plano", name: "Business", desc: "Para operações grandes.", price: "R$ 119/mês", value: "119", single: true },
-    { group: "Extensões", name: "DM em massa", desc: "Mensagens no privado para os membros.", price: "Sob consulta", value: "0", single: false },
-    { group: "Extensões", name: "Booster", desc: "Impulsione o servidor com contas Nitro.", price: "Sob consulta", value: "0", single: false },
-    { group: "Serviços", name: "Configuração assistida", desc: "A equipe deixa tudo pronto para você.", price: "R$ 49", value: "49", single: false }] },
-  links: [{ label: "Comunidade", url: "https://discord.gg/zend" }],
-  terms: { title: "Termos de uso", text: "Última atualização: edite esta data no painel.\n\n## 1. Aceitação\nAo usar o serviço você concorda com estes termos.\n\n## 2. Uso do serviço\n- Use o serviço de acordo com a lei e com as regras do Discord.\n- Não use para fraudes ou abusos.\n\n## 3. Pagamentos e cancelamento\nDescreva aqui planos, cobrança, reembolso e cancelamento.\n\n## 4. Contato\nDúvidas? Fale com a equipe pelo Discord." },
-  privacy: { title: "Política de privacidade", text: "## Dados que coletamos\nNome, e-mail e foto da conta Google, usados apenas para identificar você no site.\n\n## Como usamos\nOs dados servem para autenticação e suporte. Não vendemos suas informações.\n\n## Seus direitos\nVocê pode pedir a exclusão dos seus dados a qualquer momento." },
-  footer: { copy: "© 2026 Todos os direitos reservados." }
-};
+/* estrelas */
+let starCol="119,95,184";
+(()=>{const cv=$("#stars"),x=cv.getContext("2d"),still=matchMedia("(prefers-reduced-motion:reduce)").matches;let W,H,S=[];
+window.starsTheme=()=>{const v=getComputedStyle(document.documentElement).getPropertyValue("--primary").trim();if(hexOk(v)){const n=parseInt(v.slice(1),16);starCol=`${n>>16},${(n>>8)&255},${n&255}`}};
+const size=()=>{const d=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0);S=Array.from({length:Math.min(150,Math.round(W*H/9000))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,v:Math.random()*.18+.03,p:Math.random()*6.28,s:Math.random()*.002+.0006}))};
+const draw=t=>{x.clearRect(0,0,W,H);for(const s of S){if(!still){s.y-=s.v;s.x+=s.v*.25;if(s.y<-4){s.y=H+4;s.x=Math.random()*W}if(s.x>W+4)s.x=-4}const a=.3+.6*(.5+.5*Math.sin(t*s.s+s.p));x.fillStyle=`rgba(${starCol},${a})`;x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill()}};
+const loop=t=>{draw(t);requestAnimationFrame(loop)};addEventListener("resize",size);size();still?draw(0):requestAnimationFrame(loop)})();
 
-/* ---------- utilitários ---------- */
-const $ = (s, r = document) => r.querySelector(s);
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const link = u => /^(https?:|mailto:|#|\/)/i.test(String(u || "").trim()) ? esc(String(u).trim()) : "#";
-const get = (o, p) => p.split(".").reduce((a, k) => (a == null ? a : a[k]), o);
-const set = (o, p, v) => { const k = p.split("."), l = k.pop(); k.forEach(x => (o = o[x])); o[l] = v; };
-const clone = o => JSON.parse(JSON.stringify(o));
-const hexOk = v => /^#[0-9a-f]{6}$/i.test(v);
-function merge(d, s) {
-  if (Array.isArray(d)) return Array.isArray(s) ? s : d;
-  if (d && typeof d === "object") { const r = { ...d }; if (s && typeof s === "object") for (const k in s) r[k] = k in d ? merge(d[k], s[k]) : s[k]; return r; }
-  return s === undefined ? d : s;
+/* estado */
+let cfg=clone(DEF),saved=clone(DEF),blocks=[],savedBlocks=[],prices={},user=null,me=null,fb=null,dirty=false,saving=false,touched=new Set,deleted=new Set;
+const isAdmin=()=>!!user&&!!ADMIN_EMAIL&&(user.email||"").toLowerCase()===ADMIN_EMAIL.toLowerCase()&&user.emailVerified;
+const approved=()=>isAdmin()||!!me?.approved;
+
+function render(){
+  const c=cfg,st=document.documentElement.style;
+  if(hexOk(c.primary))st.setProperty("--primary",c.primary);if(hexOk(c.secondary))st.setProperty("--secondary",c.secondary);starsTheme();
+  document.title=`${c.brand} | ${c.tag}`;$("#brand").textContent=$("#brand2").textContent=c.brand;
+  const btn=(l,u,k)=>l?`<a class="btn ${k}" href="${link(u)}">${esc(l)}</a>`:"";
+  $("#hero").innerHTML=`<span class="pill">${esc(c.tag)}</span><h1>${esc(c.title)} <span>${esc(c.hi)}</span></h1><p class="lead">${esc(c.lead)}</p><div class="cta">${btn(c.b1,c.u1,"btn-main")}${btn(c.b2,c.u2,"btn-line")}</div>`;
+  $("#grid").innerHTML=blocks.map((b,i)=>{
+    const pv=prices[b.id]?.v,price=pv?`<span class="chip pr">${esc(pv)}</span>`:(b.hp?`<span class="chip">🔒 Preço para contas ativadas</span>`:"");
+    const chips=(b.dims?`<span class="chip">${esc(b.dims)}</span>`:"")+price;
+    const hasT=b.title||b.text||chips||b.url;
+    return`<article class="blk${b.plain?" plain":""}" style="grid-column:span ${+b.span||4};${b.minh?`min-height:${+b.minh}px`:""}">${/^data:image\//.test(b.img||"")?`<img src="${esc(b.img)}" alt="${esc(b.title)}" style="${b.imgh?`height:${+b.imgh}px`:""}" data-i="${i}" loading="lazy">`:""}${hasT?`<div class="bd${b.center?" c":""}">${b.title?`<h3>${esc(b.title)}</h3>`:""}${b.text?`<div class="prose">${fmt(b.text)}</div>`:""}${chips?`<div class="chips">${chips}</div>`:""}${b.url?`<a class="btn btn-line btn-sm" style="align-self:${b.center?"center":"flex-start"}" href="${link(b.url)}">${esc(b.label||"Abrir")}</a>`:""}</div>`:""}</article>`}).join("");
+  $("#obras").hidden=!blocks.length;
+  $("#about").innerHTML=`<h2>${esc(c.aboutTitle)}</h2><div class="prose" style="margin-top:22px">${fmt(c.about)}</div>`;$("#sobre").hidden=!c.about.trim();
+  $("#links").innerHTML=c.links.filter(l=>l.label).map(l=>`<li><a href="${link(l.url)}">${esc(l.label)}</a></li>`).join("");$("#copy").textContent=c.footer;
+  const g=$("#gate");g.hidden=!(user&&!approved());g.textContent=c.gate;
 }
-function fmt(t) {
-  return String(t || "").split(/\n{2,}/).map(b => {
-    b = b.trim(); if (!b) return "";
-    if (b.startsWith("## ")) return `<h3>${esc(b.slice(3))}</h3>`;
-    if (b.startsWith("# ")) return `<h2>${esc(b.slice(2))}</h2>`;
-    const ls = b.split("\n");
-    if (ls.every(l => l.startsWith("- "))) return "<ul>" + ls.map(l => `<li>${esc(l.slice(2))}</li>`).join("") + "</ul>";
-    return `<p>${esc(b).replace(/\n/g, "<br>")}</p>`;
-  }).join("");
+$("#grid").addEventListener("click",e=>{const i=e.target.closest("img[data-i]");if(i){$("#lb img").src=i.src;$("#lb").hidden=false}});
+$("#lb").onclick=()=>$("#lb").hidden=true;
+
+/* Firebase */
+const CDN="https://www.gstatic.com/firebasejs/10.12.2/";
+async function loadPrices(){
+  prices={};try{
+    const q=approved()?fb.F.collection(fb.db,"prices"):fb.F.query(fb.F.collection(fb.db,"prices"),fb.F.where("pub","==",true));
+    (await fb.F.getDocs(q)).forEach(d=>prices[d.id]=d.data());
+  }catch(e){console.warn(e)}
+  blocks.forEach(b=>{if(isAdmin()){b.price=prices[b.id]?.v||"";b.pub=prices[b.id]?.pub!==false}});
+  savedBlocks=clone(blocks);
 }
-let tmr; const toast = m => { const t = $("#toast"); t.textContent = m; t.classList.add("on"); clearTimeout(tmr); tmr = setTimeout(() => t.classList.remove("on"), 3600); };
-
-/* ---------- fundo estrelado animado (cor secundária) ---------- */
-let starsTheme = () => {};
-(function () {
-  const cv = $("#stars"), x = cv.getContext("2d"), still = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  let W, H, S = [], col = "32,167,45", raf = 0;
-  starsTheme = () => {
-    const v = getComputedStyle(document.documentElement).getPropertyValue("--secondary").trim();
-    if (hexOk(v)) { const n = parseInt(v.slice(1), 16); col = `${n >> 16},${(n >> 8) & 255},${n & 255}`; }
-  };
-  function size() {
-    const d = devicePixelRatio || 1; W = innerWidth; H = innerHeight;
-    cv.width = W * d; cv.height = H * d; x.setTransform(d, 0, 0, d, 0, 0);
-    S = Array.from({ length: Math.min(170, Math.round(W * H / 8500)) }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.5 + .4, v: Math.random() * .18 + .03, p: Math.random() * 6.28, s: Math.random() * .002 + .0006 }));
-    draw(performance.now());
-  }
-  function draw(t) {
-    x.clearRect(0, 0, W, H);
-    for (const s of S) {
-      if (!still) { s.y -= s.v; s.x += s.v * .25; if (s.y < -4) { s.y = H + 4; s.x = Math.random() * W; } if (s.x > W + 4) s.x = -4; }
-      const a = .3 + .6 * (.5 + .5 * Math.sin(t * s.s + s.p));
-      x.fillStyle = `rgba(${col},${a})`;
-      x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.283); x.fill();
-      if (s.r > 1.4) { x.fillStyle = `rgba(${col},${a * .18})`; x.beginPath(); x.arc(s.x, s.y, s.r * 3, 0, 6.283); x.fill(); }
-    }
-  }
-  function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
-  addEventListener("resize", size);
-  document.addEventListener("visibilitychange", () => { cancelAnimationFrame(raf); if (!document.hidden && !still) raf = requestAnimationFrame(loop); });
-  starsTheme(); size(); if (!still) raf = requestAnimationFrame(loop);
-})();
-
-/* ---------- estado e renderização ---------- */
-let cfg = clone(DEFAULTS), saved = clone(DEFAULTS), user = null, fb = null, dirty = false, saving = false;
-const CHECK = '<svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>';
-const GOOGLE = '<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.7 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.300 5.500-4.800 7.200l7.500 5.800c4.400-4.100 7.100-10.100 7.100-17.500z"/><path fill="#FBBC05" d="M10.4 28.7A14.500 14.500 0 019.500 24c0-1.600.3-3.200.8-4.700l-7.800-6.100A24 24 0 000 24c0 3.900.9 7.500 2.600 10.800l7.800-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.500-5.800c-2.100 1.400-4.800 2.300-8.400 2.300-6.300 0-11.700-4.100-13.600-9.800l-7.800 6.100C6.500 42.600 14.600 48 24 48z"/></svg>';
-const isAdmin = () => !!user && !!ADMIN_EMAIL && (user.email || "").toLowerCase() === ADMIN_EMAIL.toLowerCase() && user.emailVerified;
-const heading = (t, l) => `<div class="head"><h2>${esc(t)}</h2>${l ? `<p class="lead">${esc(l)}</p>` : ""}</div>`;
-const btn = (label, url, cls) => label ? `<a class="btn ${cls}" href="${link(url)}">${esc(label)}</a>` : "";
-
-function render() {
-  const c = cfg, st = document.documentElement.style;
-  if (hexOk(c.secondary)) st.setProperty("--secondary", c.secondary);
-  if (hexOk(c.primary)) st.setProperty("--primary", c.primary);
-  starsTheme();
-  document.title = `${c.brand} | ${c.hero.pill}`;
-  document.querySelectorAll(".brandname").forEach(e => (e.textContent = c.brand));
-  const h = c.hero;
-  $("#heroText").innerHTML = `<span class="pill"><i></i>${esc(h.pill)}</span><h1>${esc(h.title)} <span>${esc(h.highlight)}</span></h1><p class="lead">${esc(h.lead)}</p><div class="cta">${btn(h.cta1Label, h.cta1Url, "btn-main")}${btn(h.cta2Label, h.cta2Url, "btn-line")}</div><p class="note">${esc(h.note)}</p>`;
-  $("#statsBox").innerHTML = c.stats.map(s => `<div><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
-  $("#statsSec").hidden = !c.stats.length;
-  const F = c.features.items; $("#recursos").hidden = !F.length;
-  $("#recursosBox").innerHTML = heading(c.features.title, c.features.lead) + `<div class="cards">${F.map(f => `<article class="tile"><div class="ico">${CHECK}</div><h3>${esc(f.title)}</h3><p>${esc(f.desc)}</p></article>`).join("")}</div>`;
-  const P = c.plans.items; $("#planos").hidden = !P.length;
-  $("#planosBox").innerHTML = heading(c.plans.title, c.plans.lead) + `<div class="plans">${P.map(p => `<article class="plan${p.featured ? " feat" : ""}">${p.featured ? '<span class="badge">Mais popular</span>' : ""}<h3>${esc(p.name)}</h3><p class="pdesc">${esc(p.desc)}</p><div class="price"><b>${esc(p.price)}</b><span>${esc(p.period)}</span></div><ul>${(p.features || []).filter(x => x.trim()).map(x => `<li>${esc(x)}</li>`).join("")}</ul>${btn(p.label || "Assinar", p.url, p.featured ? "btn-main" : "btn-line")}</article>`).join("")}</div>`;
-  const R = c.products.items; $("#produtos").hidden = !R.length;
-  $("#produtosBox").innerHTML = heading(c.products.title, c.products.lead) + `<div class="cards">${R.map(p => `<article class="tile">${/^https?:/i.test(p.image) ? `<img class="pimg" loading="lazy" src="${esc(p.image)}" alt="${esc(p.name)}">` : ""}<h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>${p.price ? `<div class="pprice">${esc(p.price)}</div>` : ""}${btn(p.label, p.url, "btn-line btn-sm")}</article>`).join("")}</div>`;
-  $("#sobre").hidden = !c.about.text.trim();
-  $("#sobreBox").innerHTML = `<h2>${esc(c.about.title)}</h2><div class="prose" style="margin-top:24px">${fmt(c.about.text)}</div>`;
-  const Q = c.faq.items; $("#duvidas").hidden = !Q.length;
-  $("#faqBox").innerHTML = heading(c.faq.title) + Q.map(q => `<details><summary>${esc(q.q)}</summary><p>${esc(q.a)}</p></details>`).join("");
-  $("#ctaBox").innerHTML = `<h2>${esc(c.cta.title)}</h2><p>${esc(c.cta.text)}</p>${btn(c.cta.label, c.cta.url, "btn-main")}`;
-  $("#ctaSec").hidden = !c.cta.title;
-  const nav = [["recursos", "Recursos", F.length], ["planos", "Planos", P.length], ["produtos", "Produtos", R.length], ["pedido", "Pedido", c.builder.enabled && c.builder.items.length], ["sobre", "Sobre", c.about.text.trim()], ["duvidas", "Dúvidas", Q.length]];
-  $("#navList").innerHTML = nav.filter(n => n[2]).map(n => `<li><a href="#${n[0]}">${n[1]}</a></li>`).join("");
-  const sd = `<span class="dot ${esc(c.status.overall)}"></span>`;
-  $("#footLinks").innerHTML = [["Termos", "#termos"], ["Privacidade", "#privacidade"], ["Status", "#status", sd]].concat(c.links.map(l => [l.label, l.url])).map(l => `<li><a href="${link(l[1])}">${l[2] || ""}${esc(l[0])}</a></li>`).join("");
-  $("#copy").textContent = c.footer.copy;
-  if (!$("#legal").hidden) paintLegal();
-  if (!$("#statusPg").hidden) paintStatus();
-  renderBuilder();
-}
-const LEGAL = { termos: "terms", privacidade: "privacy" };
-function paintLegal() {
-  const k = LEGAL[location.hash.slice(1)]; if (!k) return;
-  $("#legalBox").innerHTML = `<h1>${esc(cfg[k].title)}</h1><div class="prose">${fmt(cfg[k].text)}</div><p style="margin-top:32px"><a href="#topo">← Voltar ao início</a></p>`;
-}
-function route() {
-  const h = location.hash.slice(1), isLegal = !!LEGAL[h], isStatus = h === "status";
-  $("#home").hidden = isLegal || isStatus; $("#legal").hidden = !isLegal; $("#statusPg").hidden = !isStatus;
-  if (isLegal) { paintLegal(); scrollTo(0, 0); }
-  else if (isStatus) { paintStatus(); scrollTo(0, 0); }
-  else if (h.startsWith("chat=")) openFromLink(h.slice(5));
-  else if (h) document.getElementById(h)?.scrollIntoView();
-}
-addEventListener("hashchange", route);
-
-/* menu mobile */
-const menuBtn = $("#menuBtn"), navList = $("#navList");
-const setMenu = o => { navList.classList.toggle("open", o); menuBtn.setAttribute("aria-expanded", o); menuBtn.textContent = o ? "✕" : "☰"; };
-menuBtn.onclick = () => setMenu(!navList.classList.contains("open"));
-navList.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
-
-/* ---------- Firebase ---------- */
-const V = "10.12.2", CDN = `https://www.gstatic.com/firebasejs/${V}/`;
-async function boot() {
-  try { ({ ADMIN_EMAIL, FIREBASE_CONFIG } = await import("./firebase-config.js")); } catch (e) { console.warn("firebase-config.js não encontrado."); renderAuth(); return; }
-  if (!FIREBASE_CONFIG || String(FIREBASE_CONFIG.apiKey).startsWith("COLE")) { renderAuth(); return; }
-  try {
-    const [A, Au, F] = await Promise.all([import(CDN + "firebase-app.js"), import(CDN + "firebase-auth.js"), import(CDN + "firebase-firestore.js")]);
-    const app = A.initializeApp(FIREBASE_CONFIG);
-    fb = { Au, F, auth: Au.getAuth(app), db: F.getFirestore(app) };
-    try { const s = await F.getDoc(F.doc(fb.db, "site", "config")); if (s.exists()) { cfg = merge(DEFAULTS, s.data()); saved = clone(cfg); render(); } }
-    catch (e) { console.warn("Não foi possível ler o conteúdo:", e); }
-    try { const k = await F.getDoc(F.doc(fb.db, "site", "keys")); if (k.exists()) adminPub = k.data().pub || null; } catch (e) { }
-    Au.onAuthStateChanged(fb.auth, async u => {
-      user = u; renderAuth();
-      if (u && pendingLink) { const p = pendingLink; pendingLink = null; openOrder(p); }
-      if (u) try { await F.setDoc(F.doc(fb.db, "users", u.uid), { name: u.displayName || "", email: u.email || "", photo: u.photoURL || "", lastLogin: new Date().toISOString() }, { merge: true }); } catch (e) { }
-      else { closeAdmin(true); closeChat(); if (pendingLink) toast("Entre com a mesma conta Google do pedido para abrir o chat."); }
+async function boot(){
+  try{({ADMIN_EMAIL,FIREBASE_CONFIG}=await import("./firebase-config.js"))}catch(e){renderAuth();render();return}
+  if(!FIREBASE_CONFIG||String(FIREBASE_CONFIG.apiKey).startsWith("COLE")){renderAuth();render();return}
+  try{
+    const [A,Au,F]=await Promise.all([import(CDN+"firebase-app.js"),import(CDN+"firebase-auth.js"),import(CDN+"firebase-firestore.js")]);
+    const app=A.initializeApp(FIREBASE_CONFIG);fb={Au,F,auth:Au.getAuth(app),db:F.getFirestore(app)};
+    try{const s=await F.getDoc(F.doc(fb.db,"site","config"));if(s.exists()){cfg={...DEF,...s.data()};saved=clone(cfg)}}catch(e){}
+    try{const s=await F.getDocs(F.collection(fb.db,"blocks"));blocks=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.o||0)-(b.o||0));savedBlocks=clone(blocks)}catch(e){}
+    await loadPrices();render();
+    Au.onAuthStateChanged(fb.auth,async u=>{
+      user=u;me=null;
+      if(u){try{const r=F.doc(fb.db,"users",u.uid),s=await F.getDoc(r),base={name:u.displayName||"",email:u.email||"",photo:u.photoURL||"",lastLogin:new Date().toISOString()};
+        if(s.exists()){await F.setDoc(r,base,{merge:true});me=(await F.getDoc(r)).data()}else{await F.setDoc(r,{...base,approved:false});me={approved:false}}}catch(e){console.warn(e)}}
+      else closeAdmin(true);
+      await loadPrices();renderAuth();render();
     });
-  } catch (e) { console.error(e); renderAuth(); }
+  }catch(e){console.error(e);renderAuth();render()}
 }
-function renderAuth() {
-  const box = $("#authBox");
-  if (!user) { box.innerHTML = `<button class="btn btn-line btn-sm" data-a="login">${GOOGLE}Entrar com Google</button>`; return; }
-  const img = /^https?:/i.test(user.photoURL || "") ? `<img src="${esc(user.photoURL)}" alt="" referrerpolicy="no-referrer">` : "";
-  box.innerHTML = (isAdmin() ? `<button class="btn btn-main btn-sm" data-a="admin">Painel admin</button>` : "") + `<button class="btn btn-line btn-sm" data-a="chats">${isAdmin() ? "Chats" : "Meus pedidos"}</button>` + `<button class="who" data-a="logout" title="Sair">${img}<span>Sair</span></button>`;
+function renderAuth(){
+  const b=$("#auth");
+  if(!user){b.innerHTML=`<button class="btn btn-main btn-sm" data-a="login">${GOOGLE}Entrar com Google</button>`;return}
+  const img=/^https?:/i.test(user.photoURL||"")?`<img src="${esc(user.photoURL)}" alt="" referrerpolicy="no-referrer">`:"";
+  b.innerHTML=(isAdmin()?`<button class="btn btn-main btn-sm" data-a="admin">Painel admin</button>`:"")+`<button class="who" data-a="logout" title="Sair">${img}<span>Sair</span></button>`;
 }
-async function login() {
-  if (!fb) { toast("Configure o firebase-config.js (veja o LEIA-ME)."); return; }
-  const p = new fb.Au.GoogleAuthProvider();
-  try { await fb.Au.signInWithPopup(fb.auth, p); }
-  catch (e) { if (e.code === "auth/popup-blocked") fb.Au.signInWithRedirect(fb.auth, p); else if (e.code === "auth/unauthorized-domain") toast("Domínio não autorizado: adicione-o em Authentication > Settings no Firebase."); else if (e.code !== "auth/popup-closed-by-user") toast("Erro no login: " + (e.code || e.message)); }
-}
-$("#authBox").addEventListener("click", e => {
-  const a = e.target.closest("[data-a]")?.dataset.a;
-  if (a === "login") login();
-  if (a === "logout") fb.Au.signOut(fb.auth).then(() => toast("Você saiu."));
-  if (a === "admin") openAdmin();
-  if (a === "chats") openChat();
+$("#auth").addEventListener("click",async e=>{
+  const a=e.target.closest("[data-a]")?.dataset.a;
+  if(a==="login"){if(!fb)return toast("Configure o firebase-config.js (veja o LEIA-ME).");
+    const p=new fb.Au.GoogleAuthProvider();try{await fb.Au.signInWithPopup(fb.auth,p)}catch(er){if(er.code==="auth/popup-blocked")fb.Au.signInWithRedirect(fb.auth,p);else if(er.code==="auth/unauthorized-domain")toast("Domínio não autorizado no Firebase (Authentication > Settings).");else if(er.code!=="auth/popup-closed-by-user")toast("Erro no login: "+(er.code||er.message))}}
+  if(a==="logout")fb.Au.signOut(fb.auth).then(()=>toast("Você saiu."));
+  if(a==="admin")openAdmin();
 });
 
-/* ---------- painel admin ---------- */
-const AR = "area", LN = "lines", CK = "check", CL = "color", SEL = "select";
-const ST = [["ok", "Operacional"], ["warn", "Instável"], ["down", "Fora do ar"], ["maint", "Em manutenção"]];
-const TABS = [
-  { id: "geral", label: "Geral", fields: [["brand", "Nome da marca"], ["secondary", "Cor secundária", CL], ["primary", "Cor principal", CL], ["hero.pill", "Selo do topo"], ["hero.title", "Título"], ["hero.highlight", "Título em destaque (verde)"], ["hero.lead", "Texto de apoio", AR], ["hero.cta1Label", "Botão 1: texto"], ["hero.cta1Url", "Botão 1: link"], ["hero.cta2Label", "Botão 2: texto"], ["hero.cta2Url", "Botão 2: link"], ["hero.note", "Observação abaixo dos botões"], ["cta.title", "Chamada final: título"], ["cta.text", "Chamada final: texto"], ["cta.label", "Chamada final: botão"], ["cta.url", "Chamada final: link"], ["footer.copy", "Texto do rodapé"]] },
-  { id: "stats", label: "Números", list: "stats", noun: "número", item: [["value", "Valor"], ["label", "Descrição"]] },
-  { id: "rec", label: "Recursos", fields: [["features.title", "Título da seção"], ["features.lead", "Subtítulo", AR]], list: "features.items", noun: "recurso", item: [["title", "Título"], ["desc", "Descrição", AR]] },
-  { id: "planos", label: "Planos", fields: [["plans.title", "Título da seção"], ["plans.lead", "Subtítulo", AR]], list: "plans.items", noun: "plano", item: [["name", "Nome"], ["price", "Preço (ex.: R$ 59)"], ["period", "Período (ex.: /mês)"], ["desc", "Descrição curta"], ["features", "Benefícios (um por linha)", LN], ["label", "Texto do botão"], ["url", "Link do botão"], ["featured", "Destacar como mais popular", CK]] },
-  { id: "prod", label: "Produtos", fields: [["products.title", "Título da seção"], ["products.lead", "Subtítulo", AR]], list: "products.items", noun: "produto", item: [["name", "Nome"], ["desc", "Descrição", AR], ["price", "Preço (opcional)"], ["image", "URL da imagem (opcional)"], ["label", "Texto do botão"], ["url", "Link do botão"]] },
-  { id: "pedido", label: "Pedido", fields: [["builder.enabled", "Mostrar o montador de pedidos", CK], ["builder.title", "Título da seção"], ["builder.lead", "Subtítulo", AR], ["builder.button", "Texto do botão"], ["builder.note", "Aviso abaixo do botão", AR]], list: "builder.items", noun: "opção", hint: "Opções com o mesmo grupo aparecem juntas. Marque “só uma opção” em qualquer item do grupo para o cliente escolher apenas uma (ex.: Plano).", item: [["group", "Grupo (ex.: Plano, Extras)"], ["name", "Nome"], ["desc", "Descrição", AR], ["price", "Preço exibido (ex.: R$ 29/mês)"], ["value", "Valor para o total (só número, ex.: 29)"], ["single", "Só uma opção neste grupo", CK]] },
-  { id: "status", label: "Status", fields: [["status.title", "Título da página"], ["status.overall", "Situação geral", SEL, ST], ["status.message", "Mensagem para os usuários (opcional)", AR]], list: "status.items", noun: "serviço", hint: "A data de atualização é registrada automaticamente ao salvar.", item: [["name", "Serviço"], ["state", "Situação", SEL, ST], ["note", "Observação (opcional)"]] },
-  { id: "inc", label: "Incidentes", list: "status.history", noun: "incidente", hint: "Histórico exibido na página de status, na ordem em que você deixar (use ↑ ↓).", item: [["date", "Data (ex.: 11/11/2026)"], ["title", "Título"], ["text", "Detalhes", AR]] },
-  { id: "seg", label: "Segurança", sec: true },
-  { id: "sobre", label: "Sobre nós", fields: [["about.title", "Título"], ["about.text", "Texto (linha em branco separa parágrafos; use ## subtítulo e - lista)", "tall"]] },
-  { id: "faq", label: "Dúvidas", fields: [["faq.title", "Título da seção"]], list: "faq.items", noun: "pergunta", item: [["q", "Pergunta"], ["a", "Resposta", AR]] },
-  { id: "termos", label: "Termos", fields: [["terms.title", "Título"], ["terms.text", "Texto (use ## subtítulo e - lista)", "tall"]] },
-  { id: "priv", label: "Privacidade", fields: [["privacy.title", "Título"], ["privacy.text", "Texto (use ## subtítulo e - lista)", "tall"]] },
-  { id: "links", label: "Links", list: "links", noun: "link", hint: "Aparecem no rodapé, ao lado de Termos e Privacidade.", item: [["label", "Texto"], ["url", "Endereço (https://...)"]] },
-  { id: "users", label: "Usuários", users: true }
-];
-let tab = "geral";
-const adm = $("#adm"), saveEl = () => $('[data-a="save"]');
-
-function mark(d) {
-  dirty = d;
-  const b = saveEl(), s = $("#state");
-  b.disabled = !d || saving;
-  s.textContent = d ? "● Alterações não salvas" : "Tudo salvo";
-  s.classList.toggle("dirty", d);
-}
-function field(p, l, t, v, o) {
-  if (t === SEL) return `<label class="fld">${esc(l)}<select data-p="${p}">${o.map(([k, n]) => `<option value="${k}" ${k === v ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>`;
-  if (t === CK) return `<label class="fld ck"><input type="checkbox" data-p="${p}" ${v ? "checked" : ""}> ${esc(l)}</label>`;
-  if (t === AR || t === "tall" || t === LN) return `<label class="fld">${esc(l)}<textarea data-p="${p}" ${t === LN ? 'data-t="lines"' : ""} rows="${t === "tall" ? 14 : 4}">${esc(t === LN ? (v || []).join("\n") : v)}</textarea></label>`;
-  return `<label class="fld">${esc(l)}<input data-p="${p}" type="${t === CL ? "color" : "text"}" value="${esc(v)}"></label>`;
-}
-function drawAdmin() {
-  $("#tabs").innerHTML = TABS.map(t => `<button role="tab" data-tab="${t.id}" aria-selected="${t.id === tab}">${t.label}</button>`).join("");
-  const T = TABS.find(x => x.id === tab); let h = "";
-  if (T.hint) h += `<p class="hint">${T.hint}</p>`;
-  (T.fields || []).forEach(([p, l, t, o]) => (h += field(p, l, t, get(cfg, p), o)));
-  if (T.list) {
-    const L = get(cfg, T.list);
-    h += `<div class="lh">Itens (${L.length})</div>`;
-    L.forEach((it, i) => {
-      h += `<div class="item"><div class="ih"><b>${esc(it[T.item[0][0]] || T.noun + " " + (i + 1))}</b><span><button data-a="up" data-i="${i}" aria-label="Subir">↑</button><button data-a="down" data-i="${i}" aria-label="Descer">↓</button><button data-a="del" data-i="${i}">Remover</button></span></div>`
-        + T.item.map(([k, l, t, o]) => field(`${T.list}.${i}.${k}`, l, t, it[k], o)).join("") + "</div>";
-    });
-    h += `<button class="btn btn-line btn-sm" data-a="add">+ Adicionar ${T.noun}</button>`;
-  }
-  if (T.users) { h = '<p class="hint">Carregando…</p>'; loadUsers(); }
-  if (T.sec) h = secHtml();
-  $("#admBody").innerHTML = h;
-}
-async function loadUsers() {
-  try {
-    const s = await fb.F.getDocs(fb.F.collection(fb.db, "users")), rows = [];
-    s.forEach(d => rows.push(d.data()));
-    rows.sort((a, b) => (b.lastLogin || "").localeCompare(a.lastLogin || ""));
-    if (tab === "users") $("#admBody").innerHTML = `<div class="lh">${rows.length} pessoa(s) já entraram</div><table class="users">${rows.map(u => `<tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${esc((u.lastLogin || "").slice(0, 10))}</td></tr>`).join("")}</table>`;
-  } catch (e) { $("#admBody").innerHTML = `<p class="hint">Não foi possível listar: ${esc(e.code || e.message)}. Confira as regras do Firestore.</p>`; }
-}
-function openAdmin() { if (!isAdmin()) return; adm.hidden = false; mark(dirty); drawAdmin(); }
-function closeAdmin(force) {
-  if (!force && dirty && !confirm("Há alterações não salvas. Fechar mesmo assim?")) return;
-  adm.hidden = true;
-  if (dirty || force) { cfg = clone(saved); mark(false); render(); }
-}
-async function save() {
-  if (saving || !dirty) return;
-  if (!fb || !isAdmin()) return toast("Sem permissão para salvar.");
-  if (!hexOk(cfg.secondary) || !hexOk(cfg.primary)) return toast("Cor inválida. Use o seletor de cores.");
-  if (JSON.stringify(cfg.status) !== JSON.stringify(saved.status)) cfg.status.updated = new Date().toISOString();
-  const b = saveEl(); saving = true; b.disabled = true; b.textContent = "Salvando…";
-  try {
-    await fb.F.setDoc(fb.F.doc(fb.db, "site", "config"), clone(cfg));
-    saved = clone(cfg); saving = false; mark(false); toast("Salvo e publicado ✓");
-  } catch (er) {
-    saving = false; mark(true);
-    toast(er.code === "permission-denied" ? "O Firestore recusou: confira as regras e o e-mail do admin." : "Erro ao salvar: " + (er.code || er.message));
-  } finally { b.textContent = "Salvar e publicar"; }
-}
-let rt; adm.addEventListener("input", e => {
-  const t = e.target, p = t.dataset.p; if (!p) return;
-  let v = t.type === "checkbox" ? t.checked : t.value;
-  if (t.dataset.t === "lines") v = v.split("\n");
-  set(cfg, p, v); mark(true); clearTimeout(rt); rt = setTimeout(render, 120);
-});
-adm.addEventListener("click", async e => {
-  const tb = e.target.closest("[data-tab]"); if (tb) { tab = tb.dataset.tab; drawAdmin(); return; }
-  const b = e.target.closest("[data-a]"); if (!b) return;
-  const a = b.dataset.a, T = TABS.find(x => x.id === tab), i = +b.dataset.i;
-  if (a === "close") return closeAdmin();
-  if (a === "save") return save();
-  if (a === "discard") { if (!dirty) return; cfg = clone(saved); mark(false); render(); drawAdmin(); return toast("Alterações descartadas."); }
-  if (a === "reset") { if (confirm("Voltar todo o conteúdo ao padrão? (só vale depois de salvar)")) { cfg = clone(DEFAULTS); mark(true); render(); drawAdmin(); } return; }
-  if (a === "genkeys") return genKeys();
-  if (a === "dlkey") return dlKey();
-  const L = T.list && get(cfg, T.list); if (!L) return;
-  if (a === "add") L.push(Object.fromEntries(T.item.map(([k, , t, o]) => [k, t === CK ? false : t === LN ? [] : t === SEL ? o[0][0] : ""])));
-  else if (a === "del") { if (!confirm("Remover este item?")) return; L.splice(i, 1); }
-  else if (a === "up" && i > 0) [L[i - 1], L[i]] = [L[i], L[i - 1]];
-  else if (a === "down" && i < L.length - 1) [L[i + 1], L[i]] = [L[i], L[i + 1]];
+/* painel admin */
+const CK="ck",CL="cl",AR="ar",SEL="sel";
+const SPANS=[[12,"Largura total"],[8,"2/3"],[6,"Metade"],[4,"1/3"],[3,"1/4"]];
+const TABS=[
+ {id:"site",label:"Site",fields:[["brand","Nome do portfólio"],["primary","Cor primária",CL],["secondary","Cor secundária",CL],["tag","Selo do topo"],["title","Título"],["hi","Título em destaque"],["lead","Texto de apoio",AR],["b1","Botão 1: texto"],["u1","Botão 1: link"],["b2","Botão 2: texto"],["u2","Botão 2: link"],["gate","Aviso para contas ainda não ativadas",AR],["footer","Texto do rodapé"]]},
+ {id:"blocos",label:"Obras e blocos",blocks:true},
+ {id:"sobre",label:"Sobre",fields:[["aboutTitle","Título"],["about","Texto (linha em branco separa parágrafos; ## subtítulo)","tall"]]},
+ {id:"links",label:"Links",list:"links",noun:"link",item:[["label","Texto"],["url","Endereço (https://...)"]]},
+ {id:"users",label:"Logins",users:true}];
+let tab="site";const adm=$("#adm");
+const mark=d=>{dirty=d;$('[data-a=save]').disabled=!d||saving;const s=$("#st");s.textContent=d?"● Alterações não salvas":"Tudo salvo";s.classList.toggle("d",d)};
+function field(p,l,t,v,o){
+  if(t===SEL)return`<label class="fld">${esc(l)}<select data-p="${p}" data-n="1">${o.map(([k,n])=>`<option value="${k}" ${+k===+v?"selected":""}>${esc(n)}</option>`).join("")}</select></label>`;
+  if(t===CK)return`<label class="fld ck"><input type="checkbox" data-p="${p}" ${v?"checked":""}> ${esc(l)}</label>`;
+  if(t===AR||t==="tall")return`<label class="fld">${esc(l)}<textarea data-p="${p}" rows="${t==="tall"?12:4}">${esc(v)}</textarea></label>`;
+  if(t==="num")return`<label class="fld">${esc(l)}<input data-p="${p}" data-n="1" type="number" min="0" value="${esc(v||"")}"></label>`;
+  return`<label class="fld">${esc(l)}<input data-p="${p}" type="${t===CL?"color":"text"}" value="${esc(v)}"></label>`}
+const BF=i=>[["title","Título (opcional)"],["text","Texto (opcional)",AR],["dims","Dimensões (ex.: 30x40 cm / 3000x4000 px)"],["price","Preço (ex.: R$ 150)"],["pub","Preço visível para todos (desmarcado = só contas ativadas)",CK],["url","Link do botão (opcional)"],["label","Texto do botão"],["span","Largura no portfólio",SEL,SPANS],["imgh","Altura da imagem em px (vazio = automática)","num"],["minh","Altura mínima do bloco em px","num"],["center","Centralizar texto",CK],["plain","Sem fundo/borda (texto solto)",CK]].map(([k,l,t,o])=>field(`b.${i}.${k}`,l,t,blocks[i][k],o)).join("");
+function draw(){
+  $("#tabs").innerHTML=TABS.map(t=>`<button role="tab" data-tab="${t.id}" aria-selected="${t.id===tab}">${t.label}</button>`).join("");
+  const T=TABS.find(x=>x.id===tab);let h="";
+  (T.fields||[]).forEach(([p,l,t])=>h+=field(p,l,t,get(cfg,p)));
+  if(T.list){const L=get(cfg,T.list);L.forEach((it,i)=>h+=`<div class="item"><div class="ih"><b>${esc(it.label||T.noun)}</b><span><button data-a="del" data-i="${i}">Remover</button></span></div>${T.item.map(([k,l])=>field(`${T.list}.${i}.${k}`,l,"",it[k])).join("")}</div>`);h+=`<button class="btn btn-line btn-sm" data-a="add">+ Adicionar ${T.noun}</button>`}
+  if(T.blocks){h=`<p class="hint">Cada bloco pode ter imagem, texto, dimensões, preço e link. Use largura e ↑ ↓ para posicionar onde quiser.</p>`;
+    blocks.forEach((b,i)=>h+=`<div class="item"><div class="ih"><b>${esc(b.title||"Bloco "+(i+1))}</b><span><button data-a="up" data-i="${i}">↑</button><button data-a="down" data-i="${i}">↓</button><button data-a="del" data-i="${i}">Remover</button></span></div>${b.img?`<img class="thumb" src="${esc(b.img)}" alt="">`:""}<label class="fld">Imagem (envie do seu aparelho)<input type="file" accept="image/*" data-up="${i}"></label>${b.img?`<button class="btn btn-line btn-sm" data-a="rmimg" data-i="${i}">Remover imagem</button>`:""}${BF(i)}</div>`);
+    h+=`<button class="btn btn-line btn-sm" data-a="addb">+ Adicionar bloco</button>`}
+  if(T.users){h='<p class="hint">Carregando…</p>';loadUsers()}
+  $("#ab").innerHTML=h}
+async function loadUsers(){
+  try{const s=await fb.F.getDocs(fb.F.collection(fb.db,"users")),r=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.lastLogin||"").localeCompare(a.lastLogin||""));
+    if(tab==="users")$("#ab").innerHTML=`<p class="hint">Quem entra com Google fica pendente até você ativar. Contas ativadas veem os preços marcados como restritos.</p><table>${r.map(u=>`<tr><td>${esc(u.name)}<br><span class="hint">${esc(u.email)}</span></td><td><button class="btn ${u.approved?"btn-main":"btn-line"} btn-sm" data-a="appr" data-id="${u.id}" data-v="${u.approved?0:1}">${u.approved?"Ativo":"Ativar"}</button></td></tr>`).join("")}</table>`}
+  catch(e){$("#ab").innerHTML=`<p class="hint">Erro ao listar: ${esc(e.code||e.message)}. Confira o firestore.rules.</p>`}}
+function openAdmin(){if(!isAdmin())return;adm.hidden=false;mark(dirty);draw()}
+function closeAdmin(f){if(!f&&dirty&&!confirm("Há alterações não salvas. Fechar mesmo assim?"))return;adm.hidden=true;if(dirty||f){cfg=clone(saved);blocks=clone(savedBlocks);touched.clear();deleted.clear();mark(false);render()}}
+async function save(){
+  if(saving||!dirty||!fb||!isAdmin())return;
+  if(!hexOk(cfg.primary)||!hexOk(cfg.secondary))return toast("Cor inválida.");
+  const b=$('[data-a=save]');saving=true;b.disabled=true;b.textContent="Salvando…";const F=fb.F,db=fb.db;
+  try{
+    await F.setDoc(F.doc(db,"site","config"),clone(cfg));
+    for(const id of deleted){await F.deleteDoc(F.doc(db,"blocks",id));await F.deleteDoc(F.doc(db,"prices",id))}
+    for(const [i,bk] of blocks.entries()){if(!touched.has(bk.id))continue;
+      const {price,pub,...rest}=bk;rest.o=i;rest.hp=!!price&&pub===false;
+      await F.setDoc(F.doc(db,"blocks",bk.id),rest);
+      if(price)await F.setDoc(F.doc(db,"prices",bk.id),{v:price,pub:pub!==false});else await F.deleteDoc(F.doc(db,"prices",bk.id));}
+    touched.clear();deleted.clear();saved=clone(cfg);savedBlocks=clone(blocks);await loadPrices();saving=false;mark(false);toast("Salvo e publicado ✓");render();
+  }catch(er){saving=false;mark(true);toast(er.code==="permission-denied"?"Firestore recusou: confira as regras e o e-mail do admin.":"Erro ao salvar: "+(er.code||er.message))}
+  finally{b.textContent="Salvar e publicar"}}
+async function shrink(f){const bm=await createImageBitmap(f),k=Math.min(1,1400/Math.max(bm.width,bm.height)),c=document.createElement("canvas");c.width=Math.round(bm.width*k);c.height=Math.round(bm.height*k);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);let q=.85,d;do{d=c.toDataURL("image/webp",q);q-=.1}while(d.length>850000&&q>.15);return d}
+let rt;adm.addEventListener("input",e=>{
+  const t=e.target,p=t.dataset.p;if(!p)return;let v=t.type==="checkbox"?t.checked:t.value;if(t.dataset.n)v=v===""?"":+v;
+  if(p.startsWith("b.")){const[,i,k]=p.split(".");blocks[i][k]=v;touched.add(blocks[i].id)}else set(cfg,p,v);
+  mark(true);clearTimeout(rt);rt=setTimeout(render,120)});
+adm.addEventListener("change",async e=>{
+  const i=e.target.dataset.up;if(i==null||!e.target.files[0])return;
+  try{blocks[i].img=await shrink(e.target.files[0]);touched.add(blocks[i].id);mark(true);render();draw()}catch(er){toast("Não foi possível usar essa imagem.")}});
+adm.addEventListener("click",async e=>{
+  const tb=e.target.closest("[data-tab]");if(tb){tab=tb.dataset.tab;draw();return}
+  const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,i=+b.dataset.i,T=TABS.find(x=>x.id===tab);
+  if(a==="close")return closeAdmin();if(a==="save")return save();
+  if(a==="discard"){if(!dirty)return;cfg=clone(saved);blocks=clone(savedBlocks);touched.clear();deleted.clear();mark(false);render();draw();return toast("Alterações descartadas.")}
+  if(a==="appr"){try{await fb.F.updateDoc(fb.F.doc(fb.db,"users",b.dataset.id),{approved:b.dataset.v==="1"});toast(b.dataset.v==="1"?"Login ativado ✓":"Login desativado");loadUsers()}catch(er){toast("Erro: "+(er.code||er.message))}return}
+  if(a==="addb"){const id=crypto.randomUUID();blocks.push({id,title:"",text:"",img:"",dims:"",price:"",pub:true,url:"",label:"Abrir",span:4,imgh:"",minh:"",center:false,plain:false});touched.add(id)}
+  else if(a==="rmimg"){blocks[i].img="";touched.add(blocks[i].id)}
+  else if(a==="up"&&i>0){[blocks[i-1],blocks[i]]=[blocks[i],blocks[i-1]];touched.add(blocks[i].id).add(blocks[i-1].id)}
+  else if(a==="down"&&i<blocks.length-1){[blocks[i+1],blocks[i]]=[blocks[i],blocks[i+1]];touched.add(blocks[i].id).add(blocks[i+1].id)}
+  else if(a==="del"){if(!confirm("Remover este item?"))return;if(T.blocks){deleted.add(blocks[i].id);blocks.splice(i,1)}else get(cfg,T.list).splice(i,1)}
+  else if(a==="add")get(cfg,T.list).push(Object.fromEntries(T.item.map(([k])=>[k,""])));
   else return;
-  mark(true); render(); drawAdmin();
-});
-addEventListener("keydown", e => {
-  if (adm.hidden) return;
-  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); }
-  if (e.key === "Escape") closeAdmin();
-});
-addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
-
-/* ---------- criptografia (AES-256-GCM por pedido + RSA-OAEP da equipe) ---------- */
-let adminPub = null, pendingLink = null, privCache = null;
-/*CRYPTO-START*/
-const u8b64 = u => { let s = ""; u.forEach(b => (s += String.fromCharCode(b))); return btoa(s); };
-const b64u8 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
-const u8b64u = u => u8b64(u).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-const b64uu8 = s => b64u8(s.replace(/-/g, "+").replace(/_/g, "/"));
-const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
-const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) { } };
-const RSA = { name: "RSA-OAEP", hash: "SHA-256" };
-const importAes = b64 => crypto.subtle.importKey("raw", b64uu8(b64), "AES-GCM", false, ["encrypt", "decrypt"]);
-async function encObj(key, obj) {
-  const iv = crypto.getRandomValues(new Uint8Array(12));
-  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(JSON.stringify(obj))));
-  return { iv: u8b64(iv), ct: u8b64(ct) };
-}
-async function decObj(key, m) {
-  try { return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({ name: "AES-GCM", iv: b64u8(m.iv) }, key, b64u8(m.ct)))); }
-  catch (e) { return null; }
-}
-async function wrapRaw(pubJwk, raw) {
-  const pk = await crypto.subtle.importKey("jwk", pubJwk, RSA, false, ["encrypt"]);
-  return u8b64(new Uint8Array(await crypto.subtle.encrypt({ name: "RSA-OAEP" }, pk, raw)));
-}
-async function adminPriv() {
-  if (privCache) return privCache;
-  const j = lsGet("effi.priv"); if (!j) return null;
-  try { privCache = await crypto.subtle.importKey("jwk", JSON.parse(j), RSA, false, ["decrypt"]); } catch (e) { return null; }
-  return privCache;
-}
-async function unwrapRaw(wk) {
-  const p = await adminPriv(); if (!p) return null;
-  try { return u8b64u(new Uint8Array(await crypto.subtle.decrypt({ name: "RSA-OAEP" }, p, b64u8(wk)))); } catch (e) { return null; }
-}
-/*CRYPTO-END*/
-async function keyFor(oid, order) {
-  let raw = lsGet("effi.k." + oid);
-  if (!raw && isAdmin() && order?.wk) { raw = await unwrapRaw(order.wk); if (raw) lsSet("effi.k." + oid, raw); }
-  if (!raw) return null;
-  try { return await importAes(raw); } catch (e) { return null; }
-}
-
-/* chaves da equipe (aba Segurança do painel) */
-function secHtml() {
-  const pub = !!adminPub, prv = !!lsGet("effi.priv");
-  return `<p class="hint">Cada pedido usa uma chave própria (AES-256) criada no navegador do cliente e protegida com a chave pública da equipe. Só quem tem a chave privada lê as conversas.</p>
-<div class="item"><div class="lh">Chave da equipe</div><p class="hint">Chave pública publicada: <b>${pub ? "sim" : "não"}</b><br>Chave privada neste navegador: <b>${prv ? "sim" : "não"}</b></p>
-<button class="btn btn-main btn-sm" data-a="genkeys">${pub ? "Gerar novas chaves" : "Gerar e publicar chaves"}</button>
-${prv ? '<button class="btn btn-line btn-sm" data-a="dlkey">Baixar backup da chave privada</button>' : ""}
-<label class="fld">Importar chave privada (backup .json)<input type="file" accept="application/json,.json" id="impKey"></label>
-<p class="hint">Guarde o backup em local seguro. Sem a chave privada ninguém consegue ler as conversas, nem a equipe. Os pedidos só ficam ativos para clientes depois que as chaves forem geradas.</p></div>`;
-}
-async function genKeys() {
-  if (!fb || !isAdmin()) return;
-  if (adminPub && !confirm("Já existe uma chave publicada. Gerar uma nova deixa ILEGÍVEIS os pedidos que você ainda não abriu neste navegador. Continuar?")) return;
-  try {
-    const kp = await crypto.subtle.generateKey({ name: "RSA-OAEP", modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: "SHA-256" }, true, ["encrypt", "decrypt"]);
-    const pub = await crypto.subtle.exportKey("jwk", kp.publicKey), prv = await crypto.subtle.exportKey("jwk", kp.privateKey);
-    await fb.F.setDoc(fb.F.doc(fb.db, "site", "keys"), { pub });
-    lsSet("effi.priv", JSON.stringify(prv)); privCache = null; adminPub = pub;
-    toast("Chaves geradas e publicadas. Guarde o backup que acabou de baixar."); drawAdmin(); dlKey();
-  } catch (e) { toast(e.code === "permission-denied" ? "O Firestore recusou: confira o firestore.rules." : "Erro ao gerar as chaves: " + (e.code || e.message)); }
-}
-function dlKey() {
-  const v = lsGet("effi.priv"); if (!v) return toast("Nenhuma chave privada neste navegador.");
-  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([v], { type: "application/json" })); a.download = "effi-chave-privada.json"; a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-}
-async function impKey(f) {
-  if (!f) return;
-  try {
-    const j = JSON.parse(await f.text());
-    if (j.kty !== "RSA" || !j.d) throw new Error("arquivo inválido");
-    if (adminPub && j.n !== adminPub.n) throw new Error("essa chave não corresponde à chave publicada");
-    await crypto.subtle.importKey("jwk", j, RSA, false, ["decrypt"]);
-    lsSet("effi.priv", JSON.stringify(j)); privCache = null; toast("Chave importada."); drawAdmin();
-  } catch (e) { toast("Não foi possível importar: " + e.message); }
-}
-adm.addEventListener("change", e => { if (e.target.id === "impKey") impKey(e.target.files[0]); });
-
-/* ---------- página de status ---------- */
-const SLAB = { ok: "Operacional", warn: "Instável", down: "Fora do ar", maint: "Em manutenção" };
-const OLAB = { ok: "Todos os sistemas operando", warn: "Instabilidade em parte dos serviços", down: "Serviços fora do ar", maint: "Manutenção em andamento" };
-function paintStatus() {
-  const s = cfg.status, st = k => (SLAB[k] ? k : "ok"), d = s.updated ? new Date(s.updated) : null, I = Array.isArray(s.items) ? s.items : [], H = Array.isArray(s.history) ? s.history : [];
-  $("#statusBox").innerHTML = `<h1>${esc(s.title)}</h1><div class="st-ban"><span class="dot ${st(s.overall)}"></span><div><b>${esc(OLAB[st(s.overall)])}</b>${s.message ? `<p class="hint" style="margin-top:4px">${esc(s.message)}</p>` : ""}${d && !isNaN(d) ? `<p class="hint">Atualizado em ${esc(d.toLocaleString("pt-BR"))}</p>` : ""}</div></div>`
-    + `<div class="st-list">${I.map(i => `<div class="st-row"><span class="dot ${st(i.state)}"></span><span class="nm">${esc(i.name)}${i.note ? `<small>${esc(i.note)}</small>` : ""}</span><span class="sl">${esc(SLAB[st(i.state)])}</span></div>`).join("")}</div>`
-    + (H.length ? `<h2 style="font-size:1.5rem;margin:44px 0 16px">Incidentes</h2><div class="st-list">${H.map(h => `<div class="st-row" style="display:block"><b>${esc(h.title)}</b> <span class="hint">${esc(h.date)}</span><p class="hint" style="margin-top:4px">${esc(h.text)}</p></div>`).join("")}</div>` : "")
-    + `<p style="margin-top:32px"><a href="#topo">← Voltar ao início</a></p>`;
-}
-
-/* ---------- montador de pedido ---------- */
-const sel = new Set();
-const num = v => { let s = String(v ?? "").replace(/[^\d,.-]/g, ""); if (s.includes(",")) s = s.replace(/\./g, "").replace(",", "."); return parseFloat(s) || 0; };
-const brl = n => Number(n || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-const gname = i => String(i.group || "Opções");
-const ikey = i => gname(i) + "\u0001" + i.name;
-const bItems = () => cfg.builder.items.filter(i => String(i.name || "").trim());
-function renderBuilder() {
-  const b = cfg.builder, I = bItems(), note = $("#bNote")?.value || "";
-  $("#pedido").hidden = !b.enabled || !I.length;
-  const valid = new Set(I.map(ikey)); [...sel].forEach(k => valid.has(k) || sel.delete(k));
-  const groups = []; I.forEach(i => { let g = groups.find(x => x.n === gname(i)); if (!g) groups.push((g = { n: gname(i), a: [] })); g.a.push(i); });
-  $("#pedidoBox").innerHTML = heading(b.title, b.lead) + `<div class="bld"><div>${groups.map(g => `<h3 class="bg">${esc(g.n)}</h3><div class="bl-grid">${g.a.map(i => `<button type="button" class="opt" data-i="${I.indexOf(i)}" aria-pressed="false"><b>${esc(i.name)}</b>${i.desc ? `<small>${esc(i.desc)}</small>` : ""}${i.price ? `<em>${esc(i.price)}</em>` : ""}</button>`).join("")}</div>`).join("")}</div>`
-    + `<aside class="bl-sum"><h3>Seu pedido</h3><ul id="bSum"></ul><div class="bl-total"><span>Total estimado</span><b id="bTot"></b></div><label class="fld">Observações para a equipe<textarea id="bNote" maxlength="1000" rows="3" placeholder="Detalhes, prazos, dúvidas…"></textarea></label><button type="button" class="btn btn-main" id="bGo">${esc(b.button)}</button><p class="hint">${esc(b.note)}</p></aside></div>`;
-  $("#bNote").value = note; sumBuilder();
-}
-function sumBuilder() {
-  const I = bItems(), P = I.filter(i => sel.has(ikey(i)));
-  $("#bSum").innerHTML = P.length ? P.map(i => `<li><span>${esc(i.name)}</span><span>${esc(i.price || "")}</span></li>`).join("") : '<li class="hint">Nenhuma opção escolhida.</li>';
-  $("#bTot").textContent = brl(P.reduce((s, i) => s + num(i.value), 0));
-  document.querySelectorAll("#pedidoBox .opt").forEach(o => o.setAttribute("aria-pressed", sel.has(ikey(I[+o.dataset.i]))));
-}
-$("#pedidoBox").addEventListener("click", e => {
-  const o = e.target.closest(".opt");
-  if (o) {
-    const I = bItems(), it = I[+o.dataset.i]; if (!it) return;
-    const k = ikey(it);
-    if (sel.has(k)) sel.delete(k);
-    else { if (I.some(x => gname(x) === gname(it) && x.single)) I.filter(x => gname(x) === gname(it)).forEach(x => sel.delete(ikey(x))); sel.add(k); }
-    return sumBuilder();
-  }
-  if (e.target.closest("#bGo")) placeOrder();
-});
-let ordering = false;
-async function placeOrder() {
-  if (ordering) return;
-  const I = bItems(), P = I.filter(i => sel.has(ikey(i)));
-  if (!P.length) return toast("Escolha pelo menos uma opção.");
-  if (!fb) return toast("Configure o firebase-config.js (veja o LEIA-ME).");
-  if (!user) { toast("Entre com Google para abrir o chat do pedido."); return login(); }
-  ordering = true; const go = $("#bGo"); go.disabled = true;
-  try {
-    const F = fb.F, kd = await F.getDoc(F.doc(fb.db, "site", "keys"));
-    adminPub = kd.exists() ? kd.data().pub || null : null;
-    if (!adminPub) throw new Error("A equipe ainda não ativou os pedidos. Tente mais tarde.");
-    const key = await crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, ["encrypt", "decrypt"]);
-    const raw = new Uint8Array(await crypto.subtle.exportKey("raw", key)), wk = await wrapRaw(adminPub, raw);
-    const oref = F.doc(F.collection(fb.db, "orders"));
-    await F.setDoc(oref, { uid: user.uid, name: user.displayName || "", status: "aberto", n: P.length, wk, createdAt: F.serverTimestamp(), lastMsgAt: F.serverTimestamp() });
-    lsSet("effi.k." + oref.id, u8b64u(raw));
-    await sendEnc(oref.id, key, { t: "order", items: P.map(i => ({ g: gname(i), n: i.name, p: i.price || "" })), total: P.reduce((s, i) => s + num(i.value), 0), note: ($("#bNote").value || "").trim() });
-    sel.clear(); $("#bNote").value = ""; sumBuilder();
-    toast("Pedido criado. Chat privado aberto."); openOrder(oref.id);
-  } catch (e) {
-    console.error(e);
-    toast(e.code === "permission-denied" ? "O Firestore recusou: confira o firestore.rules." : e.message || "Erro ao criar o pedido.");
-  } finally { ordering = false; const g = $("#bGo"); if (g) g.disabled = false; }
-}
-async function sendEnc(oid, key, body) {
-  const F = fb.F, enc = await encObj(key, body), b = F.writeBatch(fb.db);
-  b.set(F.doc(F.collection(fb.db, "orders", oid, "messages")), { uid: user.uid, at: F.serverTimestamp(), iv: enc.iv, ct: enc.ct });
-  b.update(F.doc(fb.db, "orders", oid), { lastMsgAt: F.serverTimestamp() });
-  await b.commit();
-}
-
-/* ---------- chat privado ---------- */
-const chatEl = $("#chat"), chat = { off: [], orders: new Map(), oid: null, key: null, gen: 0, mseq: 0, painted: false };
-const ST_O = { aberto: "Aberto", andamento: "Em andamento", entregue: "Entregue", fechado: "Fechado" };
-const ms = t => (t && t.toMillis ? t.toMillis() : Date.now());
-const fmtT = t => new Date(ms(t)).toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
-const stopAll = () => { chat.off.forEach(f => f()); chat.off = []; };
-function openChat() { if (!user || !fb) return; chatEl.hidden = false; showList(); }
-function closeChat() { stopAll(); chat.gen++; chat.oid = null; chat.key = null; chatEl.hidden = true; }
-function showList() {
-  stopAll(); chat.gen++; chat.oid = null; chat.key = null;
-  $("#chTitle").textContent = isAdmin() ? "Pedidos recebidos" : "Meus pedidos";
-  $("#chBack").hidden = true; $("#chBar").hidden = true; $("#chForm").hidden = true;
-  $("#chBody").innerHTML = '<p class="hint">Carregando…</p>';
-  const F = fb.F, col = F.collection(fb.db, "orders");
-  const q = isAdmin() ? F.query(col, F.orderBy("lastMsgAt", "desc"), F.limit(100)) : F.query(col, F.where("uid", "==", user.uid));
-  chat.off.push(F.onSnapshot(q, s => {
-    const rows = []; s.forEach(d => { chat.orders.set(d.id, d.data()); rows.push([d.id, d.data()]); });
-    rows.sort((a, b) => ms(b[1].lastMsgAt) - ms(a[1].lastMsgAt));
-    $("#chBody").innerHTML = rows.length ? rows.map(([id, o]) => `<button class="oi" data-oid="${esc(id)}"><b>Pedido #${esc(id.slice(0, 6).toUpperCase())}</b><span class="hint">${isAdmin() ? esc(o.name || "Cliente") + " · " : ""}${Number(o.n) || 0} item(ns) · ${esc(fmtT(o.lastMsgAt))}</span><span class="stt ${esc(o.status)}">${esc(ST_O[o.status] || o.status)}</span></button>`).join("") : '<p class="hint">Nenhum pedido ainda. Monte o seu na seção “Pedido”.</p>';
-  }, e => { $("#chBody").innerHTML = `<p class="hint">Não foi possível carregar: ${esc(e.code || e.message)}</p>`; }));
-}
-function paintBar(o) {
-  const bar = $("#chBar"); bar.hidden = false;
-  bar.innerHTML = isAdmin()
-    ? `<span>${esc(o.name || "Cliente")}</span><select data-c="status" aria-label="Situação do pedido">${Object.entries(ST_O).map(([k, n]) => `<option value="${k}" ${k === o.status ? "selected" : ""}>${n}</option>`).join("")}</select>`
-    : `<span class="stt ${esc(o.status)}">${esc(ST_O[o.status] || o.status)}</span><button class="btn btn-line btn-sm" data-c="link">Copiar link de acesso</button>`;
-  $("#chForm").hidden = o.status === "fechado" || !chat.key;
-}
-async function openOrder(oid) {
-  if (!fb || !user) return;
-  const F = fb.F, g = ++chat.gen; stopAll(); chatEl.hidden = false; chat.oid = oid; chat.key = null; chat.painted = false;
-  $("#chBack").hidden = false; $("#chBar").hidden = true; $("#chForm").hidden = true;
-  $("#chTitle").textContent = "Pedido #" + oid.slice(0, 6).toUpperCase();
-  $("#chBody").innerHTML = '<p class="hint">Abrindo…</p>';
-  let order;
-  try { const d = await F.getDoc(F.doc(fb.db, "orders", oid)); if (!d.exists()) throw new Error("Pedido não encontrado."); order = d.data(); chat.orders.set(oid, order); }
-  catch (e) { if (g === chat.gen) $("#chBody").innerHTML = `<p class="hint">Não foi possível abrir este pedido (${esc(e.code || e.message)}).</p>`; return; }
-  const key = await keyFor(oid, order); if (g !== chat.gen) return;
-  chat.key = key; paintBar(order);
-  if (!key) { $("#chBody").innerHTML = `<p class="hint">${isAdmin() ? "A chave deste pedido não está neste navegador. Importe sua chave privada em Painel admin › Segurança." : "A chave deste pedido não está neste navegador. Abra o chat pelo link de acesso copiado ao criar o pedido."}</p>`; return; }
-  chat.off.push(F.onSnapshot(F.doc(fb.db, "orders", oid), d => { if (g === chat.gen && d.exists()) { chat.orders.set(oid, d.data()); paintBar(d.data()); } }));
-  chat.off.push(F.onSnapshot(F.query(F.collection(fb.db, "orders", oid, "messages"), F.orderBy("at")), async s => {
-    const seq = ++chat.mseq, items = await Promise.all(s.docs.map(async d => ({ m: d.data(), b: await decObj(key, d.data()) })));
-    if (g === chat.gen && seq === chat.mseq) paintMsgs(items);
-  }, e => { if (g === chat.gen) $("#chBody").innerHTML = `<p class="hint">Não foi possível carregar as mensagens: ${esc(e.code || e.message)}</p>`; }));
-}
-function paintMsgs(items) {
-  const box = $("#chBody"), near = box.scrollHeight - box.scrollTop - box.clientHeight < 80;
-  box.innerHTML = '<p class="lock">🔒 Mensagens criptografadas no navegador (AES-256). Só você e a equipe conseguem ler.</p>' + items.map(({ m, b }) => {
-    const t = `<time>${esc(fmtT(m.at))}</time>`, me = m.uid === user.uid ? " me" : "";
-    if (!b) return `<div class="msg${me}">🔒 Mensagem indisponível${t}</div>`;
-    if (b.t === "order") return `<div class="msg card"><b>Resumo do pedido</b><ul class="ol">${(Array.isArray(b.items) ? b.items : []).map(i => `<li><span>${esc(i.n)} <small>${esc(i.g)}</small></span><span>${esc(i.p)}</span></li>`).join("")}</ul><div class="bl-total"><span>Total estimado</span><b>${esc(brl(b.total))}</b></div>${b.note ? `<p class="hint">Obs.: ${esc(b.note)}</p>` : ""}${t}</div>`;
-    return `<div class="msg${me}">${esc(String(b.text ?? ""))}${t}</div>`;
-  }).join("");
-  if (near || !chat.painted) box.scrollTop = box.scrollHeight;
-  chat.painted = true;
-}
-function openFromLink(p) {
-  history.replaceState(null, "", location.pathname + location.search);
-  const [id, k] = String(p).split(".");
-  if (!/^[A-Za-z0-9]{10,40}$/.test(id || "") || !/^[A-Za-z0-9_-]{43}$/.test(k || "")) return toast("Link de pedido inválido.");
-  lsSet("effi.k." + id, k);
-  if (user && fb) openOrder(id); else pendingLink = id;
-}
-chatEl.addEventListener("click", e => {
-  const c = e.target.closest("[data-c]")?.dataset.c;
-  if (c === "close") return closeChat();
-  if (c === "back") return showList();
-  if (c === "link" && chat.oid) {
-    const raw = lsGet("effi.k." + chat.oid); if (!raw) return;
-    const url = location.origin + location.pathname + "#chat=" + chat.oid + "." + raw;
-    return navigator.clipboard?.writeText(url).then(() => toast("Link copiado. Guarde-o: é a forma de reabrir o chat em outro aparelho."), () => prompt("Copie e guarde este link:", url));
-  }
-  const o = e.target.closest("[data-oid]"); if (o) openOrder(o.dataset.oid);
-});
-chatEl.addEventListener("change", async e => {
-  if (e.target.dataset.c !== "status" || !chat.oid) return;
-  try { await fb.F.updateDoc(fb.F.doc(fb.db, "orders", chat.oid), { status: e.target.value }); toast("Situação atualizada."); }
-  catch (er) { toast("Não foi possível atualizar: " + (er.code || er.message)); }
-});
-let sending = false;
-$("#chForm").addEventListener("submit", async e => {
-  e.preventDefault();
-  const ta = $("#chInput"), text = ta.value.trim(), oid = chat.oid, key = chat.key;
-  if (!text || !key || !oid || sending) return;
-  sending = true;
-  try { await sendEnc(oid, key, { t: "text", text }); ta.value = ""; }
-  catch (er) { toast(er.code === "permission-denied" ? "Envio recusado (permissão ou pedido fechado)." : "Erro ao enviar a mensagem."); }
-  finally { sending = false; ta.focus(); }
-});
-$("#chInput").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); $("#chForm").requestSubmit(); } });
-addEventListener("keydown", e => { if (e.key === "Escape" && !chatEl.hidden) closeChat(); });
-
-/* ---------- iniciar ---------- */
-render(); route(); boot();
-
-/* demonstração animada do painel e seletor de autonomia */
-(function () {
-  const feed = $("#feed"); let i = 0;
-  const items = [
-    ["14:02", '<span class="tag">Estoque</span> Conta Free Fire com 7 unidades. Aviso enviado em #anúncios.'],
-    ["14:05", '<span class="tag">Verificação</span> Conta criada há 1 dia barrada na entrada.'],
-    ["14:11", '<span class="tag">Moderação</span> Spam removido do #geral e membro avisado.'],
-    ["14:20", '<span class="tag">Relatório</span> Robux vendeu 2x mais esta semana.']
-  ];
-  const add = (t, h) => { const li = document.createElement("li"); li.innerHTML = `<time>${t}</time><div>${h}</div>`; feed.appendChild(li); return li; };
-  function ask() {
-    const li = add("14:21", `<span class="tag">Aprovação</span> Repor o estoque de 1.000 Robux?<span class="ask"><p>A ${esc(cfg.brand)} preparou o aviso de reposição para o canal #anúncios.</p><span class="row"><button class="btn btn-main btn-sm">Aprovar</button><button class="btn btn-line btn-sm">Ignorar</button></span></span>`);
-    const b = li.querySelectorAll("button"), box = li.querySelector(".ask");
-    b[0].onclick = () => { box.innerHTML = '<p style="margin:0"><b>Aprovado.</b> Aviso publicado em #anúncios.</p>'; };
-    b[1].onclick = () => { box.innerHTML = '<p style="margin:0"><b>Ignorado.</b> Nada foi publicado.</p>'; };
-  }
-  (function step() { if (i < items.length) { add(items[i][0], items[i][1]); i++; setTimeout(step, 900); } else ask(); })();
-  const data = [
-    ["Só sugere", ["Aponta estoque baixo e vendas fora do normal.", "Sugere respostas e ações de moderação.", "Você executa cada passo."]],
-    ["Pede aprovação", ["Prepara anúncios, reposições e punições.", "Mostra o que vai fazer antes de agir.", "Executa com um toque seu."]],
-    ["Age sozinha", ["Roda rotinas, verificação e moderação básica.", "Segue só o que você liberou.", "Registra tudo e avisa no seu aparelho."]]
-  ];
-  const res = $("#result"), btns = document.querySelectorAll("#seg button");
-  function show(k) {
-    res.innerHTML = `<h3>${data[k][0]}</h3><ul>${data[k][1].map(x => `<li>${x}</li>`).join("")}</ul>`;
-    btns.forEach(b => b.setAttribute("aria-pressed", b.dataset.k == k));
-  }
-  btns.forEach(b => { b.onclick = () => show(+b.dataset.k); });
-  show(0);
-})();
+  mark(true);render();draw()});
+addEventListener("keydown",e=>{if(adm.hidden)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s"){e.preventDefault();save()}if(e.key==="Escape")closeAdmin()});
+addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue=""}});
+render();boot();
 </script>
 </body>
 </html>
