@@ -75,16 +75,17 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td{padding:9px 5px;bo
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--primary);color:#fff;padding:12px 20px;border-radius:12px;z-index:90;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw;text-align:center}#toast.on{opacity:1}
 @media(max-width:760px){section{padding:56px 0}.hero{padding:48px 0 32px}.blk{grid-column:span 12!important}.who span{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wrap{max-width:var(--mw,1160px)}.blk{border-radius:var(--r,24px)}.nav{height:auto;min-height:72px;padding:8px 0;flex-wrap:wrap}
+.btn.on{background:var(--primary);border-color:var(--primary);color:#fff}.card{cursor:pointer}.card h3{font-size:1.35rem}
+.pg{animation:pgin .4s ease both}@keyframes pgin{from{opacity:0;transform:translateY(10px)}}
 </style>
 </head>
 <body>
 <canvas id="stars" aria-hidden="true"></canvas>
 <div id="gate" hidden></div>
-<header><div class="wrap nav"><a class="brand" href="#topo" id="brand"></a><div class="nr"><a class="btn btn-line btn-sm" href="#obras">Obras</a><a class="btn btn-line btn-sm" href="#sobre">Sobre</a><span id="auth" class="nr"></span></div></div></header>
+<header><div class="wrap nav"><a class="brand" href="#inicio" id="brand"></a><nav class="nr" id="nav"></nav><span id="auth" class="nr"></span></div></header>
 <main id="topo">
-<section class="hero"><div class="wrap" id="hero"></div></section>
-<section id="obras" style="padding-top:24px"><div class="wrap"><div class="grid" id="grid"></div></div></section>
-<section id="sobre"><div class="wrap" id="about"></div></section>
+<div id="view"></div>
 </main>
 <footer><div class="wrap"><a class="brand" href="#topo" id="brand2"></a><ul id="links"></ul><span id="copy"></span></div></footer>
 <div id="lb" hidden><img alt=""></div>
@@ -97,7 +98,8 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td{padding:9px 5px;bo
 
 <script type="module">
 let ADMIN_EMAIL="",FIREBASE_CONFIG=null;
-const DEF={brand:"Meu Portfólio",primary:"#775FB8",secondary:"#2C2F33",tag:"Artista digital",title:"Arte feita com",hi:"alma e cor.",lead:"Ilustrações, personagens e encomendas. Veja os trabalhos, os valores e peça a sua arte.",b1:"Ver obras",u1:"#obras",b2:"Pedir uma arte",u2:"",aboutTitle:"Sobre mim",about:"Escreva aqui sobre você e seu trabalho.\n\n## Como encomendar\nEdite este texto no painel administrativo.",links:[{label:"Instagram",url:""}],footer:"© 2026 Todos os direitos reservados.",gate:"Sua conta está aguardando ativação pelo administrador."};
+const ADMINS=["pelegrinelileal@gmail.com","juandesing00@gmail.com"];
+const DEF={brand:"Meu Portfólio",primary:"#775FB8",secondary:"#2C2F33",ink:"#eceaf3",hFont:"Sora",bFont:"Figtree",radius:24,maxw:1160,bg:"stars",bgSpeed:1,bgDensity:1,tag:"Artista digital",title:"Arte feita com",hi:"alma e cor.",lead:"Ilustrações, personagens e encomendas. Veja os trabalhos, os valores e peça a sua arte.",b1:"Ver obras",u1:"#obras",b2:"Pedir uma arte",u2:"",cards:true,navHome:"Início",loginOn:true,loginLabel:"Entrar com Google",css:"",cats:[{id:"obras",name:"Obras",title:"Obras",desc:"Veja os trabalhos e valores.",text:"",on:true},{id:"sobre",name:"Sobre",title:"Sobre mim",desc:"Conheça meu trabalho.",text:"Escreva aqui sobre você e seu trabalho.\n\n## Como encomendar\nEdite este texto no painel administrativo.",on:true}],links:[{label:"Instagram",url:""}],footer:"© 2026 Todos os direitos reservados.",gate:"Sua conta está aguardando ativação pelo administrador."};
 const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const link=u=>/^(https?:|mailto:|#|\/)/i.test(String(u||"").trim())?esc(String(u).trim()):"#";
 const clone=o=>JSON.parse(JSON.stringify(o)),hexOk=v=>/^#[0-9a-f]{6}$/i.test(v);
@@ -106,36 +108,60 @@ const fmt=t=>String(t||"").split(/\n{2,}/).map(b=>{b=b.trim();if(!b)return"";if(
 let tm;const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tm);tm=setTimeout(()=>t.classList.remove("on"),3600)};
 const GOOGLE='<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.7 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.8 6.1C12.3 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.4 28.7A14.500 14.500 0 019.500 24c0-1.600.3-3.200.8-4.700l-7.800-6.100A24 24 0 000 24c0 3.900.9 7.500 2.600 10.800l7.800-6.100z"/><path fill="#34A853" d="M24 48c6.500 0 11.900-2.100 15.900-5.800l-7.500-5.800c-2.100 1.400-4.800 2.300-8.400 2.300-6.300 0-11.700-4.100-13.600-9.800l-7.800 6.100C6.500 42.600 14.600 48 24 48z"/></svg>';
 
-/* estrelas */
+/* fundos animados */
 let starCol="119,95,184";
-(()=>{const cv=$("#stars"),x=cv.getContext("2d"),still=matchMedia("(prefers-reduced-motion:reduce)").matches;let W,H,S=[];
-window.starsTheme=()=>{const v=getComputedStyle(document.documentElement).getPropertyValue("--primary").trim();if(hexOk(v)){const n=parseInt(v.slice(1),16);starCol=`${n>>16},${(n>>8)&255},${n&255}`}};
-const size=()=>{const d=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0);S=Array.from({length:Math.min(150,Math.round(W*H/9000))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,v:Math.random()*.18+.03,p:Math.random()*6.28,s:Math.random()*.002+.0006}))};
-const draw=t=>{x.clearRect(0,0,W,H);for(const s of S){if(!still){s.y-=s.v;s.x+=s.v*.25;if(s.y<-4){s.y=H+4;s.x=Math.random()*W}if(s.x>W+4)s.x=-4}const a=.3+.6*(.5+.5*Math.sin(t*s.s+s.p));x.fillStyle=`rgba(${starCol},${a})`;x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill()}};
-const loop=t=>{draw(t);requestAnimationFrame(loop)};addEventListener("resize",size);size();still?draw(0):requestAnimationFrame(loop)})();
+(()=>{const cv=$("#stars"),x=cv.getContext("2d"),still=matchMedia("(prefers-reduced-motion:reduce)").matches;let W,H,S=[],last="";
+window.bgSet={t:"stars",s:1,d:1};
+const size=()=>{const d=devicePixelRatio||1,{t,d:q}=window.bgSet;W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0);
+ S=Array.from({length:t==="rain"?Math.round(W/24*q):Math.min(300,Math.round(W*H/9000*q))},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.4,v:Math.random()*.18+.03+(t==="rain"?.4:0),p:Math.random()*6.28,s:Math.random()*.002+.0006}))};
+window.starsTheme=()=>{const v=getComputedStyle(document.documentElement).getPropertyValue("--primary").trim();if(hexOk(v)){const n=parseInt(v.slice(1),16);starCol=`${n>>16},${(n>>8)&255},${n&255}`}
+ const k=JSON.stringify(window.bgSet)+innerWidth;if(k!==last){last=k;size()}if(still)draw(0)};
+const draw=t=>{x.clearRect(0,0,W,H);const{t:T,s:sp}=window.bgSet,c=starCol;if(T==="none")return;
+ if(T==="grid"){x.strokeStyle=`rgba(${c},.16)`;x.lineWidth=1;const g=56,o=(t*.02*sp)%g;x.beginPath();for(let i=-g;i<W+g;i+=g){x.moveTo(i+o,0);x.lineTo(i+o,H)}for(let j=-g;j<H+g;j+=g){x.moveTo(0,j+o);x.lineTo(W,j+o)}x.stroke();return}
+ if(T==="aurora"){for(let k=0;k<3;k++){const px=W*(.5+.4*Math.sin(t*.0003*sp+k*2)),py=H*(.5+.35*Math.cos(t*.00025*sp+k*3)),r=Math.max(W,H)*.45,g=x.createRadialGradient(px,py,0,px,py,r);g.addColorStop(0,`rgba(${c},.3)`);g.addColorStop(1,`rgba(${c},0)`);x.fillStyle=g;x.fillRect(0,0,W,H)}return}
+ if(T==="waves"){for(let k=0;k<4;k++){x.fillStyle=`rgba(${c},${.07+k*.03})`;x.beginPath();x.moveTo(0,H);for(let i=0;i<=W;i+=12)x.lineTo(i,H*(.72+k*.07)+Math.sin(i*.006+t*.0008*sp+k*1.5)*24);x.lineTo(W,H);x.fill()}return}
+ for(const s of S){
+  if(T==="rain"){if(!still){s.y+=s.v*3*sp;if(s.y-140>H){s.y=-20;s.x=Math.random()*W}}x.font="14px monospace";for(let k=0;k<8;k++){x.fillStyle=`rgba(${c},${(1-k/8)*.55})`;x.fillText((((s.y/16)|0)*3+k*5)%2,s.x,s.y-k*16)}continue}
+  const a=.3+.6*(.5+.5*Math.sin(t*s.s+s.p));
+  if(T==="bubbles"){if(!still){s.y-=s.v*4*sp;if(s.y<-20)s.y=H+20}x.strokeStyle=`rgba(${c},${a*.7})`;x.beginPath();x.arc(s.x+Math.sin(t*.001+s.p)*8,s.y,s.r*4,0,6.283);x.stroke()}
+  else if(T==="snow"){if(!still){s.y+=s.v*5*sp;s.x+=Math.sin(t*.001+s.p)*.4;if(s.y>H+4){s.y=-4;s.x=Math.random()*W}}x.fillStyle=`rgba(255,255,255,${a*.7})`;x.beginPath();x.arc(s.x,s.y,s.r*1.3,0,6.283);x.fill()}
+  else if(T==="fireflies"){if(!still){s.x=(s.x+Math.cos(t*.0005+s.p)*.5*sp+W)%W;s.y=(s.y+Math.sin(t*.0004+s.p)*.5*sp+H)%H}x.shadowBlur=14;x.shadowColor=`rgb(${c})`;x.fillStyle=`rgba(${c},${a})`;x.beginPath();x.arc(s.x,s.y,s.r*2,0,6.283);x.fill();x.shadowBlur=0}
+  else{if(!still){s.y-=s.v*sp;s.x+=s.v*.25*sp;if(s.y<-4){s.y=H+4;s.x=Math.random()*W}if(s.x>W+4)s.x=-4}x.fillStyle=`rgba(${c},${a})`;x.beginPath();x.arc(s.x,s.y,s.r,0,6.283);x.fill()}}};
+const loop=t=>{draw(t);requestAnimationFrame(loop)};addEventListener("resize",()=>starsTheme());size();still?draw(0):requestAnimationFrame(loop)})();
 
 /* estado */
-let cfg=clone(DEF),saved=clone(DEF),blocks=[],savedBlocks=[],prices={},user=null,me=null,fb=null,dirty=false,saving=false,touched=new Set,deleted=new Set;
-const isAdmin=()=>!!user&&!!ADMIN_EMAIL&&(user.email||"").toLowerCase()===ADMIN_EMAIL.toLowerCase()&&user.emailVerified;
+let cfg=clone(DEF),saved=clone(DEF),blocks=[],savedBlocks=[],prices={},user=null,me=null,fb=null,dirty=false,saving=false,touched=new Set,deleted=new Set,page="inicio",curCat=null,lastPage="";
+const isAdmin=()=>{const e=(user?.email||"").toLowerCase();return !!user&&user.emailVerified&&[...ADMINS,String(ADMIN_EMAIL).toLowerCase()].includes(e)};
 const approved=()=>isAdmin()||!!me?.approved;
 
+const FONTS=["Sora","Figtree","Poppins","Playfair Display","Space Grotesk","Lora","Inter","Bebas Neue"];
+function blk(b,i){
+  const pv=prices[b.id]?.v,price=pv?`<span class="chip pr">${esc(pv)}</span>`:(b.hp?`<span class="chip">🔒 Preço para contas ativadas</span>`:"");
+  const chips=(b.dims?`<span class="chip">${esc(b.dims)}</span>`:"")+price,hasT=b.title||b.text||chips||b.url;
+  return`<article class="blk${b.plain?" plain":""}" style="grid-column:span ${+b.span||4};${b.minh?`min-height:${+b.minh}px`:""}">${/^data:image\//.test(b.img||"")?`<img src="${esc(b.img)}" alt="${esc(b.title)}" style="${b.imgh?`height:${+b.imgh}px`:""}" data-i="${i}" loading="lazy">`:""}${hasT?`<div class="bd${b.center?" c":""}">${b.title?`<h3>${esc(b.title)}</h3>`:""}${b.text?`<div class="prose">${fmt(b.text)}</div>`:""}${chips?`<div class="chips">${chips}</div>`:""}${b.url?`<a class="btn btn-line btn-sm" style="align-self:${b.center?"center":"flex-start"}" href="${link(b.url)}">${esc(b.label||"Abrir")}</a>`:""}</div>`:""}</article>`}
 function render(){
-  const c=cfg,st=document.documentElement.style;
-  if(hexOk(c.primary))st.setProperty("--primary",c.primary);if(hexOk(c.secondary))st.setProperty("--secondary",c.secondary);starsTheme();
+  const c=cfg,st=document.documentElement.style,hf=FONTS.includes(c.hFont)?c.hFont:"Sora",bf=FONTS.includes(c.bFont)?c.bFont:"Figtree";
+  if(hexOk(c.primary))st.setProperty("--primary",c.primary);if(hexOk(c.secondary))st.setProperty("--secondary",c.secondary);if(hexOk(c.ink))st.setProperty("--ink",c.ink);
+  st.setProperty("--r",(+c.radius||0)+"px");st.setProperty("--mw",(+c.maxw||1160)+"px");st.setProperty("--head",`"${hf}",system-ui,sans-serif`);st.setProperty("--body",`"${bf}",system-ui,sans-serif`);
+  const mk=(t,id)=>{let e=$("#"+id);if(!e){e=document.createElement(t);e.id=id;document.head.append(e)}return e};
+  const fl=mk("link","fl"),fh="https://fonts.googleapis.com/css2?"+[...new Set([hf,bf])].map(f=>"family="+f.replace(/ /g,"+")+":wght@400;500;600;700").join("&")+"&display=swap";fl.rel="stylesheet";if(fl.getAttribute("href")!==fh)fl.setAttribute("href",fh);
+  mk("style","cs").textContent=String(c.css||"").replace(/<\/?style/gi,"");
+  window.bgSet={t:c.bg||"stars",s:+c.bgSpeed||1,d:+c.bgDensity||1};starsTheme();
   document.title=`${c.brand} | ${c.tag}`;$("#brand").textContent=$("#brand2").textContent=c.brand;
+  const ks=c.cats.filter(k=>k.on!==false);if(page!=="inicio"&&!ks.some(k=>k.id===page))page="inicio";
+  const an=page!==lastPage?" pg":"";lastPage=page;
+  $("#nav").innerHTML=[["inicio",c.navHome||"Início"],...ks.map(k=>[k.id,k.name])].map(([id,n])=>`<a class="btn btn-line btn-sm${id===page?" on":""}" href="#${esc(id)}">${esc(n)}</a>`).join("");
   const btn=(l,u,k)=>l?`<a class="btn ${k}" href="${link(u)}">${esc(l)}</a>`:"";
-  $("#hero").innerHTML=`<span class="pill">${esc(c.tag)}</span><h1>${esc(c.title)} <span>${esc(c.hi)}</span></h1><p class="lead">${esc(c.lead)}</p><div class="cta">${btn(c.b1,c.u1,"btn-main")}${btn(c.b2,c.u2,"btn-line")}</div>`;
-  $("#grid").innerHTML=blocks.map((b,i)=>{
-    const pv=prices[b.id]?.v,price=pv?`<span class="chip pr">${esc(pv)}</span>`:(b.hp?`<span class="chip">🔒 Preço para contas ativadas</span>`:"");
-    const chips=(b.dims?`<span class="chip">${esc(b.dims)}</span>`:"")+price;
-    const hasT=b.title||b.text||chips||b.url;
-    return`<article class="blk${b.plain?" plain":""}" style="grid-column:span ${+b.span||4};${b.minh?`min-height:${+b.minh}px`:""}">${/^data:image\//.test(b.img||"")?`<img src="${esc(b.img)}" alt="${esc(b.title)}" style="${b.imgh?`height:${+b.imgh}px`:""}" data-i="${i}" loading="lazy">`:""}${hasT?`<div class="bd${b.center?" c":""}">${b.title?`<h3>${esc(b.title)}</h3>`:""}${b.text?`<div class="prose">${fmt(b.text)}</div>`:""}${chips?`<div class="chips">${chips}</div>`:""}${b.url?`<a class="btn btn-line btn-sm" style="align-self:${b.center?"center":"flex-start"}" href="${link(b.url)}">${esc(b.label||"Abrir")}</a>`:""}</div>`:""}</article>`}).join("");
-  $("#obras").hidden=!blocks.length;
-  $("#about").innerHTML=`<h2>${esc(c.aboutTitle)}</h2><div class="prose" style="margin-top:22px">${fmt(c.about)}</div>`;$("#sobre").hidden=!c.about.trim();
+  if(page==="inicio")$("#view").innerHTML=`<section class="hero${an}"><div class="wrap"><span class="pill">${esc(c.tag)}</span><h1>${esc(c.title)} <span>${esc(c.hi)}</span></h1><p class="lead">${esc(c.lead)}</p><div class="cta">${btn(c.b1,c.u1,"btn-main")}${btn(c.b2,c.u2,"btn-line")}</div></div></section>`+(c.cards!==false&&ks.length?`<section class="${an}" style="padding-top:24px"><div class="wrap"><div class="grid">${ks.map(k=>`<a class="blk card" style="grid-column:span 4;text-decoration:none" href="#${esc(k.id)}"><div class="bd"><h3>${esc(k.name)}</h3><p>${esc(k.desc||"")}</p></div></a>`).join("")}</div></div></section>`:"");
+  else{const k=ks.find(k=>k.id===page);$("#view").innerHTML=`<section class="${an}" style="padding-top:56px"><div class="wrap"><h2>${esc(k.title||k.name)}</h2>${k.text?`<div class="prose" style="margin:20px 0 8px">${fmt(k.text)}</div>`:""}<div class="grid" style="margin-top:28px">${blocks.map((b,i)=>b.cat===k.id?blk(b,i):"").join("")}</div></div></section>`}
   $("#links").innerHTML=c.links.filter(l=>l.label).map(l=>`<li><a href="${link(l.url)}">${esc(l.label)}</a></li>`).join("");$("#copy").textContent=c.footer;
-  const g=$("#gate");g.hidden=!(user&&!approved());g.textContent=c.gate;
+  const g=$("#gate");g.hidden=!(user&&!approved());g.textContent=c.gate;renderAuth();
 }
-$("#grid").addEventListener("click",e=>{const i=e.target.closest("img[data-i]");if(i){$("#lb img").src=i.src;$("#lb").hidden=false}});
+function route(){const h=decodeURIComponent(location.hash.slice(1));
+  if(h==="admin"){try{sessionStorage.setItem("adm","1")}catch(e){}renderAuth();return}
+  if(h==="inicio"||cfg.cats.some(k=>k.id===h)){page=h;render();scrollTo(0,0)}else if(!h&&page!=="inicio"){page="inicio";render()}}
+addEventListener("hashchange",route);
+$("#view").addEventListener("click",e=>{const i=e.target.closest("img[data-i]");if(i){$("#lb img").src=i.src;$("#lb").hidden=false}});
 $("#lb").onclick=()=>$("#lb").hidden=true;
 
 /* Firebase */
@@ -154,9 +180,9 @@ async function boot(){
   try{
     const [A,Au,F]=await Promise.all([import(CDN+"firebase-app.js"),import(CDN+"firebase-auth.js"),import(CDN+"firebase-firestore.js")]);
     const app=A.initializeApp(FIREBASE_CONFIG);fb={Au,F,auth:Au.getAuth(app),db:F.getFirestore(app)};
-    try{const s=await F.getDoc(F.doc(fb.db,"portfolio","config"));if(s.exists()){cfg={...DEF,...s.data()};saved=clone(cfg)}}catch(e){}
-    try{const s=await F.getDocs(F.collection(fb.db,"pf_blocks"));blocks=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.o||0)-(b.o||0));savedBlocks=clone(blocks)}catch(e){}
-    await loadPrices();render();
+    try{const s=await F.getDoc(F.doc(fb.db,"portfolio","config"));if(s.exists()){cfg=norm(s.data());saved=clone(cfg)}}catch(e){}
+    try{const s=await F.getDocs(F.collection(fb.db,"pf_blocks"));blocks=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.o||0)-(b.o||0)).map(b=>({...b,cat:b.cat||cfg.cats[0]?.id}));savedBlocks=clone(blocks)}catch(e){}
+    await loadPrices();route();render();
     Au.onAuthStateChanged(fb.auth,async u=>{
       user=u;me=null;
       if(u){try{const r=F.doc(fb.db,"pf_users",u.uid),s=await F.getDoc(r),base={name:u.displayName||"",email:u.email||"",photo:u.photoURL||"",lastLogin:new Date().toISOString()};
@@ -166,9 +192,11 @@ async function boot(){
     });
   }catch(e){console.error(e);renderAuth();render()}
 }
+const ss=()=>{try{return sessionStorage.getItem("adm")==="1"}catch(e){return false}};
+const norm=d=>{const c={...DEF,...d};if(!Array.isArray(d.cats))c.cats=[{...DEF.cats[0]},{id:"sobre",name:"Sobre",title:d.aboutTitle||"Sobre mim",desc:"",text:d.about??DEF.cats[1].text,on:true}];return c};
 function renderAuth(){
   const b=$("#auth");
-  if(!user){b.innerHTML=`<button class="btn btn-main btn-sm" data-a="login">${GOOGLE}Entrar com Google</button>`;return}
+  if(!user){b.innerHTML=cfg.loginOn!==false||ss()?`<button class="btn btn-main btn-sm" data-a="login">${GOOGLE}${esc(cfg.loginLabel||"Entrar com Google")}</button>`:"";return}
   const img=/^https?:/i.test(user.photoURL||"")?`<img src="${esc(user.photoURL)}" alt="" referrerpolicy="no-referrer">`:"";
   b.innerHTML=(isAdmin()?`<button class="btn btn-main btn-sm" data-a="admin">Painel admin</button>`:"")+`<button class="who" data-a="logout" title="Sair">${img}<span>Sair</span></button>`;
 }
@@ -183,35 +211,42 @@ $("#auth").addEventListener("click",async e=>{
 /* painel admin */
 const CK="ck",CL="cl",AR="ar",SEL="sel";
 const SPANS=[[12,"Largura total"],[8,"2/3"],[6,"Metade"],[4,"1/3"],[3,"1/4"]];
+const FO=FONTS.map(f=>[f,f]),BGS=[["stars","Estrelas"],["aurora","Aurora"],["bubbles","Bolhas"],["snow","Neve"],["fireflies","Vagalumes"],["rain","Chuva digital"],["grid","Grade em movimento"],["waves","Ondas"],["none","Nenhum"]],LVL=[[0.5,"Baixa"],[1,"Normal"],[2,"Alta"]];
 const TABS=[
- {id:"site",label:"Site",fields:[["brand","Nome do portfólio"],["primary","Cor primária",CL],["secondary","Cor secundária",CL],["tag","Selo do topo"],["title","Título"],["hi","Título em destaque"],["lead","Texto de apoio",AR],["b1","Botão 1: texto"],["u1","Botão 1: link"],["b2","Botão 2: texto"],["u2","Botão 2: link"],["gate","Aviso para contas ainda não ativadas",AR],["footer","Texto do rodapé"]]},
- {id:"blocos",label:"Obras e blocos",blocks:true},
- {id:"sobre",label:"Sobre",fields:[["aboutTitle","Título"],["about","Texto (linha em branco separa parágrafos; ## subtítulo)","tall"]]},
- {id:"links",label:"Links",list:"links",noun:"link",item:[["label","Texto"],["url","Endereço (https://...)"]]},
- {id:"users",label:"Logins",users:true}];
+ {id:"visual",label:"Visual",fields:[["primary","Cor primária",CL],["secondary","Cor secundária (fundo e cartões)",CL],["ink","Cor do texto",CL],["hFont","Fonte dos títulos",SEL,FO],["bFont","Fonte do texto",SEL,FO],["radius","Arredondamento dos cartões (px)","num"],["maxw","Largura máxima do site (px)","num"],["bg","Fundo animado",SEL,BGS],["bgSpeed","Velocidade do fundo",SEL,LVL],["bgDensity","Quantidade de elementos do fundo",SEL,LVL]]},
+ {id:"inicio",label:"Início",fields:[["tag","Selo do topo"],["title","Título"],["hi","Título em destaque"],["lead","Texto de apoio",AR],["b1","Botão 1: texto"],["u1","Botão 1: link (ex.: #obras)"],["b2","Botão 2: texto"],["u2","Botão 2: link"],["cards","Mostrar cartões das categorias",CK]]},
+ {id:"cats",label:"Categorias",cats:true},
+ {id:"blocos",label:"Blocos",blocks:true},
+ {id:"rodape",label:"Menu e rodapé",fields:[["brand","Nome do portfólio"],["navHome","Nome da página inicial no menu"],["footer","Texto do rodapé"]],list:"links",noun:"link",item:[["label","Texto"],["url","Endereço (https://...)"]]},
+ {id:"users",label:"Logins",fields:[["loginOn","Mostrar o botão de login com Google no site",CK],["loginLabel","Texto do botão"],["gate","Aviso para contas ainda não ativadas",AR]],users:true},
+ {id:"adv",label:"Avançado",fields:[["css","CSS personalizado (vale para o site inteiro)","tall"]]}];
 let tab="site";const adm=$("#adm");
 const mark=d=>{dirty=d;$('[data-a=save]').disabled=!d||saving;const s=$("#st");s.textContent=d?"● Alterações não salvas":"Tudo salvo";s.classList.toggle("d",d)};
 function field(p,l,t,v,o){
-  if(t===SEL)return`<label class="fld">${esc(l)}<select data-p="${p}" data-n="1">${o.map(([k,n])=>`<option value="${k}" ${+k===+v?"selected":""}>${esc(n)}</option>`).join("")}</select></label>`;
+  if(t===SEL){const nm=typeof o[0]?.[0]==="number";return`<label class="fld">${esc(l)}<select data-p="${p}" ${nm?'data-n="1"':""}>${o.map(([k,n])=>`<option value="${esc(k)}" ${String(k)===String(v)?"selected":""}>${esc(n)}</option>`).join("")}</select></label>`}
   if(t===CK)return`<label class="fld ck"><input type="checkbox" data-p="${p}" ${v?"checked":""}> ${esc(l)}</label>`;
   if(t===AR||t==="tall")return`<label class="fld">${esc(l)}<textarea data-p="${p}" rows="${t==="tall"?12:4}">${esc(v)}</textarea></label>`;
   if(t==="num")return`<label class="fld">${esc(l)}<input data-p="${p}" data-n="1" type="number" min="0" value="${esc(v||"")}"></label>`;
   return`<label class="fld">${esc(l)}<input data-p="${p}" type="${t===CL?"color":"text"}" value="${esc(v)}"></label>`}
-const BF=i=>[["title","Título (opcional)"],["text","Texto (opcional)",AR],["dims","Dimensões (ex.: 30x40 cm / 3000x4000 px)"],["price","Preço (ex.: R$ 150)"],["pub","Preço visível para todos (desmarcado = só contas ativadas)",CK],["url","Link do botão (opcional)"],["label","Texto do botão"],["span","Largura no portfólio",SEL,SPANS],["imgh","Altura da imagem em px (vazio = automática)","num"],["minh","Altura mínima do bloco em px","num"],["center","Centralizar texto",CK],["plain","Sem fundo/borda (texto solto)",CK]].map(([k,l,t,o])=>field(`b.${i}.${k}`,l,t,blocks[i][k],o)).join("");
+const BF=i=>[["cat","Categoria",SEL,cfg.cats.map(k=>[k.id,k.name])],["title","Título (opcional)"],["text","Texto (opcional)",AR],["dims","Dimensões (ex.: 30x40 cm / 3000x4000 px)"],["price","Preço (ex.: R$ 150)"],["pub","Preço visível para todos (desmarcado = só contas ativadas)",CK],["url","Link do botão (opcional)"],["label","Texto do botão"],["span","Largura no portfólio",SEL,SPANS],["imgh","Altura da imagem em px (vazio = automática)","num"],["minh","Altura mínima do bloco em px","num"],["center","Centralizar texto",CK],["plain","Sem fundo/borda (texto solto)",CK]].map(([k,l,t,o])=>field(`b.${i}.${k}`,l,t,blocks[i][k],o)).join("");
 function draw(){
   $("#tabs").innerHTML=TABS.map(t=>`<button role="tab" data-tab="${t.id}" aria-selected="${t.id===tab}">${t.label}</button>`).join("");
   const T=TABS.find(x=>x.id===tab);let h="";
-  (T.fields||[]).forEach(([p,l,t])=>h+=field(p,l,t,get(cfg,p)));
+  (T.fields||[]).forEach(([p,l,t,o])=>h+=field(p,l,t,p==="cards"||p==="loginOn"?get(cfg,p)!==false:get(cfg,p),o));
   if(T.list){const L=get(cfg,T.list);L.forEach((it,i)=>h+=`<div class="item"><div class="ih"><b>${esc(it.label||T.noun)}</b><span><button data-a="del" data-i="${i}">Remover</button></span></div>${T.item.map(([k,l])=>field(`${T.list}.${i}.${k}`,l,"",it[k])).join("")}</div>`);h+=`<button class="btn btn-line btn-sm" data-a="add">+ Adicionar ${T.noun}</button>`}
-  if(T.blocks){h=`<p class="hint">Cada bloco pode ter imagem, texto, dimensões, preço e link. Use largura e ↑ ↓ para posicionar onde quiser.</p>`;
-    blocks.forEach((b,i)=>h+=`<div class="item"><div class="ih"><b>${esc(b.title||"Bloco "+(i+1))}</b><span><button data-a="up" data-i="${i}">↑</button><button data-a="down" data-i="${i}">↓</button><button data-a="del" data-i="${i}">Remover</button></span></div>${b.img?`<img class="thumb" src="${esc(b.img)}" alt="">`:""}<label class="fld">Imagem (envie do seu aparelho)<input type="file" accept="image/*" data-up="${i}"></label>${b.img?`<button class="btn btn-line btn-sm" data-a="rmimg" data-i="${i}">Remover imagem</button>`:""}${BF(i)}</div>`);
-    h+=`<button class="btn btn-line btn-sm" data-a="addb">+ Adicionar bloco</button>`}
-  if(T.users){h='<p class="hint">Carregando…</p>';loadUsers()}
+  if(T.cats){h=`<p class="hint">Cada categoria é uma página separada, com botão próprio no menu.</p>`;
+    cfg.cats.forEach((k,i)=>h+=`<div class="item"><div class="ih"><b>${esc(k.name||"Categoria")}</b><span><button data-a="cup" data-i="${i}">↑</button><button data-a="cdn" data-i="${i}">↓</button><button data-a="cblk" data-i="${i}">Blocos</button><button data-a="cdel" data-i="${i}">Excluir</button></span></div>${[["name","Nome no menu"],["title","Título da página"],["desc","Descrição curta (cartão do início)"],["text","Texto da página (## subtítulo)",AR],["on","Visível no site",CK]].map(([f,l,t])=>field(`cats.${i}.${f}`,l,t,f==="on"?k.on!==false:k[f])).join("")}</div>`);
+    h+=`<button class="btn btn-line btn-sm" data-a="cadd">+ Nova categoria</button>`}
+  if(T.blocks){if(!cfg.cats.some(k=>k.id===curCat))curCat=cfg.cats[0]?.id;
+    h=cfg.cats.length?`<label class="fld">Categoria<select data-cur="1">${cfg.cats.map(k=>`<option value="${esc(k.id)}" ${k.id===curCat?"selected":""}>${esc(k.name)}</option>`).join("")}</select></label>`:`<p class="hint">Crie uma categoria primeiro.</p>`;
+    blocks.forEach((b,i)=>{if(b.cat!==curCat)return;h+=`<div class="item"><div class="ih"><b>${esc(b.title||"Bloco "+(i+1))}</b><span><button data-a="up" data-i="${i}">↑</button><button data-a="down" data-i="${i}">↓</button><button data-a="del" data-i="${i}">Remover</button></span></div>${b.img?`<img class="thumb" src="${esc(b.img)}" alt="">`:""}<label class="fld">Imagem (envie do seu aparelho)<input type="file" accept="image/*" data-up="${i}"></label>${b.img?`<button class="btn btn-line btn-sm" data-a="rmimg" data-i="${i}">Remover imagem</button>`:""}${BF(i)}</div>`});
+    if(cfg.cats.length)h+=`<button class="btn btn-line btn-sm" data-a="addb">+ Adicionar bloco</button>`}
+  if(T.users){h+='<p class="hint">Se desativar o login, o botão some para os visitantes. Para entrar mesmo assim, abra o site com #admin no final do endereço.</p><div id="ul"><p class="hint">Carregando…</p></div>';loadUsers()}
   $("#ab").innerHTML=h}
 async function loadUsers(){
   try{const s=await fb.F.getDocs(fb.F.collection(fb.db,"pf_users")),r=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.lastLogin||"").localeCompare(a.lastLogin||""));
-    if(tab==="users")$("#ab").innerHTML=`<p class="hint">Quem entra com Google fica pendente até você ativar. Contas ativadas veem os preços marcados como restritos.</p><table>${r.map(u=>`<tr><td>${esc(u.name)}<br><span class="hint">${esc(u.email)}</span></td><td><button class="btn ${u.approved?"btn-main":"btn-line"} btn-sm" data-a="appr" data-id="${u.id}" data-v="${u.approved?0:1}">${u.approved?"Ativo":"Ativar"}</button></td></tr>`).join("")}</table>`}
-  catch(e){$("#ab").innerHTML=`<p class="hint">Erro ao listar: ${esc(e.code||e.message)}. Confira o firestore.rules.</p>`}}
+    if(tab==="users"&&$("#ul"))$("#ul").innerHTML=`<p class="hint">Quem entra com Google fica pendente até você ativar. Contas ativadas veem os preços marcados como restritos.</p><table>${r.map(u=>`<tr><td>${esc(u.name)}<br><span class="hint">${esc(u.email)}</span></td><td><button class="btn ${u.approved?"btn-main":"btn-line"} btn-sm" data-a="appr" data-id="${u.id}" data-v="${u.approved?0:1}">${u.approved?"Ativo":"Ativar"}</button></td></tr>`).join("")}</table>`}
+  catch(e){if($("#ul"))$("#ul").innerHTML=`<p class="hint">Erro ao listar: ${esc(e.code||e.message)}. Confira o firestore.rules.</p>`}}
 function openAdmin(){if(!isAdmin())return;adm.hidden=false;mark(dirty);draw()}
 function closeAdmin(f){if(!f&&dirty&&!confirm("Há alterações não salvas. Fechar mesmo assim?"))return;adm.hidden=true;if(dirty||f){cfg=clone(saved);blocks=clone(savedBlocks);touched.clear();deleted.clear();mark(false);render()}}
 async function save(){
@@ -234,7 +269,7 @@ let rt;adm.addEventListener("input",e=>{
   if(p.startsWith("b.")){const[,i,k]=p.split(".");blocks[i][k]=v;touched.add(blocks[i].id)}else set(cfg,p,v);
   mark(true);clearTimeout(rt);rt=setTimeout(render,120)});
 adm.addEventListener("change",async e=>{
-  const i=e.target.dataset.up;if(i==null||!e.target.files[0])return;
+  if(e.target.dataset.cur!=null){curCat=e.target.value;draw();return}const i=e.target.dataset.up;if(i==null||!e.target.files[0])return;
   try{blocks[i].img=await shrink(e.target.files[0]);touched.add(blocks[i].id);mark(true);render();draw()}catch(er){toast("Não foi possível usar essa imagem.")}});
 adm.addEventListener("click",async e=>{
   const tb=e.target.closest("[data-tab]");if(tb){tab=tb.dataset.tab;draw();return}
@@ -242,17 +277,21 @@ adm.addEventListener("click",async e=>{
   if(a==="close")return closeAdmin();if(a==="save")return save();
   if(a==="discard"){if(!dirty)return;cfg=clone(saved);blocks=clone(savedBlocks);touched.clear();deleted.clear();mark(false);render();draw();return toast("Alterações descartadas.")}
   if(a==="appr"){try{await fb.F.updateDoc(fb.F.doc(fb.db,"pf_users",b.dataset.id),{approved:b.dataset.v==="1"});toast(b.dataset.v==="1"?"Login ativado ✓":"Login desativado");loadUsers()}catch(er){toast("Erro: "+(er.code||er.message))}return}
-  if(a==="addb"){const id=crypto.randomUUID();blocks.push({id,title:"",text:"",img:"",dims:"",price:"",pub:true,url:"",label:"Abrir",span:4,imgh:"",minh:"",center:false,plain:false});touched.add(id)}
+  if(a==="cadd")cfg.cats.push({id:"c"+Math.random().toString(36).slice(2,8),name:"Nova categoria",title:"Nova categoria",desc:"",text:"",on:true});
+  else if(a==="cup"&&i>0)[cfg.cats[i-1],cfg.cats[i]]=[cfg.cats[i],cfg.cats[i-1]];
+  else if(a==="cdn"&&i<cfg.cats.length-1)[cfg.cats[i+1],cfg.cats[i]]=[cfg.cats[i],cfg.cats[i+1]];
+  else if(a==="cblk"){curCat=cfg.cats[i].id;tab="blocos";draw();return}
+  else if(a==="cdel"){const k=cfg.cats[i],n=blocks.filter(x=>x.cat===k.id).length;if(!confirm(`Excluir a categoria "${k.name}"${n?` e seus ${n} bloco(s)`:""}?`))return;blocks=blocks.filter(x=>{if(x.cat!==k.id)return true;deleted.add(x.id);return false});cfg.cats.splice(i,1)}
+  else if(a==="addb"){const id=crypto.randomUUID();blocks.push({id,cat:curCat,title:"",text:"",img:"",dims:"",price:"",pub:true,url:"",label:"Abrir",span:4,imgh:"",minh:"",center:false,plain:false});touched.add(id)}
+  else if(a==="up"||a==="down"){const d=a==="up"?-1:1;let j=i+d;while(blocks[j]&&blocks[j].cat!==blocks[i].cat)j+=d;if(!blocks[j])return;[blocks[j],blocks[i]]=[blocks[i],blocks[j]];touched.add(blocks[i].id).add(blocks[j].id)}
   else if(a==="rmimg"){blocks[i].img="";touched.add(blocks[i].id)}
-  else if(a==="up"&&i>0){[blocks[i-1],blocks[i]]=[blocks[i],blocks[i-1]];touched.add(blocks[i].id).add(blocks[i-1].id)}
-  else if(a==="down"&&i<blocks.length-1){[blocks[i+1],blocks[i]]=[blocks[i],blocks[i+1]];touched.add(blocks[i].id).add(blocks[i+1].id)}
   else if(a==="del"){if(!confirm("Remover este item?"))return;if(T.blocks){deleted.add(blocks[i].id);blocks.splice(i,1)}else get(cfg,T.list).splice(i,1)}
   else if(a==="add")get(cfg,T.list).push(Object.fromEntries(T.item.map(([k])=>[k,""])));
   else return;
   mark(true);render();draw()});
 addEventListener("keydown",e=>{if(adm.hidden)return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="s"){e.preventDefault();save()}if(e.key==="Escape")closeAdmin()});
 addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue=""}});
-render();boot();
+route();render();boot();
 </script>
 </body>
 </html>
