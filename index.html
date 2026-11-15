@@ -76,7 +76,30 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td{padding:9px 5px;bo
 @media(max-width:760px){section{padding:56px 0}.hero{padding:48px 0 32px}.blk{grid-column:span 12!important}.who span{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 .wrap{max-width:var(--mw,1160px)}.blk{border-radius:var(--r,24px)}.nav{height:auto;min-height:72px;padding:8px 0;flex-wrap:wrap}
-.btn.on{background:var(--primary);border-color:var(--primary);color:#fff}.card{cursor:pointer}.card h3{font-size:1.35rem}
+
+header{background:color-mix(in srgb,var(--bg) 88%,transparent)}.btn{border-radius:10px}
+#nav{gap:2px}#nav .btn{position:relative;border:0;background:none;box-shadow:none;border-radius:0;min-height:40px;padding:0 14px;font-weight:500;color:var(--muted)}
+#nav .btn:hover{color:var(--ink)}#nav .btn.on{color:color-mix(in srgb,var(--primary) 55%,#fff);font-weight:700}
+#nav .btn.on::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:2px;background:var(--primary)}
+.hero{padding:112px 0 72px}h1{letter-spacing:-.035em}
+.pill{background:none;padding:0;border-radius:0;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem;color:var(--muted)}
+.pill::before{content:"";display:inline-block;width:32px;height:2px;background:var(--primary);vertical-align:middle;margin-right:12px}
+h2::after{content:"";display:block;width:48px;height:3px;background:var(--primary);margin-top:14px}
+.idx{list-style:none;padding:0;margin-top:18px;border-top:1px solid var(--line)}
+.idx a{display:grid;grid-template-columns:56px minmax(140px,300px) 1fr 32px;align-items:center;gap:16px;padding:26px 4px;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .2s,color .2s}
+.idx .no{color:var(--muted);font:600 .9rem var(--head)}.idx .tt{font:600 clamp(1.3rem,2.6vw,1.9rem) var(--head);letter-spacing:-.02em}.idx .ds{color:var(--muted)}.idx .ar{color:var(--primary);transition:transform .2s}
+.idx a:hover{color:color-mix(in srgb,var(--primary) 55%,#fff);padding-left:14px}.idx a:hover .ar{transform:translateX(6px)}
+@media(max-width:760px){.idx a{grid-template-columns:36px 1fr 24px}.idx .ds{display:none}.hero{padding:64px 0 40px}}
+small{color:var(--muted);font-size:.8rem}.stars{color:#f5b301;letter-spacing:2px}
+.rsum{display:flex;align-items:baseline;gap:14px;margin:22px 0 8px}.rsum b{font:700 3rem var(--head)}.rsum span:last-child{color:var(--muted)}
+.rvf{display:grid;gap:12px;padding:22px 0;border-top:1px solid var(--line);margin-top:12px}
+.rvf textarea,.cf input{font:inherit;color:var(--ink);background:rgba(255,255,255,.04);border:1.5px solid var(--line);border-radius:10px;padding:12px;width:100%}
+.stp button{border:0;background:none;font-size:1.9rem;color:rgba(255,255,255,.25);cursor:pointer;padding:0 2px}.stp button.on{color:#f5b301}
+.rv{padding:26px 0;border-top:1px solid var(--line)}.rh{display:flex;gap:14px;align-items:center}.rh>div{flex:1}
+.rh img,.av{width:44px;height:44px;border-radius:50%;object-fit:cover}.av{display:grid;place-items:center;background:var(--primary);color:#fff;font-weight:700;flex:none}
+.rv>p{margin:14px 0 12px;max-width:70ch;color:#d6d4e2}.ra{display:flex;gap:18px}
+.lk{border:0;background:none;color:var(--muted);font:600 .9rem var(--body);cursor:pointer;padding:4px 0}.lk:hover{color:var(--ink)}.lk.on{color:#ff6b8a}.lk.dg:hover{color:#ff6b6b}
+.cm{margin:14px 0 0 58px;display:grid;gap:12px}.ci{display:flex;gap:10px}.ci img,.ci .av{width:30px;height:30px;font-size:.8rem}.ci>div{flex:1}.ci p{color:#d6d4e2;font-size:.95rem}.cf{display:flex;gap:8px}.cf input{flex:1}
 .pg{animation:pgin .4s ease both}@keyframes pgin{from{opacity:0;transform:translateY(10px)}}
 </style>
 </head>
@@ -99,7 +122,7 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}td{padding:9px 5px;bo
 <script type="module">
 let ADMIN_EMAIL="",FIREBASE_CONFIG=null;
 const ADMINS=["pelegrinelileal@gmail.com","juandesing00@gmail.com"];
-const DEF={brand:"Meu Portfólio",primary:"#775FB8",secondary:"#2C2F33",ink:"#eceaf3",hFont:"Sora",bFont:"Figtree",radius:24,maxw:1160,bg:"stars",bgSpeed:1,bgDensity:1,tag:"Artista digital",title:"Arte feita com",hi:"alma e cor.",lead:"Ilustrações, personagens e encomendas. Veja os trabalhos, os valores e peça a sua arte.",b1:"Ver obras",u1:"#obras",b2:"Pedir uma arte",u2:"",cards:true,navHome:"Início",loginOn:true,loginLabel:"Entrar com Google",css:"",cats:[{id:"obras",name:"Obras",title:"Obras",desc:"Veja os trabalhos e valores.",text:"",on:true},{id:"sobre",name:"Sobre",title:"Sobre mim",desc:"Conheça meu trabalho.",text:"Escreva aqui sobre você e seu trabalho.\n\n## Como encomendar\nEdite este texto no painel administrativo.",on:true}],links:[{label:"Instagram",url:""}],footer:"© 2026 Todos os direitos reservados.",gate:"Sua conta está aguardando ativação pelo administrador."};
+const DEF={brand:"Meu Portfólio",primary:"#775FB8",secondary:"#2C2F33",ink:"#eceaf3",hFont:"Sora",bFont:"Figtree",radius:24,maxw:1160,bg:"stars",bgSpeed:1,bgDensity:1,tag:"Artista digital",title:"Arte feita com",hi:"alma e cor.",lead:"Ilustrações, personagens e encomendas. Veja os trabalhos, os valores e peça a sua arte.",b1:"Ver obras",u1:"#obras",b2:"Pedir uma arte",u2:"",cards:true,reviewsOn:true,reviewsName:"Avaliações",reviewsTitle:"Avaliações de clientes",navHome:"Início",loginOn:true,loginLabel:"Entrar com Google",css:"",cats:[{id:"obras",name:"Obras",title:"Obras",desc:"Veja os trabalhos e valores.",text:"",on:true},{id:"sobre",name:"Sobre",title:"Sobre mim",desc:"Conheça meu trabalho.",text:"Escreva aqui sobre você e seu trabalho.\n\n## Como encomendar\nEdite este texto no painel administrativo.",on:true}],links:[{label:"Instagram",url:""}],footer:"© 2026 Todos os direitos reservados.",gate:"Sua conta está aguardando ativação pelo administrador."};
 const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const link=u=>/^(https?:|mailto:|#|\/)/i.test(String(u||"").trim())?esc(String(u).trim()):"#";
 const clone=o=>JSON.parse(JSON.stringify(o)),hexOk=v=>/^#[0-9a-f]{6}$/i.test(v);
@@ -148,18 +171,19 @@ function render(){
   mk("style","cs").textContent=String(c.css||"").replace(/<\/?style/gi,"");
   window.bgSet={t:c.bg||"stars",s:+c.bgSpeed||1,d:+c.bgDensity||1};starsTheme();
   document.title=`${c.brand} | ${c.tag}`;$("#brand").textContent=$("#brand2").textContent=c.brand;
-  const ks=c.cats.filter(k=>k.on!==false);if(page!=="inicio"&&!ks.some(k=>k.id===page))page="inicio";
+  const ks=c.cats.filter(k=>k.on!==false);if(page!=="inicio"&&!ks.some(k=>k.id===page)&&!(page==="avaliacoes"&&c.reviewsOn!==false))page="inicio";
   const an=page!==lastPage?" pg":"";lastPage=page;
-  $("#nav").innerHTML=[["inicio",c.navHome||"Início"],...ks.map(k=>[k.id,k.name])].map(([id,n])=>`<a class="btn btn-line btn-sm${id===page?" on":""}" href="#${esc(id)}">${esc(n)}</a>`).join("");
+  $("#nav").innerHTML=[["inicio",c.navHome||"Início"],...ks.map(k=>[k.id,k.name]),...(c.reviewsOn!==false?[["avaliacoes",c.reviewsName||"Avaliações"]]:[])].map(([id,n])=>`<a class="btn btn-line btn-sm${id===page?" on":""}" href="#${esc(id)}">${esc(n)}</a>`).join("");
   const btn=(l,u,k)=>l?`<a class="btn ${k}" href="${link(u)}">${esc(l)}</a>`:"";
-  if(page==="inicio")$("#view").innerHTML=`<section class="hero${an}"><div class="wrap"><span class="pill">${esc(c.tag)}</span><h1>${esc(c.title)} <span>${esc(c.hi)}</span></h1><p class="lead">${esc(c.lead)}</p><div class="cta">${btn(c.b1,c.u1,"btn-main")}${btn(c.b2,c.u2,"btn-line")}</div></div></section>`+(c.cards!==false&&ks.length?`<section class="${an}" style="padding-top:24px"><div class="wrap"><div class="grid">${ks.map(k=>`<a class="blk card" style="grid-column:span 4;text-decoration:none" href="#${esc(k.id)}"><div class="bd"><h3>${esc(k.name)}</h3><p>${esc(k.desc||"")}</p></div></a>`).join("")}</div></div></section>`:"");
+  if(page==="inicio")$("#view").innerHTML=`<section class="hero${an}"><div class="wrap"><span class="pill">${esc(c.tag)}</span><h1>${esc(c.title)} <span>${esc(c.hi)}</span></h1><p class="lead">${esc(c.lead)}</p><div class="cta">${btn(c.b1,c.u1,"btn-main")}${btn(c.b2,c.u2,"btn-line")}</div></div></section>`+(c.cards!==false&&ks.length?`<section class="${an}" style="padding:24px 0 56px"><div class="wrap"><p class="pill">Explorar</p><ol class="idx">${ks.map((k,n)=>`<li><a href="#${esc(k.id)}"><span class="no">${String(n+1).padStart(2,"0")}</span><span class="tt">${esc(k.name)}</span><span class="ds">${esc(k.desc||"")}</span><span class="ar">→</span></a></li>`).join("")}</ol></div></section>`:"");
+  else if(page==="avaliacoes"&&c.reviewsOn!==false){$("#view").innerHTML=`<section class="${an}" style="padding-top:56px"><div class="wrap"><h2>${esc(c.reviewsTitle||"Avaliações")}</h2><div id="rs"></div><div id="rf"></div><div id="rl"></div></div></section>`;rfKey="";if(fb&&!rvLoaded)loadReviews();else drawReviews()}
   else{const k=ks.find(k=>k.id===page);$("#view").innerHTML=`<section class="${an}" style="padding-top:56px"><div class="wrap"><h2>${esc(k.title||k.name)}</h2>${k.text?`<div class="prose" style="margin:20px 0 8px">${fmt(k.text)}</div>`:""}<div class="grid" style="margin-top:28px">${blocks.map((b,i)=>b.cat===k.id?blk(b,i):"").join("")}</div></div></section>`}
   $("#links").innerHTML=c.links.filter(l=>l.label).map(l=>`<li><a href="${link(l.url)}">${esc(l.label)}</a></li>`).join("");$("#copy").textContent=c.footer;
   const g=$("#gate");g.hidden=!(user&&!approved());g.textContent=c.gate;renderAuth();
 }
 function route(){const h=decodeURIComponent(location.hash.slice(1));
   if(h==="admin"){try{sessionStorage.setItem("adm","1")}catch(e){}renderAuth();return}
-  if(h==="inicio"||cfg.cats.some(k=>k.id===h)){page=h;render();scrollTo(0,0)}else if(!h&&page!=="inicio"){page="inicio";render()}}
+  if(h==="inicio"||h==="avaliacoes"||cfg.cats.some(k=>k.id===h)){page=h;render();scrollTo(0,0)}else if(!h&&page!=="inicio"){page="inicio";render()}}
 addEventListener("hashchange",route);
 $("#view").addEventListener("click",e=>{const i=e.target.closest("img[data-i]");if(i){$("#lb img").src=i.src;$("#lb").hidden=false}});
 $("#lb").onclick=()=>$("#lb").hidden=true;
@@ -208,13 +232,53 @@ $("#auth").addEventListener("click",async e=>{
   if(a==="admin")openAdmin();
 });
 
+/* avaliações */
+let reviews=[],comm={},openC=new Set,rvLoaded=false,rfKey="",selSt=0;
+const dt=x=>x?new Date(x).toLocaleDateString("pt-BR"):"",stv=n=>`<span class="stars" aria-label="${n} de 5">${"★".repeat(n)}${"☆".repeat(5-n)}</span>`;
+const mine=()=>user&&reviews.find(r=>r.id===user.uid),okImg=u=>/^https?:/i.test(u||"");
+const av=(p,n)=>okImg(p)?`<img src="${esc(p)}" alt="" referrerpolicy="no-referrer">`:`<span class="av">${esc((n||"?")[0].toUpperCase())}</span>`;
+async function loadReviews(){
+  try{const s=await fb.F.getDocs(fb.F.collection(fb.db,"pf_reviews"));reviews=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.created||"").localeCompare(a.created||""))}catch(e){reviews=[];console.warn(e)}
+  rvLoaded=true;drawReviews()}
+async function loadComments(id){
+  try{const s=await fb.F.getDocs(fb.F.collection(fb.db,"pf_reviews",id,"comments"));comm[id]=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.created||"").localeCompare(b.created||""))}catch(e){comm[id]=[]}
+  drawReviews()}
+function drawReviews(){
+  const rl=$("#rl");if(!rl)return;const n=reviews.length,avg=n?reviews.reduce((t,r)=>t+(+r.stars||0),0)/n:0;
+  $("#rs").innerHTML=n?`<div class="rsum"><b>${avg.toFixed(1).replace(".",",")}</b>${stv(Math.round(avg))}<span>${n} avaliaç${n>1?"ões":"ão"}</span></div>`:"";
+  const m=mine(),key=(user?user.uid:"-")+(m?.edited||m?.created||"");
+  if(key!==rfKey){rfKey=key;selSt=m?+m.stars:0;
+    $("#rf").innerHTML=user?`<div class="rvf"><b>${m?"Editar sua avaliação":"Deixe sua avaliação"}</b><div class="stp">${[1,2,3,4,5].map(i=>`<button type="button" data-r="st" data-v="${i}" class="${i<=selSt?"on":""}" aria-label="${i} estrelas">★</button>`).join("")}</div><textarea id="rt" maxlength="600" rows="4" placeholder="Conte como foi sua experiência…">${esc(m?.text||"")}</textarea><div><button class="btn btn-main btn-sm" data-r="send">${m?"Salvar alterações":"Publicar avaliação"}</button></div></div>`:(cfg.loginOn!==false?`<p class="hint" style="margin:16px 0">Entre com Google para avaliar, curtir e comentar.</p>`:"")}
+  rl.innerHTML=!rvLoaded?`<p class="hint">Carregando…</p>`:n?reviews.map(r=>{
+    const lk=r.likes||[],liked=user&&lk.includes(user.uid),cs=comm[r.id],ad=isAdmin();
+    return`<article class="rv"><div class="rh">${av(r.photo,r.name)}<div><b>${esc(r.name)}</b><div>${stv(Math.max(0,Math.min(5,+r.stars||0)))} <small>${dt(r.created)}${r.edited?" · editado":""}</small></div></div>${ad?`<button class="lk dg" data-r="del" data-id="${esc(r.id)}">Apagar</button>`:""}</div><p>${esc(r.text).replace(/\n/g,"<br>")}</p><div class="ra"><button class="lk${liked?" on":""}" data-r="like" data-id="${esc(r.id)}">♥ ${lk.length}</button><button class="lk" data-r="cmt" data-id="${esc(r.id)}">Comentários${cs?` (${cs.length})`:""}</button></div>${openC.has(r.id)?`<div class="cm">${(cs||[]).map(c=>`<div class="ci">${av(c.photo,c.name)}<div><b>${esc(c.name)}</b> <small>${dt(c.created)}</small><p>${esc(c.text)}</p></div>${ad?`<button class="lk dg" data-r="cdel" data-id="${esc(r.id)}" data-c="${esc(c.id)}">Apagar</button>`:""}</div>`).join("")}${user?`<div class="cf"><input id="ci-${esc(r.id)}" maxlength="400" placeholder="Escreva um comentário…"><button class="btn btn-line btn-sm" data-r="csend" data-id="${esc(r.id)}">Enviar</button></div>`:""}</div>`:""}</article>`}).join(""):`<p class="hint" style="margin-top:16px">Ainda não há avaliações.</p>`}
+$("#view").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-r]");if(!b)return;const a=b.dataset.r,id=b.dataset.id;
+  if(a==="st"){selSt=+b.dataset.v;b.parentElement.querySelectorAll("button").forEach((x,i)=>x.classList.toggle("on",i<selSt));return}
+  if(a==="cmt"){if(openC.has(id)){openC.delete(id);drawReviews()}else{openC.add(id);comm[id]?drawReviews():loadComments(id)}return}
+  if(!fb||!user)return toast("Entre com sua conta para continuar.");
+  const F=fb.F,db=fb.db,iso=new Date().toISOString();b.disabled=true;
+  try{
+    if(a==="send"){const t=$("#rt").value.trim();if(selSt<1)return toast("Escolha de 1 a 5 estrelas.");if(t.length<3)return toast("Escreva um pouco mais.");
+      const ref=F.doc(db,"pf_reviews",user.uid);
+      if(mine())await F.updateDoc(ref,{stars:selSt,text:t,edited:iso});
+      else await F.setDoc(ref,{uid:user.uid,name:(user.displayName||"Cliente").slice(0,60),photo:okImg(user.photoURL)?user.photoURL:"",stars:selSt,text:t,created:iso,likes:[]});
+      toast("Avaliação salva ✓");await loadReviews()}
+    else if(a==="like"){const r=reviews.find(x=>x.id===id),on=(r?.likes||[]).includes(user.uid);await F.updateDoc(F.doc(db,"pf_reviews",id),{likes:on?F.arrayRemove(user.uid):F.arrayUnion(user.uid)});await loadReviews()}
+    else if(a==="csend"){const i=$("#ci-"+id),t=i.value.trim();if(!t)return;await F.addDoc(F.collection(db,"pf_reviews",id,"comments"),{uid:user.uid,name:(user.displayName||"Cliente").slice(0,60),photo:okImg(user.photoURL)?user.photoURL:"",text:t.slice(0,400),created:iso});await loadComments(id)}
+    else if(a==="del"&&isAdmin()){if(!confirm("Apagar esta avaliação e seus comentários?"))return;
+      const s=await F.getDocs(F.collection(db,"pf_reviews",id,"comments"));for(const d of s.docs)await F.deleteDoc(d.ref);await F.deleteDoc(F.doc(db,"pf_reviews",id));delete comm[id];toast("Avaliação apagada.");await loadReviews()}
+    else if(a==="cdel"&&isAdmin()){await F.deleteDoc(F.doc(db,"pf_reviews",id,"comments",b.dataset.c));await loadComments(id)}
+  }catch(er){toast(er.code==="permission-denied"?"Sem permissão. Confira as regras do Firestore.":"Erro: "+(er.code||er.message))}
+  finally{b.disabled=false}});
+
 /* painel admin */
 const CK="ck",CL="cl",AR="ar",SEL="sel";
 const SPANS=[[12,"Largura total"],[8,"2/3"],[6,"Metade"],[4,"1/3"],[3,"1/4"]];
 const FO=FONTS.map(f=>[f,f]),BGS=[["stars","Estrelas"],["aurora","Aurora"],["bubbles","Bolhas"],["snow","Neve"],["fireflies","Vagalumes"],["rain","Chuva digital"],["grid","Grade em movimento"],["waves","Ondas"],["none","Nenhum"]],LVL=[[0.5,"Baixa"],[1,"Normal"],[2,"Alta"]];
 const TABS=[
  {id:"visual",label:"Visual",fields:[["primary","Cor primária",CL],["secondary","Cor secundária (fundo e cartões)",CL],["ink","Cor do texto",CL],["hFont","Fonte dos títulos",SEL,FO],["bFont","Fonte do texto",SEL,FO],["radius","Arredondamento dos cartões (px)","num"],["maxw","Largura máxima do site (px)","num"],["bg","Fundo animado",SEL,BGS],["bgSpeed","Velocidade do fundo",SEL,LVL],["bgDensity","Quantidade de elementos do fundo",SEL,LVL]]},
- {id:"inicio",label:"Início",fields:[["tag","Selo do topo"],["title","Título"],["hi","Título em destaque"],["lead","Texto de apoio",AR],["b1","Botão 1: texto"],["u1","Botão 1: link (ex.: #obras)"],["b2","Botão 2: texto"],["u2","Botão 2: link"],["cards","Mostrar cartões das categorias",CK]]},
+ {id:"inicio",label:"Início",fields:[["tag","Selo do topo"],["title","Título"],["hi","Título em destaque"],["lead","Texto de apoio",AR],["b1","Botão 1: texto"],["u1","Botão 1: link (ex.: #obras)"],["b2","Botão 2: texto"],["u2","Botão 2: link"],["cards","Mostrar lista de categorias no início",CK],["reviewsOn","Ativar avaliações de clientes",CK],["reviewsName","Avaliações: nome no menu"],["reviewsTitle","Avaliações: título da página"]]},
  {id:"cats",label:"Categorias",cats:true},
  {id:"blocos",label:"Blocos",blocks:true},
  {id:"rodape",label:"Menu e rodapé",fields:[["brand","Nome do portfólio"],["navHome","Nome da página inicial no menu"],["footer","Texto do rodapé"]],list:"links",noun:"link",item:[["label","Texto"],["url","Endereço (https://...)"]]},
@@ -232,7 +296,7 @@ const BF=i=>[["cat","Categoria",SEL,cfg.cats.map(k=>[k.id,k.name])],["title","T�
 function draw(){
   $("#tabs").innerHTML=TABS.map(t=>`<button role="tab" data-tab="${t.id}" aria-selected="${t.id===tab}">${t.label}</button>`).join("");
   const T=TABS.find(x=>x.id===tab);let h="";
-  (T.fields||[]).forEach(([p,l,t,o])=>h+=field(p,l,t,p==="cards"||p==="loginOn"?get(cfg,p)!==false:get(cfg,p),o));
+  (T.fields||[]).forEach(([p,l,t,o])=>h+=field(p,l,t,["cards","loginOn","reviewsOn"].includes(p)?get(cfg,p)!==false:get(cfg,p),o));
   if(T.list){const L=get(cfg,T.list);L.forEach((it,i)=>h+=`<div class="item"><div class="ih"><b>${esc(it.label||T.noun)}</b><span><button data-a="del" data-i="${i}">Remover</button></span></div>${T.item.map(([k,l])=>field(`${T.list}.${i}.${k}`,l,"",it[k])).join("")}</div>`);h+=`<button class="btn btn-line btn-sm" data-a="add">+ Adicionar ${T.noun}</button>`}
   if(T.cats){h=`<p class="hint">Cada categoria é uma página separada, com botão próprio no menu.</p>`;
     cfg.cats.forEach((k,i)=>h+=`<div class="item"><div class="ih"><b>${esc(k.name||"Categoria")}</b><span><button data-a="cup" data-i="${i}">↑</button><button data-a="cdn" data-i="${i}">↓</button><button data-a="cblk" data-i="${i}">Blocos</button><button data-a="cdel" data-i="${i}">Excluir</button></span></div>${[["name","Nome no menu"],["title","Título da página"],["desc","Descrição curta (cartão do início)"],["text","Texto da página (## subtítulo)",AR],["on","Visível no site",CK]].map(([f,l,t])=>field(`cats.${i}.${f}`,l,t,f==="on"?k.on!==false:k[f])).join("")}</div>`);
