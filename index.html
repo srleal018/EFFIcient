@@ -142,7 +142,7 @@ $("#lb").onclick=()=>$("#lb").hidden=true;
 const CDN="https://www.gstatic.com/firebasejs/10.12.2/";
 async function loadPrices(){
   prices={};try{
-    const q=approved()?fb.F.collection(fb.db,"prices"):fb.F.query(fb.F.collection(fb.db,"prices"),fb.F.where("pub","==",true));
+    const q=approved()?fb.F.collection(fb.db,"pf_prices"):fb.F.query(fb.F.collection(fb.db,"pf_prices"),fb.F.where("pub","==",true));
     (await fb.F.getDocs(q)).forEach(d=>prices[d.id]=d.data());
   }catch(e){console.warn(e)}
   blocks.forEach(b=>{if(isAdmin()){b.price=prices[b.id]?.v||"";b.pub=prices[b.id]?.pub!==false}});
@@ -154,12 +154,12 @@ async function boot(){
   try{
     const [A,Au,F]=await Promise.all([import(CDN+"firebase-app.js"),import(CDN+"firebase-auth.js"),import(CDN+"firebase-firestore.js")]);
     const app=A.initializeApp(FIREBASE_CONFIG);fb={Au,F,auth:Au.getAuth(app),db:F.getFirestore(app)};
-    try{const s=await F.getDoc(F.doc(fb.db,"site","config"));if(s.exists()){cfg={...DEF,...s.data()};saved=clone(cfg)}}catch(e){}
-    try{const s=await F.getDocs(F.collection(fb.db,"blocks"));blocks=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.o||0)-(b.o||0));savedBlocks=clone(blocks)}catch(e){}
+    try{const s=await F.getDoc(F.doc(fb.db,"portfolio","config"));if(s.exists()){cfg={...DEF,...s.data()};saved=clone(cfg)}}catch(e){}
+    try{const s=await F.getDocs(F.collection(fb.db,"pf_blocks"));blocks=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.o||0)-(b.o||0));savedBlocks=clone(blocks)}catch(e){}
     await loadPrices();render();
     Au.onAuthStateChanged(fb.auth,async u=>{
       user=u;me=null;
-      if(u){try{const r=F.doc(fb.db,"users",u.uid),s=await F.getDoc(r),base={name:u.displayName||"",email:u.email||"",photo:u.photoURL||"",lastLogin:new Date().toISOString()};
+      if(u){try{const r=F.doc(fb.db,"pf_users",u.uid),s=await F.getDoc(r),base={name:u.displayName||"",email:u.email||"",photo:u.photoURL||"",lastLogin:new Date().toISOString()};
         if(s.exists()){await F.setDoc(r,base,{merge:true});me=(await F.getDoc(r)).data()}else{await F.setDoc(r,{...base,approved:false});me={approved:false}}}catch(e){console.warn(e)}}
       else closeAdmin(true);
       await loadPrices();renderAuth();render();
@@ -209,7 +209,7 @@ function draw(){
   if(T.users){h='<p class="hint">Carregando…</p>';loadUsers()}
   $("#ab").innerHTML=h}
 async function loadUsers(){
-  try{const s=await fb.F.getDocs(fb.F.collection(fb.db,"users")),r=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.lastLogin||"").localeCompare(a.lastLogin||""));
+  try{const s=await fb.F.getDocs(fb.F.collection(fb.db,"pf_users")),r=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.lastLogin||"").localeCompare(a.lastLogin||""));
     if(tab==="users")$("#ab").innerHTML=`<p class="hint">Quem entra com Google fica pendente até você ativar. Contas ativadas veem os preços marcados como restritos.</p><table>${r.map(u=>`<tr><td>${esc(u.name)}<br><span class="hint">${esc(u.email)}</span></td><td><button class="btn ${u.approved?"btn-main":"btn-line"} btn-sm" data-a="appr" data-id="${u.id}" data-v="${u.approved?0:1}">${u.approved?"Ativo":"Ativar"}</button></td></tr>`).join("")}</table>`}
   catch(e){$("#ab").innerHTML=`<p class="hint">Erro ao listar: ${esc(e.code||e.message)}. Confira o firestore.rules.</p>`}}
 function openAdmin(){if(!isAdmin())return;adm.hidden=false;mark(dirty);draw()}
@@ -219,12 +219,12 @@ async function save(){
   if(!hexOk(cfg.primary)||!hexOk(cfg.secondary))return toast("Cor inválida.");
   const b=$('[data-a=save]');saving=true;b.disabled=true;b.textContent="Salvando…";const F=fb.F,db=fb.db;
   try{
-    await F.setDoc(F.doc(db,"site","config"),clone(cfg));
-    for(const id of deleted){await F.deleteDoc(F.doc(db,"blocks",id));await F.deleteDoc(F.doc(db,"prices",id))}
+    await F.setDoc(F.doc(db,"portfolio","config"),clone(cfg));
+    for(const id of deleted){await F.deleteDoc(F.doc(db,"pf_blocks",id));await F.deleteDoc(F.doc(db,"pf_prices",id))}
     for(const [i,bk] of blocks.entries()){if(!touched.has(bk.id))continue;
       const {price,pub,...rest}=bk;rest.o=i;rest.hp=!!price&&pub===false;
-      await F.setDoc(F.doc(db,"blocks",bk.id),rest);
-      if(price)await F.setDoc(F.doc(db,"prices",bk.id),{v:price,pub:pub!==false});else await F.deleteDoc(F.doc(db,"prices",bk.id));}
+      await F.setDoc(F.doc(db,"pf_blocks",bk.id),rest);
+      if(price)await F.setDoc(F.doc(db,"pf_prices",bk.id),{v:price,pub:pub!==false});else await F.deleteDoc(F.doc(db,"pf_prices",bk.id));}
     touched.clear();deleted.clear();saved=clone(cfg);savedBlocks=clone(blocks);await loadPrices();saving=false;mark(false);toast("Salvo e publicado ✓");render();
   }catch(er){saving=false;mark(true);toast(er.code==="permission-denied"?"Firestore recusou: confira as regras e o e-mail do admin.":"Erro ao salvar: "+(er.code||er.message))}
   finally{b.textContent="Salvar e publicar"}}
@@ -241,7 +241,7 @@ adm.addEventListener("click",async e=>{
   const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,i=+b.dataset.i,T=TABS.find(x=>x.id===tab);
   if(a==="close")return closeAdmin();if(a==="save")return save();
   if(a==="discard"){if(!dirty)return;cfg=clone(saved);blocks=clone(savedBlocks);touched.clear();deleted.clear();mark(false);render();draw();return toast("Alterações descartadas.")}
-  if(a==="appr"){try{await fb.F.updateDoc(fb.F.doc(fb.db,"users",b.dataset.id),{approved:b.dataset.v==="1"});toast(b.dataset.v==="1"?"Login ativado ✓":"Login desativado");loadUsers()}catch(er){toast("Erro: "+(er.code||er.message))}return}
+  if(a==="appr"){try{await fb.F.updateDoc(fb.F.doc(fb.db,"pf_users",b.dataset.id),{approved:b.dataset.v==="1"});toast(b.dataset.v==="1"?"Login ativado ✓":"Login desativado");loadUsers()}catch(er){toast("Erro: "+(er.code||er.message))}return}
   if(a==="addb"){const id=crypto.randomUUID();blocks.push({id,title:"",text:"",img:"",dims:"",price:"",pub:true,url:"",label:"Abrir",span:4,imgh:"",minh:"",center:false,plain:false});touched.add(id)}
   else if(a==="rmimg"){blocks[i].img="";touched.add(blocks[i].id)}
   else if(a==="up"&&i>0){[blocks[i-1],blocks[i]]=[blocks[i],blocks[i-1]];touched.add(blocks[i].id).add(blocks[i-1].id)}
